@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Marília",
+			"country": {
+				"code": "BR",
+				"name": "Brazil"
+			},
+			"subdivision": {
+				"code": "SP",
+				"name": "São Paulo"
+			},
+			"timezone": "America/Sao_Paulo",
+			"latitude": -22.1871,
+			"longitude": -49.9952,
+			"postalCode": "17500"
+		},
+		"timestamp": 1773097092331
+	}
+}

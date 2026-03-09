@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>icarSP — Consulta Veicular</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+/* Professional Consulta Section */
+.consulta-section {
+background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
+padding: 80px 20px;
+position: relative;
+overflow: hidden;
+}
+
+.consulta-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background:
+radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+pointer-events: none;
+}
+
+.consulta-inner {
+max-width: 800px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+}
+
+.consulta-title {
+font-size: 2.8rem;
+font-weight: 700;
+color: #ffffff;
+text-align: center;
+margin-bottom: 16px;
+letter-spacing: -0.02em;
+background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.consulta-subtitle {
+font-size: 1.1rem;
+color: #94a3b8;
+text-align: center;
+margin-bottom: 60px;
+font-weight: 400;
+line-height: 1.6;
+}
+
+.pricing-card {
+background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+border: 1px solid rgba(59, 130, 246, 0.2);
+border-radius: 24px;
+padding: 48px 40px;
+max-width: 520px;
+margin: 0 auto;
+position: relative;
+overflow: hidden;
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4),
+0 0 0 1px rgba(255, 255, 255, 0.05);
+transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.5),
+0 0 0 1px rgba(59, 130, 246, 0.3);
+}
+
+.pricing-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.8) 50%, transparent 100%);
+}
+
+.price {
+font-size: 3.5rem;
+font-weight: 800;
+color: #3b82f6;
+margin-bottom: 10px;
+text-align: center;
+letter-spacing: -0.02em;
+text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.price-caption {
+text-align: center;
+color: #cbd5e1;
+font-size: 0.95rem;
+margin-bottom: 30px;
+}
+
+.features-list {
+list-style: none;
+padding: 0;
+margin: 0 0 40px 0;
+}
+
+.feature-item {
+display: flex;
+align-items: center;
+padding: 12px 0;
+color: #e2e8f0;
+font-size: 1rem;
+font-weight: 500;
+border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.feature-item:last-child {
+border-bottom: none;
+}
+
+.feature-icon {
+width: 20px;
+height: 20px;
+background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 16px;
+flex-shrink: 0;
+box-shadow: 0 4px 8px rgba(34, 197, 94, 0.2);
+}
+
+.feature-icon i {
+font-size: 10px;
+color: white;
+font-weight: 900;
+}
+
+.cta-button {
+width: 100%;
+background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+color: white;
+border: none;
+border-radius: 16px;
+padding: 18px 32px;
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+display: inline-block;
+text-align: center;
+box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+position: relative;
+overflow: hidden;
+}
+
+.cta-button:hover {
+transform: translateY(-2px);
+box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.cta-button:active {
+transform: translateY(0);
+}
+
+.cta-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+left: 100%;
+}
+
+.trust-badge {
+text-align: center;
+margin-top: 24px;
+opacity: 0.8;
+}
+
+.trust-badge i {
+color: #22c55e;
+margin-right: 8px;
+}
+
+.trust-text {
+color: #94a3b8;
+font-size: 0.9rem;
+font-weight: 500;
+}
+
+.faq-simple {
+margin-top: 70px;
+display: grid;
+gap: 16px;
+}
+
+.faq-item {
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+padding: 20px;
+}
+
+.faq-item h4 {
+color: #fff;
+font-size: 1rem;
+margin-bottom: 8px;
+}
+
+.faq-item p {
+color: #94a3b8;
+font-size: 0.95rem;
+line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+.consulta-title {
+font-size: 2.2rem;
+}
+
+.pricing-card {
+padding: 32px 24px;
+margin: 0 16px;
+}
+
+.price {
+font-size: 2.8rem;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="header-inner">
+<img src="logo.png" alt="icarSP" class="header-logo" />
+<nav class="nav">
+<a href="#como-funciona">Como funciona</a>
+<a href="#consulta">Consulta</a>
+<a href="#recursos">Recursos</a>
+<a href="#contato">Contato</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="busca">
+<div class="hero-inner">
+<span class="badge"><i class="fa fa-shield-halved"></i> Consulta veicular online para São Paulo</span>
+<h1>Consulte <span class="highlight">débitos e histórico do veículo</span> pela placa</h1>
+<p class="hero-sub">Veja informações relevantes para análise veicular, incluindo débitos, restrições, gravame, histórico de leilão, roubo/furto e dados do veículo em um relatório online.</p>
+
+<div class="search-box">
+<label>Digite a placa para iniciar a consulta</label>
+<div class="search-row">
+<input type="text" id="placa-input" placeholder="ABC-1234" maxlength="8" autocomplete="off" />
+<button class="btn-buscar"><i class="fa fa-magnifying-glass"></i> Consultar placa</button>
+</div>
+<span class="search-hint">Exemplo: ABC1234 ou ABC-1234 (placas antigas e Mercosul)</span>
+</div>
+
+<div class="stats-bar">
+<div class="stat"><strong>Pagamento único</strong><span>Sem assinatura mensal</span></div>
+<div class="stat-divider"></div>
+<div class="stat"><strong>Consulta online</strong><span>Acesso rápido ao relatório</span></div>
+<div class="stat-divider"></div>
+<div class="stat"><strong>Placa antiga e Mercosul</strong><span>Compatível com os dois formatos</span></div>
+</div>
+</div>
+</section>
+
+<!-- CONSULTA -->
+<section class="consulta-section" id="consulta">
+<div class="consulta-inner">
+<h2 class="consulta-title">RELATÓRIO VEICULAR</h2>
+<p class="consulta-subtitle">Pagamento único para consultar débitos, restrições, gravame e histórico do veículo pela placa</p>
+
+<div class="pricing-card">
+<div class="price">R$ 11,99</div>
+<div class="price-caption">Pagamento único com acesso ao relatório online</div>
+
+<ul class="features-list">
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Dados do veículo
+</li>
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Débitos e pendências
+</li>
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Restrições e gravame
+</li>
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Histórico de leilão
+</li>
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Status de roubo/furto
+</li>
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Licenciamento e IPVA
+</li>
+<li class="feature-item">
+<div class="feature-icon"><i class="fa fa-check"></i></div>
+Chassi, RENAVAM, credor e bloqueios
+</li>
+</ul>
+
+<a href="#busca" class="cta-button">
+<i class="fa fa-magnifying-glass" style="margin-right: 8px;"></i>
+Consultar placa agora
+</a>
+
+<div class="trust-badge">
+<i class="fa fa-shield-halved"></i>
+<span class="trust-text">Pagamento único e acesso online ao relatório</span>
+</div>
+</div>
+
+<div class="faq-simple">
+<div class="faq-item">
+<h4>Como funciona a consulta?</h4>
+<p>Você informa a placa, inicia o pagamento e, após a confirmação, pode acessar o relatório com as informações disponíveis da consulta.</p>
+</div>
+<div class="faq-item">
+<h4>Preciso fazer cadastro?</h4>
+<p>Não. Basta informar a placa e seguir para o pagamento para gerar o acesso ao relatório.</p>
+</div>
+<div class="faq-item">
+<h4>Quais placas são aceitas?</h4>
+<p>A consulta aceita placas no formato antigo e no padrão Mercosul.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RECURSOS -->
+<section class="section" id="recursos">
+<div class="section-inner">
+<h2 class="section-title">O que você encontra no relatório</h2>
+<p class="section-sub">Informações relevantes para analisar a situação do veículo antes de comprar, vender ou regularizar</p>
+<div class="cards">
+<div class="card">
+<i class="fa fa-car"></i>
+<h3>Dados do Veículo</h3>
+<p>Marca, modelo, ano, cor, combustível e demais informações de identificação veicular.</p>
+</div>
+<div class="card">
+<i class="fa fa-triangle-exclamation"></i>
+<h3>Débitos e Pendências</h3>
+<p>Consulta de débitos, licenciamento, IPVA e outras pendências relacionadas ao veículo.</p>
+</div>
+<div class="card">
+<i class="fa fa-shield-halved"></i>
+<h3>Roubo e Furto</h3>
+<p>Verifique o status do veículo em relação a registros de roubo ou furto.</p>
+</div>
+<div class="card">
+<i class="fa fa-gavel"></i>
+<h3>Histórico de Leilão</h3>
+<p>Consulte se há apontamentos relacionados a leilão ou histórico relevante do veículo.</p>
+</div>
+<div class="card">
+<i class="fa fa-tag"></i>
+<h3>Tabela FIPE</h3>
+<p>Tenha como referência o valor de mercado do veículo com base na tabela FIPE.</p>
+</div>
+<div class="card">
+<i class="fa fa-file-lines"></i>
+<h3>Restrições e Gravame</h3>
+<p>Visualize informações sobre restrições, gravame e observações vinculadas ao veículo.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section section-dark" id="como-funciona">
+<div class="section-inner">
+<h2 class="section-title">Como funciona</h2>
+<p class="section-sub">Entenda como funciona a consulta e o acesso ao relatório</p>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h3>Digite a placa</h3>
+<p>Informe a placa no formato antigo ou Mercosul para iniciar a consulta.</p>
+</div>
+
+<div class="step-arrow"><i class="fa fa-arrow-right"></i></div>
+
+<div class="step">
+<div class="step-num">2</div>
+<h3>Confirme o pagamento</h3>
+<p>Após informar a placa, você será direcionado para concluir o pagamento com segurança.</p>
+</div>
+
+<div class="step-arrow"><i class="fa fa-arrow-right"></i></div>
+
+<div class="step">
+<div class="step-num">3</div>
+<h3>Acesse o relatório</h3>
+<p>Com a confirmação do pagamento, o relatório fica disponível online com os dados da consulta.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contato">
+<div class="footer-inner">
+<div class="footer-col">
+<img src="logo.png" alt="icarSP" class="footer-logo" />
+<p>Consulta veicular online com foco em débitos, restrições, gravame e histórico do veículo pela placa.</p>
+</div>
+<div class="footer-col">
+<h4>Links</h4>
+<a href="#recursos">Recursos</a>
+<a href="#como-funciona">Como funciona</a>
+<a href="#consulta">Consulta</a>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<a href="#">Termos de uso</a>
+<a href="#">Privacidade</a>
+<a href="#">Cookies</a>
+</div>
+<div class="footer-col">
+<h4>Contato</h4>
+<a href="mailto:contato@icarsp.com.br">contato@icarsp.com.br</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 icarSP. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<script>
+document.querySelector('.btn-buscar').addEventListener('click', async () => {
+const placa = document.getElementById('placa-input').value
+.replace(/[^a-zA-Z0-9]/g, '')
+.toUpperCase();
+
+if (placa.length < 7) {
+alert('Digite uma placa válida!');
+return;
+}
+
+const btn = document.querySelector('.btn-buscar');
+const textoOriginal = btn.innerHTML;
+btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Iniciando pagamento...';
+btn.disabled = true;
+
+try {
+const res = await fetch('/.netlify/functions/create-payment', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ placa })
+});
+
+const contentType = res.headers.get('content-type');
+if (!contentType || !contentType.includes('application/json')) {
+const text = await res.text();
+throw new Error(`Resposta inesperada: ${text.substring(0, 100)}`);
+}
+
+const data = await res.json();
+
+if (!res.ok) {
+throw new Error(data.error || data.details || 'Erro no servidor');
+}
+
+if (data.qr_code) {
+mostrarQrCode(data.qr_code, placa);
+} else if (data.init_point) {
+window.location.href = data.init_point;
+} else if (data.redirect) {
+window.location.href = data.redirect;
+} else {
+alert('Pagamento não pôde ser processado. Tente novamente.');
+btn.innerHTML = textoOriginal;
+btn.disabled = false;
+}
+
+} catch (e) {
+console.error('Erro detalhado:', e);
+alert('Erro ao iniciar pagamento: ' + e.message);
+btn.innerHTML = textoOriginal;
+btn.disabled = false;
+}
+});
+
+function mostrarQrCode(qrCode, placa) {
+const modal = document.createElement('div');
+modal.style.cssText = `
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.9);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+padding: 20px;
+`;
+
+modal.innerHTML = `
+<div class="pix-modal" style="background: white; padding: 30px; border-radius: 16px; max-width: 400px; width: 100%; text-align: center;">
+<h2 style="color: #1a1a2e; margin-bottom: 20px;">Pagamento PIX</h2>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrCode)}"
+style="width: 200px; height: 200px; margin: 20px auto;">
+<p style="color: #666; margin: 20px 0;">Escaneie o QR Code com seu banco para concluir o pagamento</p>
+<p style="color: #3b82f6; font-weight: bold; margin: 10px 0;">Valor: R$ 11,99</p>
+<p style="color: #999; font-size: 0.9rem; margin: 10px 0;">Placa: ${placa}</p>
+<button onclick="window.location.href='/resultado.html?placa=${placa}'"
+style="background: #22c55e; color: white; border: none; padding: 12px 30px; border-radius: 8px; margin-top: 20px; cursor: pointer;">
+Já paguei, verificar resultado
+</button>
+<button onclick="this.closest('.pix-modal-overlay').remove(); restaurarBotao();"
+style="background: #666; color: white; border: none; padding: 8px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer;">
+Fechar
+</button>
+</div>
+`;
+
+modal.className = 'pix-modal-overlay';
+document.body.appendChild(modal);
+}
+
+function restaurarBotao() {
+const btn = document.querySelector('.btn-buscar');
+btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> Consultar placa';
+btn.disabled = false;
+}
+</script>
+
+</body>
+</html>
