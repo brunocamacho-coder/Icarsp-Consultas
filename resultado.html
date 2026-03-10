@@ -559,56 +559,92 @@ el.classList.add('alerta');
 }
 }
 
-async function carregarRelatorio() {
-if (!placa) {
-setText('placa-veiculo', 'PLACA NÃO INFORMADA');
-setText('resumo-consulta', 'Nenhuma placa foi informada para consulta.');
-return;
+// Função para preencher o relatório com os dados (reutilizável)
+function preencherRelatorio(data) {
+  setText('placa-veiculo', data.placa || placa.toUpperCase());
+  
+  setText('marca-modelo', data.vehicle?.marca_modelo);
+  setText('ano', data.vehicle?.ano);
+  setText('cor', data.vehicle?.cor);
+  setText('combustivel', data.vehicle?.combustivel);
+  setText('fipe', data.vehicle?.fipe);
+  setText('chassi', data.vehicle?.chassi);
+  setText('renavam', data.vehicle?.renavam);
+  
+  setStatusBadge('roubo-furto', data.status?.roubo_furto);
+  setStatusBadge('leilao', data.status?.leilao);
+  setStatusBadge('debitos', data.status?.debitos);
+  setStatusBadge('restricoes', data.status?.restricoes);
+  setStatusBadge('gravame', data.status?.gravame);
+  setStatusBadge('licenciamento', data.status?.licenciamento_ipva);
+  
+  setText('instituicao-credora', data.details?.instituicao_credora);
+  setText('detalhes-bloqueio', data.details?.detalhes_bloqueio);
+  
+  const fipeFormatado = formatarFIPE(data.vehicle?.fipe);
+  const resumoPersonalizado = `Consulta completa carregada com sucesso. Valor FIPE identificado: ${fipeFormatado}.`;
+  setText('resumo-consulta', resumoPersonalizado);
 }
 
-setText('placa-veiculo', placa.toUpperCase());
-setText('resumo-consulta', 'Carregando relatório...');
-
-try {
-const response = await fetch(`/.netlify/functions/get-report?placa=${encodeURIComponent(placa)}`);
-const data = await response.json();
-
-if (!response.ok) {
-throw new Error(data.error || 'Erro ao carregar relatório');
+// NOVA FUNÇÃO: Carrega relatório com cache no localStorage
+async function carregarRelatorioComCache() {
+  if (!placa) {
+    setText('placa-veiculo', 'PLACA NÃO INFORMADA');
+    setText('resumo-consulta', 'Nenhuma placa foi informada para consulta.');
+    return;
+  }
+  
+  setText('placa-veiculo', placa.toUpperCase());
+  setText('resumo-consulta', 'Carregando relatório...');
+  
+  const chaveCache = `relatorio_${placa}`;
+  const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 horas em milissegundos
+  
+  // Tenta recuperar do cache
+  try {
+    const cacheStr = localStorage.getItem(chaveCache);
+    const cacheTime = localStorage.getItem(`${chaveCache}_time`);
+    
+    if (cacheStr && cacheTime && (Date.now() - parseInt(cacheTime) < CACHE_DURATION)) {
+      console.log('📦 Relatório carregado do cache');
+      const data = JSON.parse(cacheStr);
+      preencherRelatorio(data);
+      return;
+    }
+  } catch (e) {
+    console.warn('Erro ao ler cache:', e);
+  }
+  
+  // Se não tiver cache válido, consulta a API
+  console.log('🌐 Consultando API...');
+  
+  try {
+    const response = await fetch(`/.netlify/functions/get-report?placa=${encodeURIComponent(placa)}`);
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error || 'Erro ao carregar relatório');
+    }
+    
+    // Salva no cache para consultas futuras
+    try {
+      localStorage.setItem(chaveCache, JSON.stringify(data));
+      localStorage.setItem(`${chaveCache}_time`, Date.now().toString());
+      console.log('💾 Relatório salvo no cache');
+    } catch (e) {
+      console.warn('Erro ao salvar cache:', e);
+    }
+    
+    preencherRelatorio(data);
+    
+  } catch (error) {
+    console.error('Erro ao carregar relatório:', error);
+    setText('resumo-consulta', 'Não foi possível carregar o relatório no momento.');
+  }
 }
 
-setText('placa-veiculo', data.placa || placa.toUpperCase());
-
-setText('marca-modelo', data.vehicle?.marca_modelo);
-setText('ano', data.vehicle?.ano);
-setText('cor', data.vehicle?.cor);
-setText('combustivel', data.vehicle?.combustivel);
-setText('fipe', data.vehicle?.fipe);
-setText('chassi', data.vehicle?.chassi);
-setText('renavam', data.vehicle?.renavam);
-
-setStatusBadge('roubo-furto', data.status?.roubo_furto);
-setStatusBadge('leilao', data.status?.leilao);
-setStatusBadge('debitos', data.status?.debitos);
-setStatusBadge('restricoes', data.status?.restricoes);
-setStatusBadge('gravame', data.status?.gravame);
-setStatusBadge('licenciamento', data.status?.licenciamento_ipva);
-
-setText('instituicao-credora', data.details?.instituicao_credora);
-setText('detalhes-bloqueio', data.details?.detalhes_bloqueio);
-
-// CORREÇÃO: Formata o resumo da consulta com o valor FIPE corrigido
-const fipeFormatado = formatarFIPE(data.vehicle?.fipe);
-const resumoPersonalizado = `Consulta completa carregada com sucesso. Valor FIPE identificado: ${fipeFormatado}.`;
-setText('resumo-consulta', resumoPersonalizado);
-
-} catch (error) {
-console.error('Erro ao carregar relatório:', error);
-setText('resumo-consulta', 'Não foi possível carregar o relatório no momento.');
-}
-}
-
-carregarRelatorio();
+// Substitui a chamada antiga pela nova com cache
+carregarRelatorioComCache();
 </script>
 </body>
 </html>
