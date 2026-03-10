@@ -475,7 +475,7 @@ padding: 22px;
 <input type="text" id="placa-input" placeholder="ABC-1234" maxlength="8" autocomplete="off" />
 <button class="btn-buscar"><i class="fa fa-magnifying-glass"></i> Consultar placa</button>
 </div>
-<span class="search-hint">Exemplo: ABC1234 ou ABC-1234 (placas antigas e Mercosul)</span>
+<span class="search-hint">Exemplo: ABC1G34 ou ABC-1234 (placas antigas e Mercosul)</span>
 </div>
 
 <section id="preview-result" class="preview-wrapper">
@@ -740,10 +740,20 @@ return String(valor || '')
 }
 
 function setPreviewText(id, value) {
-const element = document.getElementById(id);
-if (element) {
-element.textContent = value || '-';
-}
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  if (id === 'preview-fipe' && value && !isNaN(parseFloat(value))) {
+    // Formatação especial para FIPE: número inteiro com ponto de milhar
+    const numero = parseFloat(value);
+    const valorFormatado = numero.toLocaleString('pt-BR', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    });
+    element.textContent = valorFormatado;
+  } else {
+    element.textContent = value || '-';
+  }
 }
 
 function mostrarPreview(data) {
