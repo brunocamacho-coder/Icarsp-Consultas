@@ -494,13 +494,35 @@ Este relatório possui finalidade informativa e de apoio à análise veicular. A
 </div>
 
 <script>
+function formatarFIPE(valor) {
+  if (!valor) return 'R$ -';
+  
+  // Se já vier formatado, retorna
+  if (typeof valor === 'string' && valor.includes('R$')) {
+    return valor;
+  }
+  
+  const numero = parseFloat(valor);
+  if (isNaN(numero)) return valor || 'R$ -';
+  
+  const valorFormatado = numero.toLocaleString('pt-BR', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  });
+  return `R$ ${valorFormatado}`;
+}
+
 const params = new URLSearchParams(window.location.search);
 const placa = params.get('placa');
 
 function setText(id, value) {
 const el = document.getElementById(id);
 if (el) {
-el.textContent = value || '-';
+  if (id === 'fipe') {
+    el.textContent = formatarFIPE(value);
+  } else {
+    el.textContent = value || '-';
+  }
 }
 }
 
