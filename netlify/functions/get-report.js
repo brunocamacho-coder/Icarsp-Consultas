@@ -1,4 +1,4 @@
-const { getVehicleReportByPlate } = require('./providers/vehicle-provider');
+const vehicleProvider = require('./providers/vehicle-provider');
 
 exports.handler = async (event) => {
 if (event.httpMethod !== 'GET') {
@@ -27,7 +27,7 @@ body: JSON.stringify({ error: 'Placa inválida' })
 };
 }
 
-const report = await getVehicleReportByPlate(placa);
+const report = await vehicleProvider.getVehicleReportByPlate(placa);
 
 return {
 statusCode: 200,
