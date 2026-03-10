@@ -597,7 +597,11 @@ setStatusBadge('licenciamento', data.status?.licenciamento_ipva);
 setText('instituicao-credora', data.details?.instituicao_credora);
 setText('detalhes-bloqueio', data.details?.detalhes_bloqueio);
 
-setText('resumo-consulta', data.summary || 'Relatório carregado com sucesso.');
+// CORREÇÃO: Formata o resumo da consulta com o valor FIPE corrigido
+const fipeFormatado = formatarFIPE(data.vehicle?.fipe);
+const resumoPersonalizado = `Consulta completa carregada com sucesso. Valor FIPE identificado: ${fipeFormatado}.`;
+setText('resumo-consulta', resumoPersonalizado);
+
 } catch (error) {
 console.error('Erro ao carregar relatório:', error);
 setText('resumo-consulta', 'Não foi possível carregar o relatório no momento.');
