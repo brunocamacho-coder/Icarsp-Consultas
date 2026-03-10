@@ -229,6 +229,198 @@ font-size: 0.95rem;
 line-height: 1.6;
 }
 
+/* Preview grátis */
+.preview-wrapper {
+display: none;
+margin-top: 28px;
+}
+
+.preview-card {
+background: linear-gradient(145deg, #111827 0%, #1f2937 100%);
+border: 1px solid rgba(59, 130, 246, 0.18);
+border-radius: 24px;
+padding: 28px;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+}
+
+.preview-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+
+.preview-badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 8px 14px;
+border-radius: 999px;
+background: rgba(34, 197, 94, 0.12);
+border: 1px solid rgba(34, 197, 94, 0.24);
+color: #86efac;
+font-size: 0.92rem;
+font-weight: 700;
+}
+
+.preview-title {
+margin: 0;
+color: #fff;
+font-size: 1.6rem;
+}
+
+.preview-subtitle {
+margin: 8px 0 0 0;
+color: #94a3b8;
+font-size: 0.98rem;
+}
+
+.preview-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 14px;
+margin-top: 18px;
+}
+
+.preview-item {
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+padding: 16px;
+}
+
+.preview-item span {
+display: block;
+font-size: 0.88rem;
+color: #94a3b8;
+margin-bottom: 6px;
+}
+
+.preview-item strong {
+display: block;
+font-size: 1rem;
+color: #fff;
+line-height: 1.4;
+word-break: break-word;
+}
+
+.unlock-card {
+margin-top: 22px;
+background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+border: 1px solid rgba(250, 204, 21, 0.22);
+border-radius: 24px;
+padding: 28px;
+position: relative;
+overflow: hidden;
+}
+
+.unlock-card::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+pointer-events: none;
+}
+
+.unlock-top {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 8px 14px;
+border-radius: 999px;
+background: rgba(250, 204, 21, 0.1);
+border: 1px solid rgba(250, 204, 21, 0.24);
+color: #fde68a;
+font-size: 0.9rem;
+font-weight: 700;
+margin-bottom: 14px;
+}
+
+.unlock-title {
+margin: 0 0 10px 0;
+color: #fff;
+font-size: 1.9rem;
+line-height: 1.2;
+}
+
+.unlock-text {
+color: #cbd5e1;
+font-size: 1rem;
+line-height: 1.6;
+margin-bottom: 18px;
+}
+
+.unlock-list {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 12px;
+padding: 0;
+margin: 0 0 24px 0;
+list-style: none;
+}
+
+.unlock-list li {
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.06);
+border-radius: 14px;
+padding: 12px 14px;
+color: #e2e8f0;
+font-size: 0.95rem;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.unlock-list li i {
+color: #facc15;
+}
+
+.unlock-footer {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 18px;
+flex-wrap: wrap;
+}
+
+.unlock-price small {
+display: block;
+color: #94a3b8;
+font-size: 0.9rem;
+margin-bottom: 4px;
+}
+
+.unlock-price strong {
+font-size: 2rem;
+color: #fff;
+}
+
+.unlock-button {
+background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+color: #08110b;
+border: none;
+border-radius: 16px;
+padding: 16px 24px;
+font-size: 1rem;
+font-weight: 800;
+cursor: pointer;
+transition: all 0.25s ease;
+box-shadow: 0 12px 24px rgba(34, 197, 94, 0.2);
+}
+
+.unlock-button:hover {
+transform: translateY(-2px);
+box-shadow: 0 16px 30px rgba(34, 197, 94, 0.28);
+}
+
+.unlock-button:disabled {
+opacity: 0.7;
+cursor: not-allowed;
+transform: none;
+}
+
 @media (max-width: 768px) {
 .consulta-title {
 font-size: 2.2rem;
@@ -241,6 +433,16 @@ margin: 0 16px;
 
 .price {
 font-size: 2.8rem;
+}
+
+.preview-grid,
+.unlock-list {
+grid-template-columns: 1fr;
+}
+
+.preview-card,
+.unlock-card {
+padding: 22px;
 }
 }
 </style>
@@ -275,6 +477,81 @@ font-size: 2.8rem;
 </div>
 <span class="search-hint">Exemplo: ABC1234 ou ABC-1234 (placas antigas e Mercosul)</span>
 </div>
+
+<section id="preview-result" class="preview-wrapper">
+<div class="preview-card">
+<div class="preview-header">
+<div>
+<div class="preview-badge"><i class="fa fa-circle-check"></i> Dados básicos liberados</div>
+<h2 class="preview-title">Encontramos informações para esta placa</h2>
+<p class="preview-subtitle">Veja abaixo os dados gratuitos e desbloqueie o relatório completo quando quiser.</p>
+</div>
+</div>
+
+<div class="preview-grid">
+<div class="preview-item">
+<span>Placa</span>
+<strong id="preview-placa">-</strong>
+</div>
+<div class="preview-item">
+<span>Marca / Modelo</span>
+<strong id="preview-marca-modelo">-</strong>
+</div>
+<div class="preview-item">
+<span>Ano</span>
+<strong id="preview-ano">-</strong>
+</div>
+<div class="preview-item">
+<span>Combustível</span>
+<strong id="preview-combustivel">-</strong>
+</div>
+<div class="preview-item">
+<span>Cidade de registro</span>
+<strong id="preview-cidade">-</strong>
+</div>
+<div class="preview-item">
+<span>UF</span>
+<strong id="preview-uf">-</strong>
+</div>
+<div class="preview-item">
+<span>Cor</span>
+<strong id="preview-cor">-</strong>
+</div>
+<div class="preview-item">
+<span>Valor FIPE</span>
+<strong id="preview-fipe">-</strong>
+</div>
+</div>
+</div>
+
+<div class="unlock-card">
+<div class="unlock-top"><i class="fa fa-lock"></i> Relatório completo bloqueado</div>
+<h3 class="unlock-title"><span id="preview-alert-count">12</span> alertas encontrados para esta placa</h3>
+<p id="preview-teaser-message" class="unlock-text">Encontramos alertas e verificações adicionais para esta placa.</p>
+
+<ul class="unlock-list">
+<li><i class="fa fa-lock"></i> Roubo e furto</li>
+<li><i class="fa fa-lock"></i> Histórico de leilão</li>
+<li><i class="fa fa-lock"></i> Débitos e pendências</li>
+<li><i class="fa fa-lock"></i> Restrições</li>
+<li><i class="fa fa-lock"></i> Gravame</li>
+<li><i class="fa fa-lock"></i> Licenciamento / IPVA</li>
+<li><i class="fa fa-lock"></i> Instituição credora</li>
+<li><i class="fa fa-lock"></i> Detalhes de bloqueio</li>
+</ul>
+
+<div class="unlock-footer">
+<div class="unlock-price">
+<small>Pagamento único</small>
+<strong id="preview-price">R$ 11,99</strong>
+</div>
+<button id="unlock-report-button" class="unlock-button">
+<i class="fa fa-unlock-keyhole" style="margin-right: 8px;"></i>
+Desbloquear relatório completo
+</button>
+</div>
+</div>
+</section>
 
 <div class="stats-bar">
 <div class="stat"><strong>Pagamento único</strong><span>Sem assinatura mensal</span></div>
@@ -341,7 +618,7 @@ Consultar placa agora
 <div class="faq-simple">
 <div class="faq-item">
 <h4>Como funciona a consulta?</h4>
-<p>Você informa a placa, inicia o pagamento e, após a confirmação, pode acessar o relatório com as informações disponíveis da consulta.</p>
+<p>Você informa a placa, vê os dados básicos gratuitos e, se quiser, desbloqueia o relatório completo após o pagamento.</p>
 </div>
 <div class="faq-item">
 <h4>Preciso fazer cadastro?</h4>
@@ -411,16 +688,16 @@ Consultar placa agora
 
 <div class="step">
 <div class="step-num">2</div>
-<h3>Confirme o pagamento</h3>
-<p>Após informar a placa, você será direcionado para concluir o pagamento com segurança.</p>
+<h3>Veja os dados básicos grátis</h3>
+<p>Exibimos imediatamente informações como marca, modelo, ano, combustível e valor FIPE.</p>
 </div>
 
 <div class="step-arrow"><i class="fa fa-arrow-right"></i></div>
 
 <div class="step">
 <div class="step-num">3</div>
-<h3>Acesse o relatório</h3>
-<p>Com a confirmação do pagamento, o relatório fica disponível online com os dados da consulta.</p>
+<h3>Desbloqueie o relatório completo</h3>
+<p>Se quiser ver alertas, restrições, débitos e histórico, conclua o pagamento com segurança.</p>
 </div>
 </div>
 </div>
@@ -456,20 +733,59 @@ Consultar placa agora
 </footer>
 
 <script>
-document.querySelector('.btn-buscar').addEventListener('click', async () => {
-const placa = document.getElementById('placa-input').value
+function normalizarPlaca(valor) {
+return String(valor || '')
 .replace(/[^a-zA-Z0-9]/g, '')
 .toUpperCase();
-
-if (placa.length < 7) {
-alert('Digite uma placa válida!');
-return;
 }
 
+function setPreviewText(id, value) {
+const element = document.getElementById(id);
+if (element) {
+element.textContent = value || '-';
+}
+}
+
+function mostrarPreview(data) {
+setPreviewText('preview-placa', data.placa);
+setPreviewText('preview-marca-modelo', data.basic?.marca_modelo);
+setPreviewText('preview-ano', data.basic?.ano);
+setPreviewText('preview-combustivel', data.basic?.combustivel);
+setPreviewText('preview-cidade', data.basic?.cidade_registro);
+setPreviewText('preview-uf', data.basic?.uf_registro);
+setPreviewText('preview-cor', data.basic?.cor);
+setPreviewText('preview-fipe', data.basic?.fipe);
+setPreviewText('preview-alert-count', data.teaser?.alertCount);
+setPreviewText('preview-teaser-message', data.teaser?.message);
+setPreviewText('preview-price', data.offer?.price);
+
+const preview = document.getElementById('preview-result');
+preview.style.display = 'block';
+preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function restaurarBotaoBusca() {
 const btn = document.querySelector('.btn-buscar');
-const textoOriginal = btn.innerHTML;
-btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Iniciando pagamento...';
-btn.disabled = true;
+btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> Consultar placa';
+btn.disabled = false;
+}
+
+async function consultarPreviewPlaca(placa) {
+const response = await fetch(`/.netlify/functions/get-basic-report?placa=${encodeURIComponent(placa)}`);
+const data = await response.json();
+
+if (!response.ok || !data.success) {
+throw new Error(data.message || 'Erro ao consultar placa.');
+}
+
+return data;
+}
+
+async function iniciarPagamento(placa) {
+const btnUnlock = document.getElementById('unlock-report-button');
+const textoOriginal = btnUnlock.innerHTML;
+btnUnlock.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Iniciando pagamento...';
+btnUnlock.disabled = true;
 
 try {
 const res = await fetch('/.netlify/functions/create-payment', {
@@ -498,16 +814,50 @@ window.location.href = data.init_point;
 window.location.href = data.redirect;
 } else {
 alert('Pagamento não pôde ser processado. Tente novamente.');
-btn.innerHTML = textoOriginal;
-btn.disabled = false;
+btnUnlock.innerHTML = textoOriginal;
+btnUnlock.disabled = false;
 }
 
 } catch (e) {
 console.error('Erro detalhado:', e);
 alert('Erro ao iniciar pagamento: ' + e.message);
-btn.innerHTML = textoOriginal;
-btn.disabled = false;
+btnUnlock.innerHTML = textoOriginal;
+btnUnlock.disabled = false;
 }
+}
+
+document.querySelector('.btn-buscar').addEventListener('click', async () => {
+const placa = normalizarPlaca(document.getElementById('placa-input').value);
+
+if (placa.length < 7) {
+alert('Digite uma placa válida!');
+return;
+}
+
+const btn = document.querySelector('.btn-buscar');
+btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Consultando...';
+btn.disabled = true;
+
+try {
+const data = await consultarPreviewPlaca(placa);
+mostrarPreview(data);
+restaurarBotaoBusca();
+} catch (e) {
+console.error('Erro detalhado:', e);
+alert('Erro ao consultar placa: ' + e.message);
+restaurarBotaoBusca();
+}
+});
+
+document.getElementById('unlock-report-button').addEventListener('click', async () => {
+const placa = document.getElementById('preview-placa').textContent.trim();
+
+if (!placa || placa === '-') {
+alert('Faça a consulta da placa primeiro.');
+return;
+}
+
+await iniciarPagamento(placa);
 });
 
 function mostrarQrCode(qrCode, placa) {
@@ -538,7 +888,7 @@ style="width: 200px; height: 200px; margin: 20px auto;">
 style="background: #22c55e; color: white; border: none; padding: 12px 30px; border-radius: 8px; margin-top: 20px; cursor: pointer;">
 Já paguei, verificar resultado
 </button>
-<button onclick="this.closest('.pix-modal-overlay').remove(); restaurarBotao();"
+<button onclick="this.closest('.pix-modal-overlay').remove(); restaurarBotaoUnlock();"
 style="background: #666; color: white; border: none; padding: 8px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer;">
 Fechar
 </button>
@@ -549,9 +899,9 @@ modal.className = 'pix-modal-overlay';
 document.body.appendChild(modal);
 }
 
-function restaurarBotao() {
-const btn = document.querySelector('.btn-buscar');
-btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> Consultar placa';
+function restaurarBotaoUnlock() {
+const btn = document.getElementById('unlock-report-button');
+btn.innerHTML = '<i class="fa fa-unlock-keyhole" style="margin-right: 8px;"></i>Desbloquear relatório completo';
 btn.disabled = false;
 }
 </script>
