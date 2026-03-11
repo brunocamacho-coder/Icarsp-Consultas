@@ -64,9 +64,10 @@ async function getVehicleBasicReportByPlate(placa) {
     '-';
 
   const ufRegistro =
-    dadosVeiculo.uf ||
-    dadosVeiculo.estado ||
-    '-';
+  dadosVeiculo.uf_municipio ||
+  dadosVeiculo.uf ||
+  dadosVeiculo.estado ||
+  '-';
 
   return {
     success: true,
