@@ -7,7 +7,7 @@ export const handler = async (event) => {
     const token = process.env.MP_ACCESS_TOKEN;
 
     const payload = {
-      transaction_amount: 14.90,
+      transaction_amount: 14.99,  // ✅ VALOR CORRETO
       description: `Consulta placa ${placa} - iCarSP`,
       payment_method_id: 'pix',
       payer: { email: 'cliente@email.com' }
