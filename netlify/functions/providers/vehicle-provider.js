@@ -86,7 +86,7 @@ async function getVehicleBasicReportByPlate(placa) {
       message: 'Encontramos alertas e verificações adicionais para esta placa.'
     },
     offer: {
-      price: 'R$ 14,90', // Atualizado para R$14,90
+      price: 'R$ 14,99', // Atualizado para R$14,99
       cta: 'Desbloquear relatório completo'
     }
   };
