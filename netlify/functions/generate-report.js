@@ -57,7 +57,6 @@ body: JSON.stringify({ error: 'paymentId obrigatório' })
 };
 }
 
-// 1. Buscar o registro atual
 const { data: record, error: fetchError } = await supabase
 .from('vehicle_reports')
 .select('*')
@@ -71,7 +70,6 @@ body: JSON.stringify({ error: 'Pagamento não encontrado' })
 };
 }
 
-// 2. Se já está pronto, nunca consulta API novamente
 if (record.status === 'ready' && record.report) {
 return {
 statusCode: 200,
@@ -84,7 +82,6 @@ report: record.report
 };
 }
 
-// 3. Se já está processando, não dispara APIs de novo
 if (record.status === 'processing') {
 return {
 statusCode: 200,
@@ -97,7 +94,6 @@ message: 'Relatório já está sendo processado'
 };
 }
 
-// 4. Tenta travar o processamento: só continua se conseguir mudar pending -> processing
 const { data: lockedRows, error: lockError } = await supabase
 .from('vehicle_reports')
 .update({
@@ -118,7 +114,6 @@ details: lockError.message
 };
 }
 
-// Se não conseguiu travar, outra execução ganhou a corrida
 if (!lockedRows || lockedRows.length === 0) {
 return {
 statusCode: 200,
@@ -134,27 +129,23 @@ message: 'Outra execução já iniciou o relatório'
 const placa = record.placa;
 const authHeader = basicAuthHeader();
 
-// 5. Agora sim só UMA execução chega aqui
 const veiculo = await consultarEndpoint('consultarPlaca', placa, authHeader);
 
 const resultados = await Promise.allSettled([
-consultarEndpoint('consultarGravame', placa, authHeader),
 consultarEndpoint('consultarProprietarioAtual', placa, authHeader),
 consultarEndpoint('consultarPrecoFipe', placa, authHeader)
 ]);
 
-const gravame = resultados[0].status === 'fulfilled' ? resultados[0].value : null;
-const proprietarioAtual = resultados[1].status === 'fulfilled' ? resultados[1].value : null;
-const precoFipe = resultados[2].status === 'fulfilled' ? resultados[2].value : null;
+const proprietarioAtual = resultados[0].status === 'fulfilled' ? resultados[0].value : null;
+const precoFipe = resultados[1].status === 'fulfilled' ? resultados[1].value : null;
 
 const report = {
 placa,
 veiculo,
-gravame,
 proprietarioAtual,
 precoFipe,
 generatedAt: new Date().toISOString(),
-custoTotalEstimado: 12.80
+custoTotalEstimado: 8.20
 };
 
 const { error: updateError } = await supabase
@@ -167,7 +158,6 @@ updated_at: new Date().toISOString()
 .eq('payment_id', String(paymentId));
 
 if (updateError) {
-// se falhar ao salvar pronto, pelo menos não deixa pendente
 await supabase
 .from('vehicle_reports')
 .update({
@@ -197,7 +187,6 @@ report
 } catch (error) {
 console.error('Erro em generate-report:', error);
 
-// tenta marcar erro para não ficar preso em processing
 try {
 const { paymentId } = JSON.parse(event.body || '{}');
 

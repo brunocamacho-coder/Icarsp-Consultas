@@ -496,17 +496,17 @@ Carregando relatório...
 <h4>O que verificar agora</h4>
 <p>Use este relatório como apoio para análise do veículo e decisão da próxima etapa.</p>
 <ul class="checklist">
-<li><i class="fa fa-check"></i> Confirmar se há débitos pendentes</li>
-<li><i class="fa fa-check"></i> Verificar existência de gravame ativo</li>
-<li><i class="fa fa-check"></i> Revisar restrições antes de transferência</li>
-<li><i class="fa fa-check"></i> Confirmar status documental do veículo</li>
+<li><i class="fa fa-check"></i> Confirmar dados do veículo</li>
+<li><i class="fa fa-check"></i> Validar FIPE como referência de mercado</li>
+<li><i class="fa fa-check"></i> Revisar dados do proprietário atual</li>
+<li><i class="fa fa-check"></i> Fazer consultas complementares se necessário</li>
 </ul>
 </div>
 
 <div class="sidebar-card">
 <h4>Importante</h4>
 <p>
-As informações deste relatório devem ser interpretadas em conjunto com a situação atual do veículo e as bases consultadas no momento da pesquisa.
+Algumas verificações complementares não fazem parte deste plano e podem exigir consultas adicionais específicas.
 </p>
 </div>
 </aside>
@@ -592,21 +592,19 @@ el.classList.remove('ok', 'alerta', 'critico');
 const t = texto.toLowerCase();
 
 if (
-t.includes('nao') ||
-t.includes('não') ||
+t.includes('não consultado') ||
+t.includes('nao consultado') ||
+t.includes('não consultadas') ||
+t.includes('nao consultadas')
+) {
+el.classList.add('alerta');
+} else if (
+t.includes('não possui') ||
+t.includes('nao possui') ||
 t.includes('sem') ||
-t.includes('ok') ||
 t.includes('regular')
 ) {
 el.classList.add('ok');
-} else if (
-t.includes('sim') ||
-t.includes('gravame') ||
-t.includes('bloqueio') ||
-t.includes('restrição') ||
-t.includes('restricao')
-) {
-el.classList.add('alerta');
 } else {
 el.classList.add('alerta');
 }
@@ -617,16 +615,10 @@ const report = payload.report || {};
 
 const veiculoInfo = report.veiculo?.dados?.informacoes_veiculo?.dados_veiculo || {};
 const proprietario = report.proprietarioAtual?.dados?.proprietario_atual || {};
-const gravame = report.gravame?.dados?.gravame || {};
 const fipeLista = report.precoFipe?.dados?.informacoes_fipe || [];
 const fipe = fipeLista[0] || {};
 
 const marcaModelo = [veiculoInfo.marca, veiculoInfo.modelo].filter(Boolean).join(' ');
-const gravameTexto = gravame.possui_gravame === 'nao'
-? 'Não possui gravame'
-: gravame.possui_gravame === 'sim'
-? 'Possui gravame'
-: gravame.possui_gravame || '-';
 
 setText('placa-veiculo', getFirst(report.placa, payload.placa));
 setText('marca-modelo', marcaModelo);
@@ -641,30 +633,30 @@ setText('proprietario-atual', proprietario.nome);
 setText('documento-proprietario', proprietario.documento);
 setText('tipo-documento-proprietario', proprietario.tipo_documento);
 
-setStatusBadge('roubo-furto', 'Não consta');
-setStatusBadge('leilao', 'Não consta');
-setStatusBadge('debitos', 'Não consta');
-setStatusBadge('restricoes', 'Não consta');
-setStatusBadge('gravame', 'Não consta');
-setStatusBadge('licenciamento', 'Não consta');
+setStatusBadge('roubo-furto', 'Roubo/furto não consultado');
+setStatusBadge('leilao', 'Leilão não consultado');
+setStatusBadge('debitos', 'Débitos não consultados');
+setStatusBadge('restricoes', 'Restrições não consultadas');
+setStatusBadge('gravame', 'Gravame não incluído nesta consulta');
+setStatusBadge('licenciamento', 'Licenciamento/IPVA não consultado');
 
-setText('instituicao-credora', gravame.registro || '-');
-setText('detalhes-bloqueio', gravameTexto);
-setText('data-registro-gravame', report.gravame?.data_solicitacao || '-');
+setText('instituicao-credora', 'Não incluído nesta consulta');
+setText('detalhes-bloqueio', 'Não incluído nesta consulta');
+setText('data-registro-gravame', 'Não incluído nesta consulta');
 
 setText('codigo-fipe', fipe.codigo_fipe);
 setText('modelo-versao-fipe', fipe.modelo_versao);
 setText('mes-referencia-fipe', fipe.mes_referencia);
-setText('quantidade-infracoes-renainf', '-');
-setText('valor-total-infracoes-renainf', '-');
-setText('resumo-infracoes-renainf', '-');
+setText('quantidade-infracoes-renainf', 'Não consultado');
+setText('valor-total-infracoes-renainf', 'Não consultado');
+setText('resumo-infracoes-renainf', 'Não consultado');
 
 const resumo = [
 `Relatório gerado com sucesso para a placa ${getFirst(report.placa, payload.placa)}.`,
 marcaModelo ? `Veículo: ${marcaModelo}.` : null,
 veiculoInfo.ano_modelo ? `Ano/modelo: ${veiculoInfo.ano_modelo}.` : null,
 fipe.preco ? `Preço FIPE: ${formatarMoeda(fipe.preco)}.` : null,
-gravameTexto ? `Situação do gravame: ${gravameTexto}.` : null
+proprietario.nome ? `Proprietário atual identificado.` : null
 ].filter(Boolean).join(' ');
 
 setText('resumo-consulta', resumo);
