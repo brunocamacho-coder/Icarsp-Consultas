@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-process.env.SUPABASE_URL,
-process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function handler(event) {
 try {
@@ -41,14 +41,14 @@ body: JSON.stringify({ error: 'SITE_URL não configurado' })
 };
 }
 
-if (!process.env.SUPABASE_URL) {
+if (!supabaseUrl) {
 return {
 statusCode: 500,
 body: JSON.stringify({ error: 'SUPABASE_URL não configurado' })
 };
 }
 
-if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+if (!supabaseKey) {
 return {
 statusCode: 500,
 body: JSON.stringify({ error: 'SUPABASE_SERVICE_ROLE_KEY não configurado' })
@@ -83,10 +83,8 @@ body: JSON.stringify(payload)
 const mpData = await mpResponse.json();
 
 if (!mpResponse.ok) {
-const statusCode = mpResponse.status === 429 ? 429 : 500;
-
 return {
-statusCode,
+statusCode: mpResponse.status === 429 ? 429 : 500,
 body: JSON.stringify({
 error: mpResponse.status === 429
 ? 'Muitas tentativas de gerar PIX em pouco tempo. Aguarde alguns minutos e tente novamente.'
@@ -108,22 +106,31 @@ details: mpData
 };
 }
 
-const { error: insertError } = await supabase
-.from('vehicle_reports')
-.upsert({
+const payloadSupabase = {
 payment_id: paymentId,
 placa: placaNormalizada,
 status: 'pending',
 customer_email: email || null,
 updated_at: new Date().toISOString()
-});
+};
+
+console.log('SUPABASE_URL em uso:', supabaseUrl);
+console.log('Tentando salvar no Supabase:', payloadSupabase);
+
+const { data: insertedData, error: insertError } = await supabase
+.from('vehicle_reports')
+.upsert(payloadSupabase)
+.select();
+
+console.log('Resposta Supabase data:', insertedData);
+console.log('Resposta Supabase error:', insertError);
 
 if (insertError) {
 return {
 statusCode: 500,
 body: JSON.stringify({
 error: 'Erro ao salvar pagamento no Supabase',
-details: insertError.message
+details: insertError.message || insertError
 })
 };
 }
@@ -147,8 +154,8 @@ console.error('Erro interno create-mp-payment:', error);
 return {
 statusCode: 500,
 body: JSON.stringify({
-error: 'Erro interno ao criar pagamento',
-details: error.message
+error: 'Erro ao salvar pagamento no Supabase',
+details: error.message || String(error)
 })
 };
 }
