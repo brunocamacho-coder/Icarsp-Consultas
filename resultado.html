@@ -351,7 +351,7 @@ Imprimir relatório
 
 <div class="placa-card">
 <div class="placa-info">
-<h2>Placa consultada</h2>
+<h2>Consulta</h2>
 <div class="placa" id="placa-veiculo">-</div>
 </div>
 
@@ -521,7 +521,7 @@ Este relatório possui finalidade informativa e de apoio à análise veicular. A
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const placa = params.get('placa');
+const paymentId = params.get('paymentId');
 
 function valorOuTraco(valor) {
 if (valor === null || valor === undefined || valor === '') return '-';
@@ -648,16 +648,16 @@ el.classList.remove('ok', 'alerta', 'critico');
 el.classList.add(definirClasseStatus(texto));
 }
 
-function normalizarDados(data) {
-const veiculo = data.veiculo || data.vehicle || {};
-const gravame = data.gravame || {};
-const proprietario = data.proprietarioAtual || data.proprietario_atual || data.proprietario || {};
-const fipe = data.precoFipe || data.fipe || {};
-const status = data.status || {};
-const detalhes = data.details || data.detalhes || {};
+function normalizarDados(payload) {
+const report = payload.report || {};
+const veiculo = report.veiculo || report.vehicle || {};
+const gravame = report.gravame || {};
+const proprietario = report.proprietarioAtual || report.proprietario_atual || report.proprietario || {};
+const fipe = report.precoFipe || report.fipe || {};
+const detalhes = report.details || report.detalhes || {};
 
 return {
-placa: getFirst(data.placa, veiculo.placa, placa ? placa.toUpperCase() : '-'),
+placa: getFirst(report.placa, payload.placa, '-'),
 
 marcaModelo: getFirst(
 veiculo.marca_modelo,
@@ -705,35 +705,30 @@ detalhes.tipo_documento_proprietario
 ),
 
 rouboFurto: getFirst(
-status.roubo_furto,
 veiculo.roubo_furto,
 detalhes.roubo_furto,
 'Não informado'
 ),
 
 leilao: getFirst(
-status.leilao,
 veiculo.leilao,
 detalhes.leilao,
 'Não informado'
 ),
 
 debitos: getFirst(
-status.debitos,
 veiculo.debitos,
 detalhes.debitos,
 'Não informado'
 ),
 
 restricoes: getFirst(
-status.restricoes,
 veiculo.restricoes,
 detalhes.restricoes,
 'Não informado'
 ),
 
 gravameStatus: getFirst(
-status.gravame,
 gravame.status,
 gravame.descricao,
 detalhes.gravame,
@@ -742,8 +737,8 @@ gravame.situacao,
 ),
 
 licenciamentoIpva: getFirst(
-status.licenciamento_ipva,
-status.licenciamento,
+veiculo.licenciamento_ipva,
+veiculo.licenciamento,
 detalhes.licenciamento_ipva,
 detalhes.licenciamento,
 'Não informado'
@@ -805,7 +800,7 @@ veiculo.resumo_infracoes_renainf
 function montarResumo(relatorio) {
 const frases = [];
 
-frases.push(`Consulta completa carregada com sucesso para a placa ${relatorio.placa}.`);
+frases.push(`Relatório salvo carregado com sucesso para a consulta ${relatorio.placa}.`);
 
 if (relatorio.marcaModelo !== '-') {
 frases.push(`Veículo identificado como ${relatorio.marcaModelo}.`);
@@ -831,11 +826,13 @@ if (relatorio.restricoes !== '-') {
 frases.push(`Restrições: ${relatorio.restricoes}.`);
 }
 
+frases.push('Atualizar esta página não consome novamente seus créditos de API.');
+
 return frases.join(' ');
 }
 
-function preencherRelatorio(data) {
-const relatorio = normalizarDados(data);
+function preencherRelatorio(payload) {
+const relatorio = normalizarDados(payload);
 
 setText('placa-veiculo', relatorio.placa);
 
@@ -872,27 +869,39 @@ setText('resumo-consulta', montarResumo(relatorio));
 }
 
 async function carregarRelatorio() {
-if (!placa) {
-setText('placa-veiculo', 'PLACA NÃO INFORMADA');
-setText('resumo-consulta', 'Nenhuma placa foi informada para consulta.');
+if (!paymentId) {
+setText('placa-veiculo', 'PAGAMENTO NÃO INFORMADO');
+setText('resumo-consulta', 'Nenhum paymentId foi informado na URL.');
 return;
 }
 
-setText('placa-veiculo', placa.toUpperCase());
-setText('resumo-consulta', 'Carregando relatório completo...');
+setText('placa-veiculo', 'CARREGANDO...');
+setText('resumo-consulta', 'Buscando relatório salvo...');
 
 try {
-const response = await fetch(`/.netlify/functions/get-report?placa=${encodeURIComponent(placa)}`);
+const response = await fetch(`/.netlify/functions/get-saved-report?paymentId=${encodeURIComponent(paymentId)}`);
 const data = await response.json();
 
 if (!response.ok) {
-throw new Error(data.error || 'Erro ao carregar relatório');
+throw new Error(data.error || 'Erro ao buscar relatório salvo');
+}
+
+if (data.status === 'pending') {
+setText('placa-veiculo', data.placa || '-');
+setText('resumo-consulta', 'Pagamento encontrado, mas o relatório ainda está sendo processado. Atualize novamente em alguns instantes.');
+return;
+}
+
+if (!data.report) {
+setText('placa-veiculo', data.placa || '-');
+setText('resumo-consulta', 'O relatório ainda não está disponível.');
+return;
 }
 
 preencherRelatorio(data);
 } catch (error) {
-console.error('Erro ao carregar relatório:', error);
-setText('resumo-consulta', `Não foi possível carregar o relatório no momento. ${error.message || ''}`);
+console.error('Erro ao carregar relatório salvo:', error);
+setText('resumo-consulta', `Não foi possível carregar o relatório salvo. ${error.message || ''}`);
 }
 }
 
