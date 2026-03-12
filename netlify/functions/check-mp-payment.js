@@ -1,84 +1,100 @@
-exports.handler = async (event) => {
+export async function handler(event) {
 try {
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+if (event.httpMethod !== 'GET') {
+return {
+statusCode: 405,
+body: JSON.stringify({
+error: 'Método não permitido'
+})
+};
+}
 
 const paymentId = event.queryStringParameters?.payment_id;
+
+if (!paymentId) {
+return {
+statusCode: 400,
+body: JSON.stringify({
+error: 'payment_id obrigatório'
+})
+};
+}
+
 const accessToken = process.env.MP_ACCESS_TOKEN;
+const siteUrl = process.env.SITE_URL;
 
 if (!accessToken) {
 return {
 statusCode: 500,
-headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify({
 error: 'MP_ACCESS_TOKEN não configurado'
 })
 };
 }
 
-if (!paymentId) {
+if (!siteUrl) {
 return {
-statusCode: 400,
-headers: { 'Content-Type': 'application/json' },
+statusCode: 500,
 body: JSON.stringify({
-error: 'payment_id não informado'
+error: 'SITE_URL não configurado'
 })
 };
 }
 
-const mpResponse = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
+const mpResponse = await fetch(`https://api.mercadopago.com/v1/payments/${encodeURIComponent(paymentId)}`, {
 method: 'GET',
 headers: {
-Authorization: `Bearer ${accessToken}`,
-Accept: 'application/json'
+Authorization: `Bearer ${accessToken}`
 }
 });
 
-const text = await mpResponse.text();
+const mpData = await mpResponse.json();
 
-let data;
-try {
-data = JSON.parse(text);
-} catch (e) {
+if (!mpResponse.ok) {
 return {
 statusCode: 500,
-headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify({
-error: 'Resposta inválida do Mercado Pago',
-raw: text
+error: 'Erro ao consultar pagamento no Mercado Pago',
+details: mpData
 })
 };
 }
 
-if (!mpResponse.ok) {
-return {
-statusCode: mpResponse.status,
-headers: { 'Content-Type': 'application/json' },
+const status = mpData.status || 'unknown';
+const pago = status === 'approved';
+
+if (pago) {
+try {
+await fetch(`${siteUrl}/.netlify/functions/generate-report`, {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
 body: JSON.stringify({
-error: 'Erro ao consultar pagamento',
-details: data
+paymentId: String(paymentId)
 })
-};
+});
+} catch (generateError) {
+console.error('Erro ao disparar generate-report:', generateError);
+}
 }
 
 return {
 statusCode: 200,
-headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify({
-pago: data.status === 'approved',
-status: data.status || '',
-status_detail: data.status_detail || '',
-id: data.id || null
+success: true,
+payment_id: String(paymentId),
+status,
+pago
 })
 };
 } catch (error) {
-console.error('Erro em check-mp-payment:', error);
-
 return {
 statusCode: 500,
-headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify({
-error: error.message || 'Erro interno ao verificar pagamento'
+error: 'Erro interno ao verificar pagamento',
+details: error.message
 })
 };
 }
-};
+}
