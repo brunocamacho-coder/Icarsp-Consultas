@@ -1,23 +1,19 @@
 {
   "name": "projeto-consulta-placas",
   "version": "1.0.0",
-  "description": "",
+  "description": "Consulta veicular com preview grátis e relatório pago",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "netlify dev",
+    "build": "echo \"Sem etapa de build\"",
+    "start": "netlify dev"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brunocamacho-coder/icarSP.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/brunocamacho-coder/icarSP/issues"
-  },
-  "homepage": "https://github.com/brunocamacho-coder/icarSP#readme",
   "dependencies": {
     "node-fetch": "^3.3.2",
     "uuid": "^13.0.0"

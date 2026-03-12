@@ -1,157 +1,173 @@
 import fetch from 'node-fetch';
 
-async function fetchConsultarPlaca(path, placa, auth) {
-  const response = await fetch(`https://api.consultarplaca.com.br${path}?placa=${encodeURIComponent(placa)}`, {
+const API_KEY = process.env.CONSULTARPLACA_API_KEY;
+const EMAIL = process.env.CONSULTARPLACA_EMAIL;
+
+function normalizarPlaca(placa = '') {
+  return String(placa).replace(/[^A-Za-z0-9]/g, '').toUpperCase().trim();
+}
+
+function safe(value, fallback = '-') {
+  return value ?? fallback;
+}
+
+function montarTeaser(report) {
+  let alertCount = 0;
+  const alertas = [];
+
+  const status = report?.status || {};
+
+  const campos = [
+    ['roubo_furto', 'roubo/furto'],
+    ['leilao', 'leilão'],
+    ['debitos', 'débitos'],
+    ['restricoes', 'restrições'],
+    ['gravame', 'gravame'],
+    ['licenciamento_ipva', 'licenciamento/IPVA']
+  ];
+
+  for (const [key, label] of campos) {
+    const valor = String(status[key] || '').toLowerCase();
+
+    const ok =
+      valor.includes('sem registro') ||
+      valor.includes('não consta') ||
+      valor.includes('nao consta') ||
+      valor.includes('regular') ||
+      valor.includes('inexistente');
+
+    if (!ok && valor && valor !== '-') {
+      alertCount += 1;
+      alertas.push(label);
+    }
+  }
+
+  const message =
+    alertCount > 0
+      ? `Encontramos ${alertCount} verificação(ões) que merecem atenção nesta placa.`
+      : 'Encontramos informações relevantes e verificações adicionais para esta placa.';
+
+  return {
+    alertCount,
+    message,
+    itens: alertas
+  };
+}
+
+/**
+ * ADAPTE ESTA FUNÇÃO se a API real tiver outro endpoint ou outro formato.
+ */
+async function consultarApiExterna(placa) {
+  if (!API_KEY || !EMAIL) {
+    throw new Error('CONSULTARPLACA_API_KEY ou CONSULTARPLACA_EMAIL não configurados.');
+  }
+
+  // Exemplo genérico baseado no seu provedor atual.
+  // Se a documentação da sua API for diferente, ajuste aqui.
+  const url = `https://wdapi2.com.br/consulta/${placa}?token=${API_KEY}&email=${encodeURIComponent(EMAIL)}&timeout=300`;
+
+  const response = await fetch(url, {
     method: 'GET',
     headers: {
-      'Authorization': `Basic ${auth}`,
-      'Accept': 'application/json'
+      Accept: 'application/json'
     }
   });
 
-  let data;
+  const text = await response.text();
 
+  let data;
   try {
-    data = await response.json();
-  } catch (error) {
-    throw new Error(`Resposta inválida ao consultar ${path}`);
+    data = JSON.parse(text);
+  } catch {
+    throw new Error(`Resposta inválida da API de consulta: ${text?.slice(0, 300) || 'vazia'}`);
   }
 
   if (!response.ok) {
-    throw new Error(data?.mensagem || data?.message || `Erro ao consultar ${path}`);
+    throw new Error(data?.message || data?.erro || `Falha na API externa (${response.status})`);
   }
 
   return data;
 }
 
-// 🆕 NOVA FUNÇÃO: Proprietário atual
-async function fetchProprietarioAtual(placa, auth) {
-  try {
-    const response = await fetch(`https://api.consultarplaca.com.br/v2/consultarProprietarioAtual?placa=${encodeURIComponent(placa)}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Basic ${auth}`,
-        'Accept': 'application/json'
-      }
-    });
+function mapearDados(placa, apiData) {
+  // Ajuste estes caminhos se a resposta real da sua API vier com nomes diferentes.
+  const vehicle = apiData?.vehicle || apiData?.veiculo || apiData?.dados || apiData?.data || apiData;
 
-    if (!response.ok) {
-      console.warn(`[Proprietario] HTTP ${response.status}`);
-      return null;
-    }
-
-    const data = await response.json();
-    return data?.dados?.proprietario_atual || null;
-  } catch (error) {
-    console.warn('[Proprietario] Erro na consulta:', error.message);
-    return null;
-  }
-}
-
-function normalizePlate(placa) {
-  return String(placa || '').replace(/[^A-Za-z0-9]/g, '').toUpperCase();
-}
-
-function buildAuth() {
-  const email = process.env.CONSULTARPLACA_EMAIL;
-  const apiKey = process.env.CONSULTARPLACA_API_KEY;
-
-  if (!email || !apiKey) {
-    throw new Error('Credenciais da Consultar Placa API não configuradas');
-  }
-
-  return Buffer.from(`${email}:${apiKey}`).toString('base64');
-}
-
-// Preview grátis - SÓ DADOS BÁSICOS
-async function getVehicleBasicReportByPlate(placa) {
-  const plate = normalizePlate(placa);
-  const auth = buildAuth();
-
-  const placaData = await fetchConsultarPlaca('/v2/consultarPlaca', plate, auth);
-  const dadosVeiculo = placaData?.dados?.informacoes_veiculo?.dados_veiculo || {};
-
-  const marcaModelo = [dadosVeiculo.marca, dadosVeiculo.modelo].filter(Boolean).join(' ').trim() || '-';
-  const ano = [dadosVeiculo.ano_fabricacao, dadosVeiculo.ano_modelo].filter(Boolean).join('/') || '-';
-  const cidadeRegistro = dadosVeiculo.municipio || dadosVeiculo.cidade || dadosVeiculo.local_registro || '-';
-  const ufRegistro = dadosVeiculo.uf_municipio || dadosVeiculo.uf || dadosVeiculo.estado || '-';
-
-  return {
-    success: true,
-    placa: dadosVeiculo.placa || plate,
+  const report = {
+    placa,
     basic: {
-      marca_modelo: marcaModelo,
-      ano,
-      combustivel: dadosVeiculo.combustivel || '-',
-      cor: dadosVeiculo.cor || '-',
-      cidade_registro: cidadeRegistro,
-      uf_registro: ufRegistro
+      marca_modelo: safe(vehicle?.marca_modelo || vehicle?.marcaModelo || vehicle?.modelo),
+      ano: safe(vehicle?.ano || vehicle?.ano_modelo || vehicle?.anoModelo),
+      combustivel: safe(vehicle?.combustivel),
+      cidade_registro: safe(vehicle?.cidade_registro || vehicle?.municipio || vehicle?.cidade),
+      uf_registro: safe(vehicle?.uf_registro || vehicle?.uf),
+      cor: safe(vehicle?.cor)
     },
-    teaser: {
-      alertCount: 12,
-      message: 'Encontramos alertas e verificações adicionais para esta placa.'
-    },
-    offer: {
-      price: 'R$ 14,99',
-      cta: 'Desbloquear relatório completo'
-    }
-  };
-}
-
-// Relatório pago - COMPLETO (COM PROPRIETÁRIO)
-async function getVehicleReportByPlate(placa) {
-  const plate = normalizePlate(placa);
-  const auth = buildAuth();
-
-  // Consultas paralelas (placa + FIPE)
-  const [placaData, fipeData] = await Promise.all([
-    fetchConsultarPlaca('/v2/consultarPlaca', plate, auth),
-    fetchConsultarPlaca('/v2/consultarPrecoFipe', plate, auth).catch((error) => {
-      console.error('Erro ao consultar FIPE:', error.message);
-      return null;
-    })
-  ]);
-
-  // 🆕 NOVO: Consulta proprietário atual (não quebra se falhar)
-  const proprietario = await fetchProprietarioAtual(plate, auth);
-
-  const dadosVeiculo = placaData?.dados?.informacoes_veiculo?.dados_veiculo || {};
-  const informacoesFipe = fipeData?.dados?.informacoes_fipe || [];
-  const primeiraOpcaoFipe = Array.isArray(informacoesFipe) && informacoesFipe.length > 0 ? informacoesFipe[0] : null;
-  const valorFipe = primeiraOpcaoFipe?.preco || primeiraOpcaoFipe?.valor || primeiraOpcaoFipe?.valor_fipe || 'Não localizado';
-
-  return {
-    success: true,
-    placa: dadosVeiculo.placa || plate,
     vehicle: {
-      marca_modelo: [dadosVeiculo.marca, dadosVeiculo.modelo].filter(Boolean).join(' ') || '-',
-      ano: [dadosVeiculo.ano_fabricacao, dadosVeiculo.ano_modelo].filter(Boolean).join('/') || '-',
-      cor: dadosVeiculo.cor || '-',
-      combustivel: dadosVeiculo.combustivel || '-',
-      fipe: valorFipe,
-      chassi: dadosVeiculo.chassi || '-',
-      renavam: 'Em integração'
+      marca_modelo: safe(vehicle?.marca_modelo || vehicle?.marcaModelo || vehicle?.modelo),
+      ano: safe(vehicle?.ano || vehicle?.ano_modelo || vehicle?.anoModelo),
+      cor: safe(vehicle?.cor),
+      combustivel: safe(vehicle?.combustivel),
+      fipe: safe(vehicle?.fipe || vehicle?.valor_fipe || vehicle?.valorFipe),
+      chassi: safe(vehicle?.chassi),
+      renavam: safe(vehicle?.renavam)
     },
     status: {
-      roubo_furto: 'Em integração',
-      leilao: 'Em integração',
-      debitos: 'Em integração',
-      restricoes: 'Em integração',
-      gravame: 'Em integração',
-      licenciamento_ipva: 'Em integração'
+      roubo_furto: safe(vehicle?.roubo_furto || vehicle?.rouboFurto || apiData?.roubo_furto),
+      leilao: safe(vehicle?.leilao || apiData?.leilao),
+      debitos: safe(vehicle?.debitos || apiData?.debitos),
+      restricoes: safe(vehicle?.restricoes || vehicle?.restricao || apiData?.restricoes),
+      gravame: safe(vehicle?.gravame || apiData?.gravame),
+      licenciamento_ipva: safe(
+        vehicle?.licenciamento_ipva ||
+          vehicle?.licenciamentoIPVA ||
+          vehicle?.ipva_licenciamento ||
+          apiData?.licenciamento_ipva
+      )
     },
     details: {
-      instituicao_credora: 'Em integração',
-      detalhes_bloqueio: 'Em integração',
-      proprietario_atual: proprietario // 🆕 NOVO CAMPO
+      instituicao_credora: safe(
+        vehicle?.instituicao_credora || vehicle?.instituicaoCredora || apiData?.instituicao_credora
+      ),
+      detalhes_bloqueio: safe(
+        vehicle?.detalhes_bloqueio || vehicle?.detalhesBloqueio || apiData?.detalhes_bloqueio
+      )
     },
-    summary: valorFipe !== 'Não localizado'
-      ? `Consulta completa carregada com sucesso. Valor FIPE identificado: ${valorFipe}.`
-      : 'Consulta completa carregada com sucesso. Valor FIPE ainda não identificado.'
+    offer: {
+      price: 'R$ 14,99'
+    }
+  };
+
+  report.teaser = montarTeaser(report);
+
+  return report;
+}
+
+export async function getVehicleBasicReportByPlate(placaInformada) {
+  const placa = normalizarPlaca(placaInformada);
+
+  if (!placa || placa.length < 7) {
+    throw new Error('Placa inválida.');
+  }
+
+  const apiData = await consultarApiExterna(placa);
+  const report = mapearDados(placa, apiData);
+
+  return {
+    success: true,
+    ...report
   };
 }
 
-module.exports = {
-  getVehicleBasicReportByPlate,
-  getVehicleReportByPlate
-};
+export async function getVehicleReportByPlate(placaInformada) {
+  const placa = normalizarPlaca(placaInformada);
+
+  if (!placa || placa.length < 7) {
+    throw new Error('Placa inválida.');
+  }
+
+  const apiData = await consultarApiExterna(placa);
+  const report = mapearDados(placa, apiData);
+
+  return report;
+}

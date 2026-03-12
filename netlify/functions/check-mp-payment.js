@@ -2,37 +2,24 @@ import fetch from 'node-fetch';
 
 export const handler = async (event) => {
   try {
-    const { payment_id } = event.queryStringParameters;
+    const paymentId = event.queryStringParameters?.payment_id;
     const accessToken = process.env.MP_ACCESS_TOKEN;
 
     if (!accessToken) {
       return {
         statusCode: 500,
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ error: 'Access Token não configurado' })
       };
     }
 
-    const response = await fetch(`https://api.mercadopago.com/v1/payments/${payment_id}`, {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`
-      }
-    });
+    if (!paymentId) {
+      return {
+        statusCode: 400,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'payment_id não informado' })
+      };
+    }
 
-    const data = await response.json();
-
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        pago: data.status === 'approved',
-        status: data.status
-      })
-    };
-
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message })
-    };
-  }
-};
+    const response = await fetch(`https://api.mercadopago.com/v1/payments/${payment
+...(truncated)...
