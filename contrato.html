@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contrato de Compra e Venda de Veículo | iCarSP</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-deep: #060d1a;
+  --bg-card: #0d1525;
+  --bg-card2: #111b2d;
+  --accent: #3b82f6;
+  --accent2: #22c55e;
+  --border: rgba(255,255,255,0.08);
+  --text: #e2eaf5;
+  --muted: #7a93b0;
+  --font: 'Segoe UI', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* HEADER */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.page-header .logo img {
+  height: 120px;
+}
+
+.badge-topo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.25);
+  color: #86efac;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.page-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.page-header h1 span {
+  color: var(--accent);
+}
+
+.page-header p {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* STEPS */
+.steps-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 36px;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  color: var(--muted);
+  transition: all 0.3s;
+}
+
+.step-circle.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.step-circle.done {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  color: #fff;
+}
+
+.step-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.step-label.active {
+  color: var(--accent);
+}
+
+.step-line {
+  width: 60px;
+  height: 2px;
+  background: var(--border);
+  margin-bottom: 22px;
+}
+
+.step-line.done {
+  background: var(--accent2);
+}
+
+/* CARDS */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.card-icon.blue { background: rgba(59,130,246,0.15); color: var(--accent); }
+.card-icon.green { background: rgba(34,197,94,0.15); color: var(--accent2); }
+.card-icon.yellow { background: rgba(250,204,21,0.15); color: #facc15; }
+.card-icon.purple { background: rgba(168,85,247,0.15); color: #a855f7; }
+
+.card-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-header p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* UPLOAD AREA */
+.upload-area {
+  border: 2px dashed rgba(59,130,246,0.3);
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(59,130,246,0.03);
+  position: relative;
+}
+
+.upload-area:hover, .upload-area.dragover {
+  border-color: var(--accent);
+  background: rgba(59,130,246,0.08);
+}
+
+.upload-area input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.upload-area h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.upload-area p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.upload-formats {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.format-badge {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.upload-preview {
+  display: none;
+  margin-top: 16px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  align-items: center;
+  gap: 12px;
+}
+
+.upload-preview.show {
+  display: flex;
+}
+
+.upload-preview i {
+  color: var(--accent2);
+  font-size: 1.3rem;
+}
+
+.upload-preview span {
+  color: #86efac;
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.btn-remover {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+}
+
+/* AI READING */
+.ia-reading {
+  display: none;
+  background: rgba(59,130,246,0.06);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  align-items: center;
+  gap: 12px;
+}
+
+.ia-reading.show { display: flex; }
+
+.ia-reading i {
+  color: var(--accent);
+  font-size: 1.2rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.ia-reading span {
+  color: #93c5fd;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* FORM GRID */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-grid.cols-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--font);
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  background: rgba(59,130,246,0.06);
+}
+
+.form-group input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+.form-group input.filled {
+  border-color: rgba(34,197,94,0.4);
+  background: rgba(34,197,94,0.04);
+}
+
+.form-group select option {
+  background: #0d1525;
+  color: #fff;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+/* PRICE CARD */
+.price-card {
+  background: linear-gradient(145deg, #0f1f3d, #0d1525);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.price-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.price-card-left h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.price-card-left p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.price-box {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-box small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.price-box strong {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.includes-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.includes-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.includes-item i {
+  color: var(--accent2);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* BUTTONS */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 8px 24px rgba(34,197,94,0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(34,197,94,0.35);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* SECURITY */
+.security-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.security-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.security-item i {
+  color: var(--accent2);
+}
+
+/* SUCCESS MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 32px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.15);
+  border: 2px solid rgba(34,197,94,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent2);
+  margin: 0 auto 20px;
+}
+
+.modal h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--accent), #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-download:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* PIX MODAL */
+.pix-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.pix-modal.show { display: flex; }
+
+.pix-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.pix-box h2 { color: #333; margin-bottom: 6px; }
+.pix-box p { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+
+#pix-qr { margin: 0 auto 16px; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+
+#pix-code {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #f5f5f5;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.pix-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.pix-btns button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.btn-copiar { background: #3b82f6; color: #fff; }
+.btn-fechar { background: #666; color: #fff; }
+
+#pix-status { margin-top: 14px; font-weight: 700; color: #333; font-size: 0.95rem; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid.cols-3 { grid-template-columns: 1fr; }
+  .includes-list { grid-template-columns: 1fr; }
+  .price-card-header { flex-direction: column; }
+  .price-box { text-align: left; }
+  .steps-bar { gap: 0; }
+  .step-line { width: 30px; }
+  .page-header h1 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="logo">
+      <a href="/"><img src="logo.png" alt="iCarSP" /></a>
+    </div>
+    <a href="/" style="display:inline-flex;align-items:center;gap:6px;color:#7a93b0;text-decoration:none;font-size:0.85rem;font-weight:600;margin-bottom:16px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#7a93b0'">
+      <i class="fa fa-arrow-left"></i> Voltar ao início
+    </a>
+    <div class="badge-topo">
+      <i class="fa fa-file-contract"></i>
+      Contrato jurídico digital
+    </div>
+    <h1>Contrato de <span>Compra e Venda</span> de Veículo</h1>
+    <p>Preencha os dados abaixo ou envie uma foto do CRLV para preenchimento automático por IA. Receba seu contrato em PDF em segundos.</p>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps-bar">
+    <div class="step-item">
+      <div class="step-circle active" id="step1-circle">1</div>
+      <div class="step-label active" id="step1-label">Veículo</div>
+    </div>
+    <div class="step-line" id="line1"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step2-circle">2</div>
+      <div class="step-label" id="step2-label">Vendedor</div>
+    </div>
+    <div class="step-line" id="line2"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step3-circle">3</div>
+      <div class="step-label" id="step3-label">Comprador</div>
+    </div>
+    <div class="step-line" id="line3"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step4-circle">4</div>
+      <div class="step-label" id="step4-label">Pagamento</div>
+    </div>
+  </div>
+
+  <!-- STEP 1: VEÍCULO -->
+  <div id="section-veiculo">
+
+    <!-- UPLOAD CRLV -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon blue"><i class="fa fa-camera"></i></div>
+        <div>
+          <h2>Envie o CRLV do veículo</h2>
+          <p>A IA lê automaticamente todos os dados — você não precisa digitar nada!</p>
+        </div>
+      </div>
+
+      <div class="upload-area" id="upload-area">
+        <input type="file" id="crlv-file" accept="image/*,.pdf" />
+        <div class="upload-icon"><i class="fa fa-cloud-arrow-up"></i></div>
+        <h3>Clique ou arraste o CRLV aqui</h3>
+        <p>Foto ou PDF do documento do veículo</p>
+        <div class="upload-formats">
+          <span class="format-badge">JPG</span>
+          <span class="format-badge">PNG</span>
+          <span class="format-badge">PDF</span>
+          <span class="format-badge">WEBP</span>
+        </div>
+      </div>
+
+      <div class="upload-preview" id="upload-preview">
+        <i class="fa fa-file-image"></i>
+        <span id="upload-filename">arquivo.jpg</span>
+        <button class="btn-remover" onclick="removerArquivo()"><i class="fa fa-times"></i></button>
+      </div>
+
+      <div class="ia-reading" id="ia-reading">
+        <i class="fa fa-spinner"></i>
+        <span>IA lendo o documento e extraindo os dados...</span>
+      </div>
+    </div>
+
+    <!-- DADOS DO VEÍCULO -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon blue"><i class="fa fa-car"></i></div>
+        <div>
+          <h2>Dados do veículo</h2>
+          <p>Preenchidos automaticamente pela IA ou insira manualmente</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Placa</label>
+          <input type="text" id="v-placa" placeholder="ABC-1234" maxlength="8" />
+        </div>
+        <div class="form-group">
+          <label>Marca / Modelo</label>
+          <input type="text" id="v-modelo" placeholder="Ex: Volkswagen Gol" />
+        </div>
+        <div class="form-group">
+          <label>Ano de Fabricação</label>
+          <input type="text" id="v-ano-fab" placeholder="Ex: 2019" maxlength="4" />
+        </div>
+        <div class="form-group">
+          <label>Ano do Modelo</label>
+          <input type="text" id="v-ano-mod" placeholder="Ex: 2020" maxlength="4" />
+        </div>
+        <div class="form-group">
+          <label>Cor</label>
+          <input type="text" id="v-cor" placeholder="Ex: Prata" />
+        </div>
+        <div class="form-group">
+          <label>Combustível</label>
+          <select id="v-combustivel">
+            <option value="">Selecione</option>
+            <option>Gasolina</option>
+            <option>Etanol</option>
+            <option>Flex (Gasolina/Etanol)</option>
+            <option>Diesel</option>
+            <option>Elétrico</option>
+            <option>GNV</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Chassi</label>
+          <input type="text" id="v-chassi" placeholder="Ex: 9BWZZZ377VT004251" maxlength="17" style="text-transform: uppercase;" />
+        </div>
+        <div class="form-group">
+          <label>RENAVAM</label>
+          <input type="text" id="v-renavam" placeholder="Ex: 00123456789" maxlength="11" />
+        </div>
+        <div class="form-group">
+          <label>Valor de Venda (R$)</label>
+          <input type="text" id="v-valor" placeholder="Ex: 35.000,00" />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-grid cols-3">
+        <div class="form-group full">
+          <label>Forma de Pagamento</label>
+          <select id="v-pagamento-forma">
+            <option value="">Selecione</option>
+            <option>À vista em dinheiro</option>
+            <option>À vista via PIX</option>
+            <option>À vista via transferência bancária</option>
+            <option>Financiamento bancário</option>
+            <option>Parcelado entre as partes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cidade de Venda</label>
+          <input type="text" id="v-cidade" placeholder="Ex: São Paulo" />
+        </div>
+        <div class="form-group">
+          <label>Estado (UF)</label>
+          <select id="v-uf">
+            <option value="">UF</option>
+            <option>SP</option><option>RJ</option><option>MG</option>
+            <option>RS</option><option>PR</option><option>SC</option>
+            <option>BA</option><option>GO</option><option>DF</option>
+            <option>PE</option><option>CE</option><option>PA</option>
+            <option>AM</option><option>MT</option><option>MS</option>
+            <option>ES</option><option>PB</option><option>RN</option>
+            <option>AL</option><option>PI</option><option>MA</option>
+            <option>SE</option><option>RO</option><option>TO</option>
+            <option>AC</option><option>AP</option><option>RR</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Data da Venda</label>
+          <input type="date" id="v-data" />
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <button class="btn-primary" onclick="avancarStep(2)">
+          <i class="fa fa-arrow-right"></i>
+          Avançar — Dados do Vendedor
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: VENDEDOR -->
+  <div id="section-vendedor" style="display:none;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon yellow"><i class="fa fa-user-tie"></i></div>
+        <div>
+          <h2>Dados do Vendedor</h2>
+          <p>Pessoa que está vendendo o veículo</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Nome completo</label>
+          <input type="text" id="vend-nome" placeholder="Ex: João da Silva" />
+        </div>
+        <div class="form-group">
+          <label>CPF</label>
+          <input type="text" id="vend-cpf" placeholder="000.000.000-00" maxlength="14" />
+        </div>
+        <div class="form-group">
+          <label>RG</label>
+          <input type="text" id="vend-rg" placeholder="00.000.000-0" maxlength="12" />
+        </div>
+        <div class="form-group">
+          <label>Órgão Emissor / UF</label>
+          <input type="text" id="vend-rg-org" placeholder="Ex: SSP/SP" maxlength="10" />
+        </div>
+        <div class="form-group">
+          <label>Estado Civil</label>
+          <select id="vend-estado-civil">
+            <option value="">Selecione</option>
+            <option>Solteiro(a)</option>
+            <option>Casado(a)</option>
+            <option>Divorciado(a)</option>
+            <option>Viúvo(a)</option>
+            <option>União Estável</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Profissão</label>
+          <input type="text" id="vend-profissao" placeholder="Ex: Comerciante" />
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" id="vend-tel" placeholder="(11) 99999-9999" maxlength="15" />
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="vend-email" placeholder="email@exemplo.com" />
+        </div>
+        <div class="form-group full">
+          <label>Endereço completo</label>
+          <input type="text" id="vend-end" placeholder="Ex: Rua das Flores, 123, Apto 4" />
+        </div>
+        <div class="form-group">
+          <label>Bairro</label>
+          <input type="text" id="vend-bairro" placeholder="Ex: Centro" />
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" id="vend-cidade" placeholder="Ex: São Paulo" />
+        </div>
+        <div class="form-group">
+          <label>Estado (UF)</label>
+          <select id="vend-uf">
+            <option value="">UF</option>
+            <option>SP</option><option>RJ</option><option>MG</option>
+            <option>RS</option><option>PR</option><option>SC</option>
+            <option>BA</option><option>GO</option><option>DF</option>
+            <option>PE</option><option>CE</option><option>ES</option>
+            <option>PB</option><option>RN</option><option>AL</option>
+            <option>PI</option><option>MA</option><option>SE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>CEP</label>
+          <input type="text" id="vend-cep" placeholder="00000-000" maxlength="9" />
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn-primary" onclick="avancarStep(3)">
+          <i class="fa fa-arrow-right"></i>
+          Avançar — Dados do Comprador
+        </button>
+        <button class="btn-secondary" onclick="voltarStep(1)">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: COMPRADOR -->
+  <div id="section-comprador" style="display:none;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon green"><i class="fa fa-user"></i></div>
+        <div>
+          <h2>Dados do Comprador</h2>
+          <p>Pessoa que está comprando o veículo</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Nome completo</label>
+          <input type="text" id="comp-nome" placeholder="Ex: Maria Souza" />
+        </div>
+        <div class="form-group">
+          <label>CPF</label>
+          <input type="text" id="comp-cpf" placeholder="000.000.000-00" maxlength="14" />
+        </div>
+        <div class="form-group">
+          <label>RG</label>
+          <input type="text" id="comp-rg" placeholder="00.000.000-0" maxlength="12" />
+        </div>
+        <div class="form-group">
+          <label>Órgão Emissor / UF</label>
+          <input type="text" id="comp-rg-org" placeholder="Ex: SSP/SP" maxlength="10" />
+        </div>
+        <div class="form-group">
+          <label>Estado Civil</label>
+          <select id="comp-estado-civil">
+            <option value="">Selecione</option>
+            <option>Solteiro(a)</option>
+            <option>Casado(a)</option>
+            <option>Divorciado(a)</option>
+            <option>Viúvo(a)</option>
+            <option>União Estável</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Profissão</label>
+          <input type="text" id="comp-profissao" placeholder="Ex: Engenheiro" />
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" id="comp-tel" placeholder="(11) 99999-9999" maxlength="15" />
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="comp-email" placeholder="email@exemplo.com" />
+        </div>
+        <div class="form-group full">
+          <label>Endereço completo</label>
+          <input type="text" id="comp-end" placeholder="Ex: Av. Paulista, 1000, Apto 10" />
+        </div>
+        <div class="form-group">
+          <label>Bairro</label>
+          <input type="text" id="comp-bairro" placeholder="Ex: Bela Vista" />
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" id="comp-cidade" placeholder="Ex: São Paulo" />
+        </div>
+        <div class="form-group">
+          <label>Estado (UF)</label>
+          <select id="comp-uf">
+            <option value="">UF</option>
+            <option>SP</option><option>RJ</option><option>MG</option>
+            <option>RS</option><option>PR</option><option>SC</option>
+            <option>BA</option><option>GO</option><option>DF</option>
+            <option>PE</option><option>CE</option><option>ES</option>
+            <option>PB</option><option>RN</option><option>AL</option>
+            <option>PI</option><option>MA</option><option>SE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>CEP</label>
+          <input type="text" id="comp-cep" placeholder="00000-000" maxlength="9" />
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn-primary" onclick="avancarStep(4)">
+          <i class="fa fa-arrow-right"></i>
+          Avançar — Pagamento
+        </button>
+        <button class="btn-secondary" onclick="voltarStep(2)">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: PAGAMENTO -->
+  <div id="section-pagamento" style="display:none;">
+    <div class="price-card">
+      <div class="price-card-header">
+        <div class="price-card-left">
+          <h3>Contrato de Compra e Venda — PDF Profissional</h3>
+          <p>Documento jurídico completo, válido em todo território nacional. Gerado instantaneamente após o pagamento.</p>
+        </div>
+        <div class="price-box">
+          <small>Pagamento único</small>
+          <strong>R$ 19,99</strong>
+        </div>
+      </div>
+
+      <div class="includes-list">
+        <div class="includes-item"><i class="fa fa-check"></i> Contrato em PDF profissional</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Válido juridicamente</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Download imediato</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Dados do comprador e vendedor</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Dados completos do veículo</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Cláusulas de proteção</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <button class="btn-primary" id="btn-pagar" onclick="gerarPagamento()">
+        <i class="fa fa-pix"></i>
+        Gerar PIX e receber contrato
+      </button>
+
+      <div class="security-row">
+        <div class="security-item"><i class="fa fa-lock"></i> Pagamento seguro</div>
+        <div class="security-item"><i class="fa fa-shield-halved"></i> Dados protegidos</div>
+        <div class="security-item"><i class="fa fa-bolt"></i> Entrega instantânea</div>
+      </div>
+
+      <button class="btn-secondary" onclick="voltarStep(3)">
+        <i class="fa fa-arrow-left"></i> Voltar e revisar dados
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- PIX MODAL -->
+<div class="pix-modal" id="pix-modal">
+  <div class="pix-box">
+    <h2>Pagamento PIX</h2>
+    <p>Escaneie o QR Code ou copie o código abaixo</p>
+    <div id="pix-qr"><i class="fa fa-spinner fa-spin" style="font-size:40px;color:#666;"></i></div>
+    <input type="text" id="pix-code" readonly placeholder="Código PIX..." />
+    <div class="pix-btns">
+      <button class="btn-copiar" onclick="copiarPix()">Copiar código</button>
+      <button class="btn-fechar" onclick="fecharPix()">Fechar</button>
+    </div>
+    <div id="pix-status"></div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal">
+    <div class="modal-icon"><i class="fa fa-check"></i></div>
+    <h2>Contrato gerado! 🎉</h2>
+    <p>Seu contrato de compra e venda foi gerado com sucesso. Clique abaixo para fazer o download do PDF.</p>
+    <a href="#" id="btn-download" class="btn-download">
+      <i class="fa fa-download"></i>
+      Baixar Contrato em PDF
+    </a>
+    <button onclick="document.getElementById('success-modal').classList.remove('show')" style="margin-top:12px;width:100%;padding:12px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:10px;color:#7a93b0;font-size:0.9rem;cursor:pointer;">
+      <i class="fa fa-times"></i> Fechar
+    </button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+let currentStep = 1;
+let arquivoBase64 = null;
+let pollingInterval = null;
+let dadosContrato = {};
+
+// STEPS
+function avancarStep(step) {
+  document.getElementById('section-veiculo').style.display = step === 1 ? 'block' : 'none';
+  document.getElementById('section-vendedor').style.display = step === 2 ? 'block' : 'none';
+  document.getElementById('section-comprador').style.display = step === 3 ? 'block' : 'none';
+  document.getElementById('section-pagamento').style.display = step === 4 ? 'block' : 'none';
+  currentStep = step;
+  atualizarSteps();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function voltarStep(step) { avancarStep(step); }
+
+function atualizarSteps() {
+  for (let i = 1; i <= 4; i++) {
+    const circle = document.getElementById(`step${i}-circle`);
+    const label = document.getElementById(`step${i}-label`);
+    const line = document.getElementById(`line${i}`);
+    circle.className = 'step-circle';
+    label.className = 'step-label';
+    if (line) line.className = 'step-line';
+    if (i < currentStep) {
+      circle.classList.add('done');
+      circle.innerHTML = '<i class="fa fa-check" style="font-size:0.75rem;"></i>';
+      if (line) line.classList.add('done');
+    } else if (i === currentStep) {
+      circle.classList.add('active');
+      circle.textContent = i;
+      label.classList.add('active');
+    } else {
+      circle.textContent = i;
+    }
+  }
+}
+
+// UPLOAD & IA
+document.getElementById('crlv-file').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('upload-filename').textContent = file.name;
+  document.getElementById('upload-preview').classList.add('show');
+  document.getElementById('ia-reading').classList.add('show');
+  const reader = new FileReader();
+  reader.onload = async (ev) => {
+    arquivoBase64 = ev.target.result.split(',')[1];
+    const mediaType = file.type || 'image/jpeg';
+    await lerDocumentoIA(arquivoBase64, mediaType);
+  };
+  reader.readAsDataURL(file);
+});
+
+// ✅ FUNÇÃO SEGURA — usa backend Netlify (chave protegida no servidor)
+async function lerDocumentoIA(base64, mediaType) {
+  try {
+    const response = await fetch('/.netlify/functions/ler-crlv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imageBase64: base64, mediaType: mediaType })
+    });
+    const data = await response.json();
+    if (!data.success) throw new Error(data.error || 'Erro na leitura do documento');
+    preencherDadosVeiculo(data.dados);
+  } catch (e) {
+    console.error('Erro IA:', e);
+    alert('Não foi possível ler o documento automaticamente. Por favor, preencha os dados manualmente.');
+  } finally {
+    document.getElementById('ia-reading').classList.remove('show');
+  }
+}
+
+function preencherDadosVeiculo(d) {
+  if (d.placa) { document.getElementById('v-placa').value = d.placa; document.getElementById('v-placa').classList.add('filled'); }
+  if (d.marca_modelo) { document.getElementById('v-modelo').value = d.marca_modelo; document.getElementById('v-modelo').classList.add('filled'); }
+  if (d.ano_fabricacao) { document.getElementById('v-ano-fab').value = d.ano_fabricacao; document.getElementById('v-ano-fab').classList.add('filled'); }
+  if (d.ano_modelo) { document.getElementById('v-ano-mod').value = d.ano_modelo; document.getElementById('v-ano-mod').classList.add('filled'); }
+  if (d.cor) { document.getElementById('v-cor').value = d.cor; document.getElementById('v-cor').classList.add('filled'); }
+  if (d.chassi) { document.getElementById('v-chassi').value = d.chassi; document.getElementById('v-chassi').classList.add('filled'); }
+  if (d.renavam) { document.getElementById('v-renavam').value = d.renavam; document.getElementById('v-renavam').classList.add('filled'); }
+  if (d.combustivel) {
+    const sel = document.getElementById('v-combustivel');
+    for (let opt of sel.options) {
+      if (opt.text.toLowerCase().includes(d.combustivel.toLowerCase())) { sel.value = opt.value; break; }
+    }
+  }
+}
+
+function removerArquivo() {
+  document.getElementById('crlv-file').value = '';
+  document.getElementById('upload-preview').classList.remove('show');
+  arquivoBase64 = null;
+}
+
+// PAGAMENTO
+async function gerarPagamento() {
+  coletarDados();
+  const btn = document.getElementById('btn-pagar');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Gerando PIX...';
+  document.getElementById('pix-modal').classList.add('show');
+  document.getElementById('pix-status').innerHTML = 'Gerando pagamento...';
+
+  try {
+    const response = await fetch('/.netlify/functions/create-mp-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ placa: dadosContrato.veiculo?.placa || 'CONTRATO', tipo: 'contrato', valor: 14.90 })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Erro ao gerar pagamento');
+    const paymentId = data.paymentId || data.payment_id;
+    if (data.qr_code_base64) {
+      document.getElementById('pix-qr').innerHTML = `<img src="data:image/png;base64,${data.qr_code_base64}" style="width:200px;height:200px;" />`;
+    } else if (data.qr_code) {
+      document.getElementById('pix-qr').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.qr_code)}" />`;
+    }
+    document.getElementById('pix-code').value = data.pix_copia_e_cola || data.qr_code || '';
+    document.getElementById('pix-status').innerHTML = '⏳ Aguardando confirmação do pagamento...';
+    btn.innerHTML = '<i class="fa fa-clock"></i> Aguardando pagamento...';
+    aguardarPagamento(paymentId);
+  } catch (e) {
+    document.getElementById('pix-status').innerHTML = '❌ ' + e.message;
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa fa-pix"></i> Gerar PIX e receber contrato';
+  }
+}
+
+function aguardarPagamento(paymentId) {
+  if (pollingInterval) clearInterval(pollingInterval);
+  pollingInterval = setInterval(async () => {
+    try {
+      const r = await fetch(`/.netlify/functions/check-mp-payment?payment_id=${encodeURIComponent(paymentId)}&tipo=contrato`);
+      const d = await r.json();
+      if (d.pago || d.status === 'approved') {
+        clearInterval(pollingInterval);
+        document.getElementById('pix-status').innerHTML = '✅ Pagamento confirmado! Gerando contrato...';
+        setTimeout(() => {
+          document.getElementById('pix-modal').classList.remove('show');
+          gerarPDF();
+        }, 1500);
+      }
+    } catch (e) { console.error(e); }
+  }, 3000);
+}
+
+function copiarPix() {
+  const input = document.getElementById('pix-code');
+  input.select();
+  document.execCommand('copy');
+  alert('Código PIX copiado!');
+}
+
+function fecharPix() {
+  document.getElementById('pix-modal').classList.remove('show');
+  if (pollingInterval) clearInterval(pollingInterval);
+  const btn = document.getElementById('btn-pagar');
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fa fa-pix"></i> Gerar PIX e receber contrato';
+}
+
+// COLETAR DADOS
+function coletarDados() {
+  dadosContrato = {
+    veiculo: {
+      placa: document.getElementById('v-placa').value,
+      modelo: document.getElementById('v-modelo').value,
+      ano_fab: document.getElementById('v-ano-fab').value,
+      ano_mod: document.getElementById('v-ano-mod').value,
+      cor: document.getElementById('v-cor').value,
+      combustivel: document.getElementById('v-combustivel').value,
+      chassi: document.getElementById('v-chassi').value,
+      renavam: document.getElementById('v-renavam').value,
+      valor: document.getElementById('v-valor').value,
+      pagamento_forma: document.getElementById('v-pagamento-forma').value,
+      cidade: document.getElementById('v-cidade').value,
+      uf: document.getElementById('v-uf').value,
+      data: document.getElementById('v-data').value,
+    },
+    vendedor: {
+      nome: document.getElementById('vend-nome').value,
+      cpf: document.getElementById('vend-cpf').value,
+      rg: document.getElementById('vend-rg').value,
+      rg_org: document.getElementById('vend-rg-org').value,
+      estado_civil: document.getElementById('vend-estado-civil').value,
+      profissao: document.getElementById('vend-profissao').value,
+      tel: document.getElementById('vend-tel').value,
+      email: document.getElementById('vend-email').value,
+      end: document.getElementById('vend-end').value,
+      bairro: document.getElementById('vend-bairro').value,
+      cidade: document.getElementById('vend-cidade').value,
+      uf: document.getElementById('vend-uf').value,
+      cep: document.getElementById('vend-cep').value,
+    },
+    comprador: {
+      nome: document.getElementById('comp-nome').value,
+      cpf: document.getElementById('comp-cpf').value,
+      rg: document.getElementById('comp-rg').value,
+      rg_org: document.getElementById('comp-rg-org').value,
+      estado_civil: document.getElementById('comp-estado-civil').value,
+      profissao: document.getElementById('comp-profissao').value,
+      tel: document.getElementById('comp-tel').value,
+      email: document.getElementById('comp-email').value,
+      end: document.getElementById('comp-end').value,
+      bairro: document.getElementById('comp-bairro').value,
+      cidade: document.getElementById('comp-cidade').value,
+      uf: document.getElementById('comp-uf').value,
+      cep: document.getElementById('comp-cep').value,
+    }
+  };
+}
+
+function formatarValor(str) {
+  if (!str) return '—';
+  const limpo = String(str).replace(/[^\d,.]/g, '').replace(',', '.');
+  const num = parseFloat(limpo);
+  if (isNaN(num)) return str;
+  return num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function U(str) {
+  return str ? String(str).toUpperCase() : '';
+}
+
+// GERAR PDF
+async function gerarPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const d = dadosContrato;
+  const v = d.veiculo;
+  const vend = d.vendedor;
+  const comp = d.comprador;
+  const dataFormatada = v.data ? new Date(v.data + 'T12:00:00').toLocaleDateString('pt-BR') : new Date().toLocaleDateString('pt-BR');
+
+  const lm = 12, rm = 198, pw = 186;
+  let y = 0;
+
+  // ══════════════════════════════════════
+  // CABEÇALHO AZUL
+  // ══════════════════════════════════════
+  doc.setFillColor(26, 54, 126);
+  doc.rect(0, 0, 210, 22, 'F');
+
+  // iCarSP texto no cabeçalho
+  doc.setFontSize(16);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text('iCarSP', lm, 10);
+
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(180, 200, 255);
+  doc.text('Serviços Automotivos', lm, 15);
+
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text('CONTRATO DE COMPRA E VENDA DE VEÍCULO', 210/2, 10, { align: 'center' });
+
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(180, 200, 255);
+  doc.text(`Gerado em ${dataFormatada} | icarspconsultas@gmail.com`, 210/2, 16, { align: 'center' });
+
+  // Número do contrato à direita
+  doc.setFontSize(7);
+  doc.setTextColor(180, 200, 255);
+  doc.text(`Placa: ${U(v.placa) || '---'}`, rm, 10, { align: 'right' });
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 220, 100);
+  doc.text(`Valor: R$ ${formatarValor(v.valor)}`, rm, 15, { align: 'right' });
+
+  y = 26;
+
+  // ══════════════════════════════════════
+  // LAYOUT 2 COLUNAS — VENDEDOR / COMPRADOR
+  // ══════════════════════════════════════
+  const colW = 88;
+  const col1x = lm;
+  const col2x = lm + colW + 6;
+
+  function blocoTitulo(label, x, w, cor) {
+    doc.setFillColor(...cor);
+    doc.rect(x, y, w, 7, 'F');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(255, 255, 255);
+    doc.text(label, x + 2, y + 5);
+    doc.setTextColor(0, 0, 0);
+  }
+
+  function miniCampo(label, valor, x, maxW) {
+    doc.setFontSize(6.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(80, 80, 80);
+    doc.text(label + ':', x, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(0, 0, 0);
+    const lines = doc.splitTextToSize(valor || '—', maxW - 22);
+    doc.text(lines, x + 20, y);
+    y += lines.length * 3.8;
+  }
+
+  // VENDEDOR
+  blocoTitulo('VENDEDOR', col1x, colW, [37, 99, 235]);
+  y += 10;
+  const yAfterVend = y;
+  miniCampo('Nome', U(vend.nome), col1x, colW);
+  miniCampo('CPF', vend.cpf, col1x, colW);
+  miniCampo('RG', U(`${vend.rg || ''}${vend.rg_org ? ' — ' + vend.rg_org : ''}`), col1x, colW);
+  miniCampo('Est. Civil', U(vend.estado_civil), col1x, colW);
+  miniCampo('Profissão', U(vend.profissao), col1x, colW);
+  miniCampo('End.', U(`${vend.end || ''}${vend.bairro ? ', ' + vend.bairro : ''}`), col1x, colW);
+  miniCampo('Cidade/UF', U(`${vend.cidade || ''}${vend.uf ? '/' + vend.uf : ''}`), col1x, colW);
+  miniCampo('CEP', vend.cep, col1x, colW);
+  miniCampo('Tel.', vend.tel, col1x, colW);
+  miniCampo('E-mail', U(vend.email), col1x, colW);
+  const yEndVend = y;
+
+  // COMPRADOR (mesma altura)
+  y = yAfterVend - 10;
+  blocoTitulo('COMPRADOR', col2x, colW, [5, 150, 105]);
+  y += 10;
+  miniCampo('Nome', U(comp.nome), col2x, colW);
+  miniCampo('CPF', comp.cpf, col2x, colW);
+  miniCampo('RG', U(`${comp.rg || ''}${comp.rg_org ? ' — ' + comp.rg_org : ''}`), col2x, colW);
+  miniCampo('Est. Civil', U(comp.estado_civil), col2x, colW);
+  miniCampo('Profissão', U(comp.profissao), col2x, colW);
+  miniCampo('End.', U(`${comp.end || ''}${comp.bairro ? ', ' + comp.bairro : ''}`), col2x, colW);
+  miniCampo('Cidade/UF', U(`${comp.cidade || ''}${comp.uf ? '/' + comp.uf : ''}`), col2x, colW);
+  miniCampo('CEP', comp.cep, col2x, colW);
+  miniCampo('Tel.', comp.tel, col2x, colW);
+  miniCampo('E-mail', U(comp.email), col2x, colW);
+
+  y = Math.max(yEndVend, y) + 3;
+
+  // ══════════════════════════════════════
+  // VEÍCULO + PAGAMENTO (2 colunas)
+  // ══════════════════════════════════════
+  const yVeic = y;
+  blocoTitulo('DADOS DO VEÍCULO', col1x, colW, [37, 99, 235]);
+  y += 10;
+  const yAfterVeic = y;
+  miniCampo('Marca/Mod.', (v.modelo||'').toUpperCase(), col1x, colW);
+  miniCampo('Placa', (v.placa||'').toUpperCase(), col1x, colW);
+  miniCampo('Ano Fab/Mod', `${v.ano_fab || ''}/${v.ano_mod || ''}`, col1x, colW);
+  miniCampo('Cor', (v.cor||'').toUpperCase(), col1x, colW);
+  miniCampo('Combustível', (v.combustivel||'').toUpperCase(), col1x, colW);
+  miniCampo('Chassi', v.chassi, col1x, colW);
+  miniCampo('RENAVAM', v.renavam, col1x, colW);
+  const yEndVeic = y;
+
+  y = yVeic;
+  blocoTitulo('PREÇO E PAGAMENTO', col2x, colW, [5, 150, 105]);
+  y += 10;
+  miniCampo('Valor', `R$ ${formatarValor(v.valor)}`, col2x, colW);
+  miniCampo('Pagamento', (v.pagamento_forma||'').toUpperCase(), col2x, colW);
+  miniCampo('Cidade/UF', `${(v.cidade||'').toUpperCase()}${v.uf ? '/' + v.uf.toUpperCase() : ''}`, col2x, colW);
+  miniCampo('Data', dataFormatada, col2x, colW);
+
+  y = Math.max(yEndVeic, y) + 3;
+
+  // ══════════════════════════════════════
+  // CLÁUSULAS
+  // ══════════════════════════════════════
+  blocoTitulo('CLÁUSULAS E CONDIÇÕES', lm, pw, [26, 54, 126]);
+  y += 10;
+
+  const clausulas = [
+    '1. O VENDEDOR declara ser legítimo proprietário do veículo, livre de ônus, dívidas, multas, débitos de IPVA ou outras pendências.',
+    '2. O VENDEDOR declara que o veículo não possui restrição judicial, financeira, administrativa ou policial que impeça sua transferência.',
+    '3. O COMPRADOR declara estar ciente das condições do veículo, tendo tido oportunidade de inspecioná-lo antes deste contrato.',
+    '4. A transferência perante o DETRAN é responsabilidade exclusiva do COMPRADOR, no prazo legal do Código de Trânsito Brasileiro.',
+    '5. Após quitação, o VENDEDOR entregará ao COMPRADOR todos os documentos necessários para a transferência do veículo.',
+    `6. Foro eleito: Comarca de ${(v.cidade||'___').toUpperCase()}/${(v.uf||'__').toUpperCase()}, com renúncia a qualquer outro, por mais privilegiado que seja.`
+  ];
+
+  clausulas.forEach((c, i) => {
+    doc.setFontSize(6.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(30, 30, 30);
+    const lines = doc.splitTextToSize(c, pw);
+    doc.text(lines, lm, y);
+    y += lines.length * 3.6 + 1;
+  });
+
+  y += 3;
+
+  // Fecho
+  doc.setFontSize(6.5);
+  doc.setFont('helvetica', 'italic');
+  doc.setTextColor(60, 60, 60);
+  doc.text(`${(v.cidade||'___').toUpperCase()}/${(v.uf||'__').toUpperCase()}, ${dataFormatada}. Firmado em duas vias de igual teor e forma.`, lm, y);
+  y += 6;
+
+  // ══════════════════════════════════════
+  // ASSINATURAS
+  // ══════════════════════════════════════
+  blocoTitulo('ASSINATURAS', lm, pw, [26, 54, 126]);
+  y += 11;
+
+  const sigW = 75;
+  const sigs = [
+    { label: 'VENDEDOR', nome: vend.nome, cpf: vend.cpf, x: lm },
+    { label: 'COMPRADOR', nome: comp.nome, cpf: comp.cpf, x: rm - sigW },
+  ];
+
+  sigs.forEach(s => {
+    doc.setDrawColor(26, 54, 126);
+    doc.setLineWidth(0.4);
+    doc.line(s.x, y + 18, s.x + sigW, y + 18);
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(26, 54, 126);
+    doc.text(s.label, s.x + sigW / 2, y + 22, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(6.5);
+    doc.setTextColor(40, 40, 40);
+    if (s.nome) doc.text(s.nome.toUpperCase(), s.x + sigW / 2, y + 26, { align: 'center' });
+    if (s.cpf) doc.text('CPF: ' + s.cpf, s.x + sigW / 2, y + 29.5, { align: 'center' });
+  });
+
+  y += 14;
+
+  // ══════════════════════════════════════
+  // RODAPÉ
+  // ══════════════════════════════════════
+  doc.setFillColor(240, 243, 250);
+  doc.rect(0, 284, 210, 13, 'F');
+  doc.setFontSize(6.5);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 100, 130);
+  doc.text('iCarSP — Serviços Automotivos | icarspconsultas@gmail.com | www.icarsp.com.br', 105, 289, { align: 'center' });
+  doc.text('Despachante Documentalista — CRDD 005636-7 | Documento com validade jurídica nos termos do Código Civil Brasileiro', 105, 293, { align: 'center' });
+
+  const url = URL.createObjectURL(doc.output('blob'));
+  document.getElementById('btn-download').href = url;
+  document.getElementById('btn-download').download = `CONTRATO DE COMPRA E VENDA.pdf`;
+  document.getElementById('success-modal').classList.add('show');
+
+  // Enviar PDF por email e salvar lead
+  const emailDestino = dadosContrato.vendedor?.email || dadosContrato.comprador?.email;
+  if (emailDestino) {
+    try {
+      const pdfBase64 = doc.output('datauristring').split(',')[1];
+      await fetch('/.netlify/functions/enviar-contrato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pdfBase64,
+          email: emailDestino,
+          telefone: dadosContrato.vendedor?.tel || dadosContrato.comprador?.tel,
+          nome: dadosContrato.vendedor?.nome || dadosContrato.comprador?.nome,
+          placa: dadosContrato.veiculo?.placa,
+          tipoContrato: 'compra_venda'
+        })
+      });
+    } catch (e) { console.error('Erro ao enviar email do contrato:', e); }
+  }
+}
+
+// MÁSCARAS
+document.getElementById('vend-cpf').addEventListener('input', (e) => { e.target.value = mascararCPF(e.target.value); });
+document.getElementById('comp-cpf').addEventListener('input', (e) => { e.target.value = mascararCPF(e.target.value); });
+document.getElementById('vend-cep').addEventListener('input', (e) => { e.target.value = mascararCEP(e.target.value); });
+document.getElementById('comp-cep').addEventListener('input', (e) => { e.target.value = mascararCEP(e.target.value); });
+
+function mascararCPF(v) {
+  v = v.replace(/\D/g, '').substring(0, 11);
+  return v.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+}
+
+function mascararCEP(v) {
+  v = v.replace(/\D/g, '').substring(0, 8);
+  return v.replace(/(\d{5})(\d)/, '$1-$2');
+}
+
+// Set today's date as default
+document.getElementById('v-data').value = new Date().toISOString().split('T')[0];
+</script>
+
+</body>
+</html>

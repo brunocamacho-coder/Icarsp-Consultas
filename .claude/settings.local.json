@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(head -10 grep -in \"logo\\\\|header-logo\" \"c:\\\\Users\\\\Bruno\\\\Desktop\\\\icarsp\\\\sobre.html\")",
+      "Bash(head -20 grep -n \"get-basic-report\\\\|consultarPlaca\" \"c:\\\\Users\\\\Bruno\\\\Desktop\\\\icarsp\\\\netlify\\\\functions\\\\check-mp-payment.js\")",
+      "Bash(grep -r .netlify/functions /c/Users/Bruno/Desktop/icarsp/*.html)",
+      "Bash(grep -r \"create-mp-payment\\\\|check-mp-payment\\\\|get-basic-report\\\\|get-saved-report\\\\|generate-report\" /c/Users/Bruno/Desktop/icarsp/*.html)",
+      "Bash(ls -lh /c/Users/Bruno/Desktop/icarsp/*.png)",
+      "Bash(grep -E \"process.env\\\\.|SUPABASE|MERCADO|MAILERSEND|ANTHROPIC\" /c/Users/Bruno/Desktop/icarsp/netlify/functions/*.js)",
+      "Bash(find /c/Users/Bruno/Desktop/icarsp -not -path */node_modules/* -not -path */.netlify/* -not -path */.git/* -type f)"
+    ]
+  }
+}

@@ -1,580 +1,467 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
+<head> <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18020584705"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18020584705');
+</script>
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FHS0PHSTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8FHS0PHSTY');
+</script>
 <meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KRGDLSXL');</script>
+<!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>icarSP – Consulta Veicular</title>
-
+<meta name="description" content="Consulte o histórico completo do veículo pela placa. Restrições, gravame, roubo, débitos e muito mais. Rápido e seguro.">
+<meta name="keywords" content="consulta veicular, consulta placa, histórico veículo, gravame, restrições veiculares, São Paulo">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://icarsp.com.br">
+<meta property="og:title" content="icarSP – Consulta Veicular pela Placa">
+<meta property="og:description" content="Consulte histórico completo do veículo pela placa. Restrições, gravame, roubo e débitos.">
+<meta property="og:url" content="https://icarsp.com.br">
+<meta property="og:type" content="website">
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-</head>
-
-<body>
-    <a
-  href="https://wa.me/5514991548791?text=Ol%C3%A1%2C%20vim%20pelo%20site%20iCarSP%20e%20quero%20tirar%20uma%20d%C3%BAvida."
-  class="whatsapp-float"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Fale conosco no WhatsApp"
->
-  <span class="whatsapp-float__icon" aria-hidden="true">
-    <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19.11 17.39c-.29-.14-1.71-.84-1.98-.94-.27-.1-.46-.14-.66.15-.19.29-.75.94-.92 1.13-.17.19-.34.22-.63.07-.29-.14-1.24-.46-2.36-1.48-.88-.78-1.47-1.74-1.64-2.03-.17-.29-.02-.45.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.19.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.58-.49-.5-.66-.51h-.56c-.19 0-.51.07-.78.37-.27.29-1.02 1-.98 2.44.05 1.44 1.03 2.83 1.17 3.03.14.19 2.01 3.07 4.88 4.31.68.29 1.21.46 1.63.59.68.22 1.29.19 1.78.12.54-.08 1.71-.7 1.95-1.38.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/>
-      <path d="M16.03 3.2c-6.97 0-12.63 5.66-12.63 12.63 0 2.23.58 4.4 1.68 6.31L3.2 28.8l6.83-1.79a12.58 12.58 0 0 0 5.99 1.52h.01c6.97 0 12.63-5.66 12.63-12.63S23 3.2 16.03 3.2zm0 23.03h-.01a10.46 10.46 0 0 1-5.33-1.46l-.38-.23-4.05 1.06 1.08-3.95-.25-.41a10.4 10.4 0 0 1-1.6-5.57c0-5.77 4.7-10.47 10.48-10.47 2.8 0 5.44 1.09 7.42 3.06a10.42 10.42 0 0 1 3.07 7.42c0 5.78-4.7 10.48-10.47 10.48z"/>
-    </svg>
-  </span>
-
-  <span class="whatsapp-float__text">
-    <small>Atendimento rápido</small>
-    <strong>Fale com um Despachante</strong>
-  </span>
-</a>
-<link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <style>
-/* Professional Consulta Section */
-.consulta-section {
-background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
-padding: 80px 20px;
-position: relative;
-overflow: hidden;
-}
+.whatsapp-header { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 10px; border-radius: 999px; text-decoration: none; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #ffffff; box-shadow: 0 4px 14px rgba(18,140,126,0.3); transition: transform 0.2s ease, box-shadow 0.2s ease; flex-shrink: 0; }
+.whatsapp-header:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(18,140,126,0.4); }
+.whatsapp-header__icon { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.15); }
+.whatsapp-header__icon svg { width: 20px; height: 20px; display: block; }
+.whatsapp-header__text { display: flex; flex-direction: column; line-height: 1.2; }
+.whatsapp-header__text small { font-size: 0.68rem; font-weight: 500; opacity: 0.88; }
+.whatsapp-header__text strong { font-size: 0.85rem; font-weight: 800; white-space: nowrap; }
 
-.consulta-section::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background:
-radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-pointer-events: none;
-}
+.hero-trust-list { list-style: none; padding: 0; margin: 18px 0 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.hero-trust-list li { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #c8d8ea; font-weight: 600; }
+.hero-trust-list li i { color: #22c55e; font-size: 0.8rem; }
+@media (max-width: 480px) { .hero-trust-list { grid-template-columns: 1fr; } }
 
-.consulta-inner {
-max-width: 800px;
-margin: 0 auto;
-position: relative;
-z-index: 1;
-}
+.hero-social-proof { display: inline-flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: #86efac; font-size: 0.85rem; font-weight: 800; padding: 7px 16px; border-radius: 999px; margin-bottom: 14px; }
+.hero-social-proof i { color: #f97316; }
 
-.consulta-title {
-font-size: 2.8rem;
-font-weight: 700;
-color: #ffffff;
-text-align: center;
-margin-bottom: 16px;
-letter-spacing: -0.02em;
-background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
+.hero-stat { margin: 10px 0 0 0; display: inline-flex; align-items: center; gap: 8px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; font-size: 0.85rem; font-weight: 700; padding: 8px 16px; border-radius: 999px; }
+.hero-stat i { font-size: 0.85rem; }
 
-.consulta-subtitle {
-font-size: 1.1rem;
-color: #94a3b8;
-text-align: center;
-margin-bottom: 60px;
-font-weight: 400;
-line-height: 1.6;
-}
+.contrato-cta-hero { margin-top: 20px; padding: 16px 18px; background: linear-gradient(135deg, #0a1628 0%, #0d1f0d 100%); border: 1px solid rgba(34,197,94,0.3); border-radius: 12px; }
+.contrato-urgencia { margin: 0 0 6px 0 !important; color: #fcd34d !important; font-size: 0.95rem !important; font-weight: 800 !important; }
+.contrato-urgencia i { color: #f97316; margin-right: 4px; }
+.contrato-cta-hero p { margin: 0 0 6px 0; color: #e2eaf5; font-size: 0.9rem; line-height: 1.5; }
+.contrato-cta-hero p:last-of-type { color: #94a3b8; font-size: 0.85rem; margin-bottom: 12px; }
+.btn-contrato-hero { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; border-radius: 8px; font-weight: 800; font-size: 0.92rem; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 14px rgba(34,197,94,0.25); }
+.btn-contrato-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34,197,94,0.4); }
+.preco-destaque { background: rgba(0,0,0,0.25); border-radius: 6px; padding: 3px 10px; font-size: 1.05rem; font-weight: 900; color: #fff; letter-spacing: 0.02em; }
 
-.pricing-card {
-background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
-border: 1px solid rgba(59, 130, 246, 0.2);
-border-radius: 24px;
-padding: 48px 40px;
-max-width: 520px;
-margin: 0 auto;
-position: relative;
-overflow: hidden;
-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4),
-0 0 0 1px rgba(255, 255, 255, 0.05);
-transition: all 0.3s ease;
-}
+.payment-badges { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 16px; width: 100%; }
+.payment-badges__label { color: #7a93b0; font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.payment-badges__label i { color: #22c55e; }
+.payment-badges__icons { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.pay-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #e2eaf5; font-size: 0.82rem; font-weight: 700; }
+.pay-badge i { font-size: 1rem; }
+.pay-badge:nth-child(1) i { color: #00c4b4; }
+.pay-badge:nth-child(2) i { color: #1a1f71; background: #fff; border-radius: 3px; padding: 1px 3px; }
+.pay-badge:nth-child(3) i { color: #eb001b; }
 
-.pricing-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.5),
-0 0 0 1px rgba(59, 130, 246, 0.3);
-}
+.security-seals { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+.seal { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 700; }
+.seal--green { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #86efac; }
+.seal--blue  { background: rgba(74,158,255,0.1); border: 1px solid rgba(74,158,255,0.3); color: #93c5fd; }
 
-.pricing-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 1px;
-background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.8) 50%, transparent 100%);
-}
-
-.price {
-font-size: 3.5rem;
-font-weight: 800;
-color: #3b82f6;
-margin-bottom: 10px;
-text-align: center;
-letter-spacing: -0.02em;
-text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-}
-
-.price-caption {
-text-align: center;
-color: #cbd5e1;
-font-size: 0.95rem;
-margin-bottom: 30px;
-}
-
-.features-list {
-list-style: none;
-padding: 0;
-margin: 0 0 40px 0;
-}
-
-.feature-item {
-display: flex;
-align-items: center;
-padding: 12px 0;
-color: #e2e8f0;
-font-size: 1rem;
-font-weight: 500;
-border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.feature-item:last-child {
-border-bottom: none;
-}
-
-.feature-icon {
-width: 20px;
-height: 20px;
-background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-right: 16px;
-flex-shrink: 0;
-box-shadow: 0 4px 8px rgba(34, 197, 94, 0.2);
-}
-
-.feature-icon i {
-font-size: 10px;
-color: white;
-font-weight: 900;
-}
-
-.cta-button {
-width: 100%;
-background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-color: white;
-border: none;
-border-radius: 16px;
-padding: 18px 32px;
-font-size: 1.1rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.3s ease;
-text-decoration: none;
-display: inline-block;
-text-align: center;
-box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-position: relative;
-overflow: hidden;
-}
-
-.cta-button:hover {
-transform: translateY(-2px);
-box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
-background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-}
-
-.cta-button:active {
-transform: translateY(0);
-}
-
-.cta-button::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-transition: left 0.5s ease;
-}
-
-.cta-button:hover::before {
-left: 100%;
-}
-
-.trust-badge {
-text-align: center;
-margin-top: 24px;
-opacity: 0.8;
-}
-
-.trust-badge i {
-color: #22c55e;
-margin-right: 8px;
-}
-
-.trust-text {
-color: #94a3b8;
-font-size: 0.9rem;
-font-weight: 500;
-}
-
-.faq-simple {
-margin-top: 70px;
-display: grid;
-gap: 16px;
-}
-
-.faq-item {
-background: rgba(255, 255, 255, 0.03);
-border: 1px solid rgba(255, 255, 255, 0.06);
-border-radius: 16px;
-padding: 20px;
-}
-
-.faq-item h4 {
-color: #fff;
-font-size: 1rem;
-margin-bottom: 8px;
-}
-
-.faq-item p {
-color: #94a3b8;
-font-size: 0.95rem;
-line-height: 1.6;
-}
-
-.preview-wrapper {
-display: none;
-margin-top: 28px;
-}
-
+.preview-wrapper { display: none; margin-top: 28px; }
 .preview-card {
-background: linear-gradient(145deg, #111827 0%, #1f2937 100%);
-border: 1px solid rgba(59, 130, 246, 0.18);
-border-radius: 24px;
-padding: 28px;
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+  background: linear-gradient(145deg, #0d1117 0%, #161b22 100%);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: 24px; padding: 28px;
+  box-shadow: 0 0 0 1px rgba(239,68,68,0.08), 0 24px 48px rgba(0,0,0,0.5);
+  position: relative; overflow: hidden;
 }
-
-.preview-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 16px;
-flex-wrap: wrap;
-margin-bottom: 20px;
+.preview-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #ef4444, #f97316, #ef4444);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
 }
-
-.preview-badge {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-padding: 8px 14px;
-border-radius: 999px;
-background: rgba(34, 197, 94, 0.12);
-border: 1px solid rgba(34, 197, 94, 0.24);
-color: #86efac;
-font-size: 0.92rem;
-font-weight: 700;
-}
-
-.preview-title {
-margin: 0;
-color: #fff;
-font-size: 1.6rem;
-}
-
-.preview-subtitle {
-margin: 8px 0 0 0;
-color: #94a3b8;
-font-size: 0.98rem;
-}
-
-.preview-grid {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 14px;
-margin-top: 18px;
-}
-
-.preview-item {
-background: rgba(255, 255, 255, 0.03);
-border: 1px solid rgba(255, 255, 255, 0.06);
-border-radius: 16px;
-padding: 16px;
-}
-
-.preview-item span {
-display: block;
-font-size: 0.88rem;
-color: #94a3b8;
-margin-bottom: 6px;
-}
-
-.preview-item strong {
-display: block;
-font-size: 1rem;
-color: #fff;
-line-height: 1.4;
-word-break: break-word;
-}
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+.preview-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.preview-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; font-size: 0.88rem; font-weight: 700; }
+.preview-title { margin: 0; color: #fff; font-size: 1.5rem; font-weight: 800; }
+.preview-subtitle { margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; }
+.preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.preview-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 14px 16px; position: relative; }
+.preview-item span { display: block; font-size: 0.82rem; color: #d4af37; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+.preview-item strong { display: block; font-size: 1rem; color: #fff; line-height: 1.4; word-break: break-word; }
+.preview-item.locked { background: rgba(239,68,68,0.04); border-color: rgba(239,68,68,0.12); }
+.preview-item.locked strong { filter: blur(6px); user-select: none; color: #94a3b8; }
+.preview-item.locked::after { content: '🔒'; position: absolute; top: 50%; right: 14px; transform: translateY(-50%); font-size: 0.9rem; opacity: 0.5; }
 
 .unlock-card {
-margin-top: 22px;
-background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-border: 1px solid rgba(250, 204, 21, 0.22);
-border-radius: 24px;
-padding: 28px;
-position: relative;
-overflow: hidden;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #1a0a00 0%, #1c1100 50%, #0a1a00 100%);
+  border: 1px solid rgba(251,146,60,0.35);
+  border-radius: 24px; padding: 28px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 0 40px rgba(251,146,60,0.08), 0 20px 40px rgba(0,0,0,0.4);
 }
-
 .unlock-card::before {
-content: '';
-position: absolute;
-inset: 0;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-pointer-events: none;
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #f97316, #facc15, #22c55e, #facc15, #f97316);
+  background-size: 300% 100%;
+  animation: shimmer 3s linear infinite;
 }
-
-.unlock-top {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-padding: 8px 14px;
-border-radius: 999px;
-background: rgba(250, 204, 21, 0.1);
-border: 1px solid rgba(250, 204, 21, 0.24);
-color: #fde68a;
-font-size: 0.9rem;
-font-weight: 700;
-margin-bottom: 14px;
+.unlock-urgency {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3);
+  color: #fca5a5; font-size: 0.82rem; font-weight: 700;
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 16px;
+  animation: pulse-red 2s ease-in-out infinite;
 }
-
-.unlock-title {
-margin: 0 0 10px 0;
-color: #fff;
-font-size: 1.9rem;
-line-height: 1.2;
-}
-
-.unlock-text {
-color: #cbd5e1;
-font-size: 1rem;
-line-height: 1.6;
-margin-bottom: 18px;
-}
-
-.unlock-list {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 12px;
-padding: 0;
-margin: 0 0 24px 0;
-list-style: none;
-}
-
-.unlock-list li {
-background: rgba(255,255,255,0.04);
-border: 1px solid rgba(255,255,255,0.06);
-border-radius: 14px;
-padding: 12px 14px;
-color: #e2e8f0;
-font-size: 0.95rem;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.unlock-list li i {
-color: #facc15;
-}
-
-.unlock-footer {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 18px;
-flex-wrap: wrap;
-}
-
-.unlock-price small {
-display: block;
-color: #94a3b8;
-font-size: 0.9rem;
-margin-bottom: 4px;
-}
-
-.unlock-price strong {
-font-size: 2rem;
-color: #fff;
-}
-
+@keyframes pulse-red { 0%,100%{opacity:1} 50%{opacity:0.7} }
+.unlock-title { margin: 0 0 6px 0; color: #fff; font-size: 1.7rem; font-weight: 900; line-height: 1.2; }
+.unlock-subtitle { color: #94a3b8; font-size: 0.95rem; margin: 0 0 20px 0; line-height: 1.5; }
+.unlock-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0; margin: 0 0 24px 0; list-style: none; }
+.unlock-list li { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 14px; color: #e2e8f0; font-size: 0.88rem; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.unlock-list li i { color: #22c55e; font-size: 0.85rem; }
+.unlock-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0 0 22px 0; }
+.unlock-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.unlock-price small { display: block; color: #64748b; font-size: 0.82rem; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+.unlock-price strong { font-size: 2.2rem; color: #fff; font-weight: 900; line-height: 1; }
+.unlock-price em { font-size: 0.85rem; color: #22c55e; font-style: normal; font-weight: 700; display: block; margin-top: 4px; }
 .unlock-button {
-background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-color: #08110b;
-border: none;
-border-radius: 16px;
-padding: 16px 24px;
-font-size: 1rem;
-font-weight: 800;
-cursor: pointer;
-transition: all 0.25s ease;
-box-shadow: 0 12px 24px rgba(34, 197, 94, 0.2);
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-text-decoration: none;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #fff; border: none; border-radius: 16px;
+  padding: 18px 32px; font-size: 1.05rem; font-weight: 900;
+  cursor: pointer; transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(34,197,94,0.35);
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  text-decoration: none; letter-spacing: 0.02em;
+  animation: pulse-btn 2.5s ease-in-out infinite;
+}
+@keyframes pulse-btn { 0%,100%{box-shadow:0 8px 24px rgba(34,197,94,0.35)} 50%{box-shadow:0 12px 36px rgba(34,197,94,0.55)} }
+.unlock-button:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(34,197,94,0.5); animation: none; }
+.unlock-button:disabled { opacity: 0.7; cursor: not-allowed; transform: none; animation: none; }
+.unlock-trust { display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 0.78rem; margin-top: 12px; }
+.unlock-trust i { color: #22c55e; }
+.unlock-whatsapp { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.3); color: #25d366; font-size: 0.85rem; font-weight: 700; padding: 8px 16px; border-radius: 999px; text-decoration: none; transition: background 0.2s; }
+.unlock-whatsapp:hover { background: rgba(37,211,102,0.2); }
+.unlock-whatsapp i { font-size: 1rem; }
+
+/* ── SERVIÇOS ── */
+.servicos-section { background: linear-gradient(135deg, #0d1117 0%, #161b22 100%); padding: 60px 20px; }
+.servicos-inner { max-width: 900px; margin: 0 auto; }
+.servicos-header { text-align: center; margin-bottom: 36px; }
+.servicos-header h2 { font-size: 1.9rem; font-weight: 800; color: #fff; margin: 0 0 8px 0; }
+.servicos-header h2 span { color: #3b82f6; }
+.servicos-header p { color: #94a3b8; font-size: 0.98rem; margin: 0; }
+.servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.servico-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 18px; display: flex; align-items: flex-start; gap: 14px; transition: border-color 0.2s, transform 0.2s; text-decoration: none; cursor: pointer; }
+.servico-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-2px); }
+.servico-card i { font-size: 1.3rem; color: #3b82f6; margin-top: 2px; flex-shrink: 0; width: 22px; text-align: center; }
+.servico-card h4 { color: #fff; font-size: 0.92rem; margin: 0 0 4px 0; font-weight: 700; }
+.servico-card p { color: #94a3b8; font-size: 0.8rem; margin: 0; line-height: 1.5; }
+
+/* ── UPSELL CONTRATOS NO PREVIEW ── */
+.preview-contratos {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 16px;
 }
 
-.unlock-button:hover {
-transform: translateY(-2px);
-box-shadow: 0 16px 30px rgba(34, 197, 94, 0.28);
+.preview-contratos-header {
+  display: flex; align-items: center; gap: 10px;
+  color: #94a3b8; font-size: 0.85rem; font-weight: 600;
+  margin-bottom: 12px;
 }
 
-.unlock-button:disabled {
-opacity: 0.7;
-cursor: not-allowed;
-transform: none;
-box-shadow: none;
+.preview-contratos-header i { color: #22c55e; }
+
+.preview-contratos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
 }
+
+.preview-contrato-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 12px;
+  text-decoration: none; transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.preview-contrato-btn.verde {
+  background: rgba(34,197,94,0.08);
+  border-color: rgba(34,197,94,0.2);
+}
+.preview-contrato-btn.verde:hover {
+  background: rgba(34,197,94,0.14);
+  border-color: rgba(34,197,94,0.4);
+  transform: translateY(-1px);
+}
+
+.preview-contrato-btn.amarelo {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+.preview-contrato-btn.amarelo:hover {
+  background: rgba(245,158,11,0.14);
+  border-color: rgba(245,158,11,0.4);
+  transform: translateY(-1px);
+}
+
+.preview-contrato-btn-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.verde .preview-contrato-btn-icon { background: rgba(34,197,94,0.15); color: #22c55e; }
+.amarelo .preview-contrato-btn-icon { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+.preview-contrato-btn-text { flex: 1; }
+.preview-contrato-btn-text strong { display: block; color: #fff; font-size: 0.88rem; font-weight: 700; }
+.preview-contrato-btn-text small { display: block; color: #94a3b8; font-size: 0.75rem; margin-top: 2px; }
+
+.preview-contrato-btn-preco {
+  font-size: 0.95rem; font-weight: 800; flex-shrink: 0;
+}
+.verde .preview-contrato-btn-preco { color: #22c55e; }
+.amarelo .preview-contrato-btn-preco { color: #f59e0b; }
+
+@media (max-width: 500px) {
+  .preview-contratos-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CONTRATOS ── */
+.contratos-section {
+  background: linear-gradient(135deg, #0a1628 0%, #0d1117 100%);
+  padding: 50px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.contratos-inner { max-width: 900px; margin: 0 auto; }
+.contratos-header { text-align: center; margin-bottom: 32px; }
+.contratos-header .badge-novo {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25);
+  color: #86efac; padding: 7px 14px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700; margin-bottom: 14px;
+}
+.contratos-header h2 { font-size: 1.8rem; font-weight: 800; color: #fff; margin: 0 0 8px 0; }
+.contratos-header h2 span { color: #22c55e; }
+.contratos-header p { color: #94a3b8; font-size: 0.95rem; margin: 0; }
+
+.contratos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+.contrato-card {
+  border-radius: 20px; padding: 26px;
+  display: flex; flex-direction: column; gap: 16px;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.contrato-card:hover { transform: translateY(-4px); }
+.contrato-card.verde { background: linear-gradient(145deg, #0a1f0a, #0d1525); border: 1px solid rgba(34,197,94,0.25); box-shadow: 0 8px 32px rgba(34,197,94,0.08); }
+.contrato-card.verde:hover { box-shadow: 0 16px 40px rgba(34,197,94,0.18); border-color: rgba(34,197,94,0.45); }
+.contrato-card.amarelo { background: linear-gradient(145deg, #1a1200, #0d1525); border: 1px solid rgba(245,158,11,0.25); box-shadow: 0 8px 32px rgba(245,158,11,0.08); }
+.contrato-card.amarelo:hover { box-shadow: 0 16px 40px rgba(245,158,11,0.18); border-color: rgba(245,158,11,0.45); }
+.contrato-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.contrato-card.verde::before { background: linear-gradient(90deg, #22c55e, #16a34a); }
+.contrato-card.amarelo::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
+
+.contrato-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.contrato-card-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.verde .contrato-card-icon { background: rgba(34,197,94,0.15); color: #22c55e; }
+.amarelo .contrato-card-icon { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.contrato-card-preco { text-align: right; }
+.contrato-card-preco small { display: block; color: #94a3b8; font-size: 0.75rem; margin-bottom: 2px; }
+.contrato-card-preco strong { font-size: 1.6rem; font-weight: 800; }
+.verde .contrato-card-preco strong { color: #22c55e; }
+.amarelo .contrato-card-preco strong { color: #f59e0b; }
+.contrato-card h3 { color: #fff; font-size: 1rem; font-weight: 800; margin: 0; }
+.contrato-card p { color: #94a3b8; font-size: 0.83rem; line-height: 1.5; margin: 0; }
+.contrato-card-features { display: flex; flex-direction: column; gap: 7px; }
+.contrato-card-features span { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: #e2eaf5; }
+.verde .contrato-card-features span i { color: #22c55e; font-size: 0.72rem; }
+.amarelo .contrato-card-features span i { color: #f59e0b; font-size: 0.72rem; }
+.contrato-card-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 0.92rem; border: none; cursor: pointer; transition: all 0.2s; margin-top: auto; }
+.verde .contrato-card-btn { background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; box-shadow: 0 4px 14px rgba(34,197,94,0.25); }
+.verde .contrato-card-btn:hover { box-shadow: 0 8px 22px rgba(34,197,94,0.4); }
+.amarelo .contrato-card-btn { background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; box-shadow: 0 4px 14px rgba(245,158,11,0.25); }
+.amarelo .contrato-card-btn:hover { box-shadow: 0 8px 22px rgba(245,158,11,0.4); }
+
+.contratos-garantia { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+.contratos-garantia-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #7a93b0; }
+.contratos-garantia-item i { color: #22c55e; }
+
+/* ── WHATSAPP BAR ── */
+.whatsapp-bar { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); border-radius: 16px; padding: 20px 28px; text-decoration: none; color: #fff; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 24px rgba(37,211,102,0.3); margin-top: 14px; }
+.whatsapp-bar:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
+.whatsapp-bar__icon { font-size: 2rem; flex-shrink: 0; }
+.whatsapp-bar__text { display: flex; flex-direction: column; flex: 1; }
+.whatsapp-bar__text strong { font-size: 1.1rem; font-weight: 800; }
+.whatsapp-bar__text small { font-size: 0.85rem; opacity: 0.9; margin-top: 2px; }
+.whatsapp-bar__arrow { font-size: 1.2rem; opacity: 0.8; }
 
 @media (max-width: 768px) {
-.consulta-title {
-font-size: 2.2rem;
+  .whatsapp-header { padding: 6px 10px; }
+  .whatsapp-header__icon { width: 28px; height: 28px; min-width: 28px; }
+  .whatsapp-header__icon svg { width: 16px; height: 16px; }
+  .whatsapp-header__text small { font-size: 0.6rem; }
+  .whatsapp-header__text strong { font-size: 0.72rem; white-space: normal; line-height: 1.3; }
+  .preview-grid, .unlock-list { grid-template-columns: 1fr; }
+  .preview-card, .unlock-card { padding: 22px; }
+  .servicos-grid { grid-template-columns: 1fr 1fr; }
+  .contratos-grid { grid-template-columns: 1fr; }
 }
-
-.pricing-card {
-padding: 32px 24px;
-margin: 0 16px;
-}
-
-.price {
-font-size: 2.8rem;
-}
-
-.preview-grid,
-.unlock-list {
-grid-template-columns: 1fr;
-}
-
-.preview-card,
-.unlock-card {
-padding: 22px;
-}
+@media (max-width: 480px) {
+  .servicos-grid { grid-template-columns: 1fr; }
 }
 </style>
+<script src="https://js.efipay.com.br/efipay.min.js"></script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRGDLSXL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header class="header">
 <div class="header-inner">
-<img src="logo.png" alt="icarSP" class="header-logo" />
-<nav class="nav">
-<a href="#como-funciona">Como funciona</a>
-<a href="#consulta">Consulta</a>
-<a href="#recursos">Recursos</a>
-<a href="#contato">Contato</a>
-</nav>
+  <img src="logo.png" alt="icarSP" class="header-logo" />
+  <nav class="nav">
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#busca" onclick="setTimeout(()=>{document.getElementById('placa-input').focus();},300)">Consulta</a>
+    <a href="#contratos">Contratos</a>
+    <a href='/consulta-ipva'>Consulta Gratuita</a>
+    <a href='/sobre'>Sobre nós</a>
+    <a href="#contato">Contato</a>
+  </nav>
 </div>
 </header>
 
 <section class="hero" id="busca">
 <div class="hero-inner">
-<span class="badge"><i class="fa fa-shield-halved"></i> Consulta veicular online para São Paulo</span>
-<h1>Consulte <span class="highlight"> histórico do veículo</span> pela placa</h1>
-<p class="hero-sub">Veja informações relevantes para análise veicular, restrições, gravame, histórico, roubo/furto e dados do veículo em um relatório online.</p>
+<h1> Consulte o veiculo <span class="highlight">Pela placa</span>  </h1>
+<p class="hero-sub">Consulte pela placa e descubra, restrições e histórico completo em segundos. <strong>Não compre sem consultar.</strong></p>
+
 
 <div class="search-box">
-<label>Digite a placa para iniciar a consulta</label>
+<label>Digite a placa </label>
 <div class="search-row">
 <input type="text" id="placa-input" placeholder="ABC-1234" maxlength="8" autocomplete="off" />
-<button class="btn-buscar"><i class="fa fa-magnifying-glass"></i> Consultar placa</button>
+<button class="btn-buscar"><i class="fa fa-magnifying-glass"></i> CONSULTAR AGORA</button>
 </div>
 <span class="search-hint">Exemplo: ABC1G34 ou ABC-1234 (placas antigas e Mercosul)</span>
 </div>
 
-<section id="preview-result" class="preview-wrapper">
-<div class="preview-card">
-<div class="preview-header">
-<div>
-<div class="preview-badge"><i class="fa fa-circle-check"></i> Dados básicos liberados</div>
-<h2 class="preview-title">Encontramos informações para esta placa</h2>
-<p class="preview-subtitle">Veja abaixo os dados gratuitos e desbloqueie o relatório completo quando quiser.</p>
-</div>
+
+<div class="payment-badges">
+  <span class="payment-badges__label"><i class="fa fa-lock"></i> Pagamento 100% seguro</span>
+  <div class="payment-badges__icons">
+    <span class="pay-badge"><i class="fa-brands fa-pix"></i> PIX</span>
+    <span class="pay-badge"><i class="fa-brands fa-cc-visa"></i> Visa</span>
+    <span class="pay-badge"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+  </div>
+  <div class="security-seals">
+    <span class="seal seal--green"><i class="fa fa-circle-check"></i> Site Seguro</span>
+    <span class="seal seal--blue"><i class="fa fa-shield-halved"></i> Dados Protegidos</span>
+  </div>
 </div>
 
-<div class="preview-grid">
-<div class="preview-item">
-<span>Placa</span>
-<strong id="preview-placa">-</strong>
-</div>
-<div class="preview-item">
-<span>Marca / Modelo</span>
-<strong id="preview-marca-modelo">-</strong>
-</div>
-<div class="preview-item">
-<span>Ano</span>
-<strong id="preview-ano">-</strong>
-</div>
-<div class="preview-item">
-<span>Combustível</span>
-<strong id="preview-combustivel">-</strong>
-</div>
-<div class="preview-item">
-<span>Cidade de registro</span>
-<strong id="preview-cidade">-</strong>
-</div>
-<div class="preview-item">
-<span>UF</span>
-<strong id="preview-uf">-</strong>
-</div>
-<div class="preview-item">
-<span>Cor</span>
-<strong id="preview-cor">-</strong>
-</div>
-</div>
+<section id="preview-result" class="preview-wrapper" style="display:none;">
+
+<div class="preview-card">
+  <div class="preview-header">
+    <div>
+      <div class="preview-badge"><i class="fa fa-triangle-exclamation"></i> Dados encontrados — acesso bloqueado</div>
+      <h2 class="preview-title">Encontramos o histórico desta placa</h2>
+      <p class="preview-subtitle">Desbloqueie agora para ver proprietário, FIPE, gravame, sinistro e muito mais.</p>
+    </div>
+  </div>
+  <div class="preview-grid">
+    <div class="preview-item"><span>Placa</span><strong id="preview-placa">-</strong></div>
+    <div class="preview-item locked"><span>Marca / Modelo</span><strong>••••• •••••••</strong></div>
+    <div class="preview-item locked"><span>Ano</span><strong>••••/••••</strong></div>
+    <div class="preview-item locked"><span>Combustível</span><strong>•••••</strong></div>
+    <div class="preview-item locked"><span>Cidade de registro</span><strong>••••••••• - ••</strong></div>
+    <div class="preview-item locked"><span>Proprietário atual</span><strong>•••• •• •••••</strong></div>
+    <div class="preview-item locked"><span>Tabela FIPE</span><strong>R$ ••.•••,••</strong></div>
+    <div class="preview-item locked"><span>Gravame</span><strong>••••••••</strong></div>
+    <div class="preview-item locked"><span>Sinistro</span><strong>••••••••</strong></div>
+    <div class="preview-item locked"><span>Registro de Leilão</span><strong>••••••••</strong></div>
+    <div class="preview-item locked"><span>Bloqueio RENAJUD</span><strong>••••••••</strong></div>
+    <div class="preview-item locked"><span>RENAVAM</span><strong>•••••••••••</strong></div>
+  </div>
 </div>
 
 <div class="unlock-card">
-<h3 class="unlock-title">Relatório completo bloqueado</h3>
-
+<div class="unlock-urgency"><i class="fa fa-circle-exclamation"></i> ⚠ Muitos compradores têm prejuízo por não verificar antes de comprar</div>
+<h3 class="unlock-title">Não compre sem verificar — veja tudo sobre este veículo</h3>
+<p class="unlock-subtitle">Descubra se há multas, restrições, gravame ou histórico de sinistro antes de fechar o negócio. <strong>Evite cair em golpe.</strong></p>
 <ul class="unlock-list">
-<li><i class="fa fa-lock"></i> Proprietário atual</li>
-<li><i class="fa fa-lock"></i> Histórico de leilão</li>
-<li><i class="fa fa-lock"></i> Tabela FIPE</li>
-<li><i class="fa fa-lock"></i> Gravame alienação fiduciária</li>
-<li><i class="fa fa-lock"></i> Roubo e furto</li>
-<li><i class="fa fa-lock"></i> RENAVAM / Chassi / bloqueios</li>
-<li><i class="fa fa-lock"></i> Débitos</li>
+<li><i class="fa fa-circle-check"></i> Proprietário atual</li>
+<li><i class="fa fa-circle-check"></i> Tabela FIPE atualizada</li>
+<li><i class="fa fa-circle-check"></i> Gravame / alienação</li>
+<li><i class="fa fa-circle-check"></i> Sinistro e colisão</li>
+<li><i class="fa fa-circle-check"></i> Registro de leilão</li>
+<li><i class="fa fa-circle-check"></i> Bloqueio RENAJUD</li>
+<li><i class="fa fa-circle-check"></i> RENAVAM e Chassi</li>
+<li><i class="fa fa-circle-check"></i> Roubo e furto</li>
 </ul>
-
+<div class="unlock-divider"></div>
 <div class="unlock-footer">
 <div class="unlock-price">
-<small>Pagamento único</small>
-<strong id="preview-price">R$ 19,99</strong>
+<small>PIX, Cartão de Crédito/Débito ou Boleto</small>
+<strong id="preview-price">R$ 14,99</strong>
+<em><i class="fa fa-bolt"></i> Acesso imediato após pagamento</em>
 </div>
 <button id="unlock-report-button" class="unlock-button">
-<i class="fa fa-unlock-keyhole"></i>
-Desbloquear relatório completo
+<i class="fa fa-unlock-keyhole"></i> VER RELATÓRIO AGORA
 </button>
 </div>
+<div class="unlock-trust">
+<i class="fa fa-shield-halved"></i> Pagamento 100% seguro &nbsp;·&nbsp;
+<i class="fa fa-clock"></i> Acesso em segundos
+</div>
+</div>
+
+<div class="preview-contratos">
+  <div class="preview-contratos-header">
+    <i class="fa fa-file-signature"></i>
+    <span>🤝 Gostou do veículo? Proteja sua negociação com um contrato!</span>
+  </div>
+  <div class="preview-contratos-grid">
+    <a class='preview-contrato-btn verde' href='/contrato'>
+      <div class="preview-contrato-btn-icon"><i class="fa fa-file-contract"></i></div>
+      <div class="preview-contrato-btn-text">
+        <strong>Contrato de venda à vista</strong>
+        <small>Compra e venda simples • PDF na hora</small>
+      </div>
+      <div class="preview-contrato-btn-preco">R$ 19,99</div>
+    </a>
+    <a class='preview-contrato-btn amarelo' href='/contrato-parcelado'>
+      <div class="preview-contrato-btn-icon"><i class="fa fa-calendar-days"></i></div>
+      <div class="preview-contrato-btn-text">
+        <strong>Contrato de venda parcelado</strong>
+        <small>Reserva de domínio • Art. 521 CC</small>
+      </div>
+      <div class="preview-contrato-btn-preco">R$ 29,99</div>
+    </a>
+  </div>
 </div>
 </section>
 
@@ -587,32 +474,115 @@ Desbloquear relatório completo
 </div>
 </div>
 </section>
+
+<!-- ── SERVIÇOS ── -->
+<section class="servicos-section" id="servicos">
+<div class="servicos-inner">
+  <div class="servicos-header">
+    <h2>Nossos <span>serviços</span></h2>
+    <p>Despachante documentalista com acesso oficial ao e-CRV SP. Muito além da consulta de placa.</p>
+  </div>
+  <div class="servicos-grid">
+    <a class="servico-card" href="/servico-consulta-veicular.html">
+      <i class="fa fa-magnifying-glass"></i>
+      <div><h4>Consulta veicular</h4><p>Histórico completo pela placa: restrições, gravame, roubo, débitos e mais.</p></div>
+    </a>
+    <a class="servico-card" href="/servico-crlv-e.html">
+      <i class="fa fa-file-lines"></i>
+      <div><h4>Emissão de CRLV-e</h4><p>Emitimos o CRLV digital para veículos SP via sistema oficial e-CRV SP.</p></div>
+    </a>
+    <a class="servico-card" href="/servico-atpv-e.html">
+      <i class="fa fa-file-signature"></i>
+      <div><h4>Emissão de ATPV-e</h4><p>Autorização para transferência de propriedade do veículo de forma digital.</p></div>
+    </a>
+    <a class="servico-card" href="/servico-transferencia.html">
+      <i class="fa fa-right-left"></i>
+      <div><h4>Transferência de veículo</h4><p>Realizamos todo o processo de transferência de propriedade com agilidade.</p></div>
+    </a>
+    <a class="servico-card" href="/servico-primeiro-emplacamento.html">
+      <i class="fa fa-car"></i>
+      <div><h4>Primeiro emplacamento</h4><p>Emplacamento de veículos novos e importados direto no Detran SP.</p></div>
+    </a>
+    <a class="servico-card" href="/servico-liberacao-apreendido.html">
+      <i class="fa fa-unlock"></i>
+      <div><h4>Liberação de veículo apreendido</h4><p>Orientamos e agilizamos o processo de liberação de veículos retidos.</p></div>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- ── CONTRATOS ── -->
+<section class="contratos-section" id="contratos">
+<div class="contratos-inner">
+  <div class="contratos-header">
+    <div class="badge-novo"><i class="fa fa-star"></i> Novo serviço digital</div>
+    <h2>Contratos de <span>Compra e Venda</span> Online</h2>
+    <p>Gere um contrato jurídico profissional em PDF em minutos. Envie o CRLV e a IA preenche os dados automaticamente.</p>
+  </div>
+
+  <div class="contratos-grid">
+    <a class='contrato-card verde' href='/contrato'>
+      <div class="contrato-card-top">
+        <div class="contrato-card-icon"><i class="fa fa-file-contract"></i></div>
+        <div class="contrato-card-preco">
+          <small>Pagamento único</small>
+          <strong>R$ 19,99</strong>
+        </div>
+      </div>
+      <h3>Contrato de Compra e Venda</h3>
+      <p>Para negociações à vista. Contrato completo com todos os dados do veículo, comprador e vendedor.</p>
+      <div class="contrato-card-features">
+        <span><i class="fa fa-check"></i> PDF profissional gerado na hora</span>
+        <span><i class="fa fa-check"></i> Preenchimento automático por IA</span>
+        <span><i class="fa fa-check"></i> Válido juridicamente no Brasil</span>
+        <span><i class="fa fa-check"></i> Cláusulas de proteção completas</span>
+      </div>
+      <div class="contrato-card-btn">
+        <i class="fa fa-file-contract"></i> Gerar contrato 
+      </div>
+    </a>
+
+    <a class='contrato-card amarelo' href='/contrato-parcelado'>
+      <div class="contrato-card-top">
+        <div class="contrato-card-icon"><i class="fa fa-calendar-days"></i></div>
+        <div class="contrato-card-preco">
+          <small>Pagamento único</small>
+          <strong>R$ 29,99</strong>
+        </div>
+      </div>
+      <h3>Contrato com Reserva de Domínio</h3>
+      <p>Para negociações parceladas. O vendedor mantém a propriedade até o pagamento total. Art. 521 CC.</p>
+      <div class="contrato-card-features">
+        <span><i class="fa fa-check"></i> Cláusula de reserva de domínio</span>
+        <span><i class="fa fa-check"></i> Cronograma completo de parcelas</span>
+        <span><i class="fa fa-check"></i> Penalidades por inadimplência</span>
+        <span><i class="fa fa-check"></i> Vedação de alienação do veículo</span>
+      </div>
+      <div class="contrato-card-btn">
+        <i class="fa fa-calendar-days"></i> Gerar contrato 
+      </div>
+    </a>
+  </div>
+
+  <div class="contratos-garantia">
+    <div class="contratos-garantia-item"><i class="fa fa-lock"></i> Pagamento seguro via PIX</div>
+    <div class="contratos-garantia-item"><i class="fa fa-bolt"></i> Download imediato</div>
+    <div class="contratos-garantia-item"><i class="fa fa-scale-balanced"></i> Validade jurídica nacional</div>
+    <div class="contratos-garantia-item"><i class="fa fa-robot"></i> IA preenche os dados</div>
+  </div>
+</div>
+</section>
+
 <section class="section section-dark" id="como-funciona">
 <div class="section-inner">
 <h2 class="section-title">Como funciona</h2>
 <p class="section-sub">Entenda como funciona a consulta e o acesso ao relatório</p>
 <div class="steps">
-<div class="step">
-<div class="step-num">1</div>
-<h3>Digite a placa</h3>
-<p>Informe a placa no formato antigo ou Mercosul para iniciar a consulta.</p>
-</div>
-
+<div class="step"><div class="step-num">1</div><h3>Digite a placa</h3><p>Informe a placa no formato antigo ou Mercosul para iniciar a consulta.</p></div>
 <div class="step-arrow"><i class="fa fa-arrow-right"></i></div>
-
-<div class="step">
-<div class="step-num">2</div>
-<h3>Veja os dados básicos grátis</h3>
-<p>Exibimos imediatamente informações como marca, modelo, ano, combustível e valor FIPE.</p>
-</div>
-
+<div class="step"><div class="step-num">2</div><h3>Veja os dados básicos grátis</h3><p>Exibimos imediatamente informações como marca, modelo, ano, combustível e valor FIPE.</p></div>
 <div class="step-arrow"><i class="fa fa-arrow-right"></i></div>
-
-<div class="step">
-<div class="step-num">3</div>
-<h3>Desbloqueie o relatório completo</h3>
-<p>Se quiser ver alertas, restrições, débitos e histórico, conclua o pagamento com segurança.</p>
-</div>
+<div class="step"><div class="step-num">3</div><h3>Desbloqueie o relatório completo</h3><p>Se quiser ver alertas, restrições, débitos e histórico, conclua o pagamento com segurança.</p></div>
 </div>
 </div>
 </section>
@@ -621,13 +591,16 @@ Desbloquear relatório completo
 <div class="footer-inner">
 <div class="footer-col">
 <img src="logo.png" alt="icarSP" class="footer-logo" />
-<p>Consulta veicular online com foco em débitos, restrições, gravame e histórico do veículo pela placa.</p>
+<p>Bruno Henrique Camacho</p>
+<p>Despachante veicular - São Paulo</p>
+<p>CRDD 005636-7</p>
 </div>
 <div class="footer-col">
 <h4>Links</h4>
-<a href="#recursos">Recursos</a>
+<a href="#servicos">Serviços</a>
+<a href="#contratos">Contratos</a>
 <a href="#como-funciona">Como funciona</a>
-<a href="#consulta">Consulta</a>
+<a href='/sobre'>Sobre nós</a>
 </div>
 <div class="footer-col">
 <h4>Legal</h4>
@@ -637,7 +610,8 @@ Desbloquear relatório completo
 </div>
 <div class="footer-col">
 <h4>Contato</h4>
-<a href="mailto:contato@icarsp.com.br">contato@icarsp.com.br</a>
+<a href="mailto:icarspconsultas@gmail.com">icarspconsultas@gmail.com</a>
+<a href="https://wa.me/5514991548791" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;color:#25d366;font-weight:600;text-decoration:none;"><i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Falar no WhatsApp</a>
 </div>
 </div>
 <div class="footer-bottom">
@@ -645,230 +619,489 @@ Desbloquear relatório completo
 </div>
 </footer>
 
-<div id="pix-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center;">
-<div style="background: white; padding: 30px; border-radius: 16px; max-width: 400px; width: calc(100% - 32px); text-align: center;">
-<h2 style="color: #333; margin-bottom: 20px;">Pagamento PIX</h2>
-<div id="qr-code-container" style="margin: 20px auto; min-height: 200px; display: flex; align-items: center; justify-content: center;"></div>
-<p style="color: #666; margin: 15px 0;">Escaneie o QR Code ou copie o código PIX abaixo:</p>
-<input type="text" id="pix-copia-cola" readonly style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #f5f5f5;">
-<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-<button onclick="copiarPix()" style="background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Copiar código</button>
-<button onclick="fecharPixModal()" style="background: #666; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Fechar</button>
-</div>
-<div id="status-pagamento" style="margin-top: 15px; font-weight: bold; color: #333;"></div>
-</div>
-</div>
 
-<script>
-function normalizarPlaca(valor) {
-return String(valor || '')
-.replace(/[^a-zA-Z0-9]/g, '')
-.toUpperCase();
-}
-
-function setPreviewText(id, value) {
-const element = document.getElementById(id);
-if (!element) return;
-element.textContent = value || '-';
-}
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function normalizarPlaca(valor) { return String(valor || '').replace(/[^a-zA-Z0-9]/g, '').toUpperCase(); }
+function setPreviewText(id, value) { const el = document.getElementById(id); if (!el) return; el.textContent = value || '-'; }
 function mostrarPreview(data) {
-setPreviewText('preview-placa', data.placa);
-setPreviewText('preview-marca-modelo', data.basic?.marca_modelo);
-setPreviewText('preview-ano', data.basic?.ano);
-setPreviewText('preview-combustivel', data.basic?.combustivel);
-setPreviewText('preview-cidade', data.basic?.cidade_registro);
-setPreviewText('preview-uf', data.basic?.uf_registro);
-setPreviewText('preview-cor', data.basic?.cor);
-setPreviewText('preview-alert-count', data.teaser?.alertCount);
-setPreviewText('preview-teaser-message', data.teaser?.message);
-setPreviewText('preview-price', data.offer?.price || 'R$ 19,99');
-
-const preview = document.getElementById('preview-result');
-preview.style.display = 'block';
-preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setPreviewText('preview-placa', data.placa);
+  setPreviewText('preview-marca-modelo', data.basic?.marca_modelo);
+  setPreviewText('preview-ano', data.basic?.ano);
+  setPreviewText('preview-combustivel', data.basic?.combustivel);
+  setPreviewText('preview-cidade', data.basic?.cidade_registro);
+  setPreviewText('preview-uf', data.basic?.uf_registro);
+  setPreviewText('preview-cor', data.basic?.cor);
+  setPreviewText('preview-alert-count', data.teaser?.alertCount);
+  setPreviewText('preview-teaser-message', data.teaser?.message);
+  setPreviewText('preview-price', data.offer?.price || 'R$ 14,99');
+  const preview = document.getElementById('preview-result');
+  preview.style.display = 'block';
+  preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 function restaurarBotaoBusca() {
-const btn = document.querySelector('.btn-buscar');
-btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> Consultar placa';
-btn.disabled = false;
+  const btn = document.querySelector('.btn-buscar');
+  btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> Consultar placa';
+  btn.disabled = false;
 }
-
 async function consultarPreviewPlaca(placa) {
-const response = await fetch(`/.netlify/functions/get-basic-report?placa=${encodeURIComponent(placa)}`);
-const data = await response.json();
-
-if (!response.ok || !data.success) {
-throw new Error(data.message || 'Erro ao consultar placa.');
+  const response = await fetch(`/.netlify/functions/get-basic-report?placa=${encodeURIComponent(placa)}`);
+  const data = await response.json();
+  if (!response.ok || !data.success) throw new Error(data.message || 'Erro ao consultar placa.');
+  return data;
 }
-
-return data;
-}
-
-document.querySelector('.btn-buscar').addEventListener('click', async () => {
-const placa = normalizarPlaca(document.getElementById('placa-input').value);
-
-if (placa.length < 7) {
-alert('Digite uma placa válida!');
-return;
-}
-
-const btn = document.querySelector('.btn-buscar');
-btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Consultando...';
-btn.disabled = true;
-
-try {
-const data = await consultarPreviewPlaca(placa);
-mostrarPreview(data);
-restaurarBotaoBusca();
-} catch (e) {
-console.error('Erro detalhado:', e);
-alert('Erro ao consultar placa: ' + e.message);
-restaurarBotaoBusca();
-}
+document.querySelector('.btn-buscar').addEventListener('click', () => {
+  const placa = normalizarPlaca(document.getElementById('placa-input').value);
+  if (placa.length < 7) { alert('Digite uma placa válida!'); return; }
+  placaAtual = placa;
+  document.getElementById('preview-placa').textContent = placa;
+  const preview = document.getElementById('preview-result');
+  preview.style.display = 'block';
+  preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
-
 let placaAtual = '';
-let paymentIdAtual = '';
+let efiAccountId = null;
 let pollingInterval = null;
 
-async function iniciarPagamentoMP() {
-const unlockButton = document.getElementById('unlock-report-button');
-placaAtual = document.getElementById('preview-placa').textContent.trim();
-
-if (!placaAtual || placaAtual === '-') {
-alert('Faça a consulta da placa primeiro.');
-return;
+async function iniciarCheckout() {
+  placaAtual = placaAtual || document.getElementById('preview-placa').textContent.trim();
+  if (!placaAtual || placaAtual === '-') { alert('Faça a consulta da placa primeiro.'); return; }
+  document.getElementById('modal-placa').textContent = placaAtual;
+  document.getElementById('payment-modal').style.display = 'flex';
+  document.getElementById('payment-status').innerHTML = '';
+  document.getElementById('pix-loading').style.display = 'block';
+  document.getElementById('pix-content').style.display = 'none';
+  document.getElementById('pix-error').style.display = 'none';
+  selectPaymentTab('pix');
+  gerarPix();
 }
 
-if (unlockButton.disabled) {
-return;
+function selectPaymentTab(tab) {
+  document.getElementById('tab-pix-content').style.display = tab === 'pix' ? 'block' : 'none';
+  document.getElementById('tab-card-content').style.display = tab === 'card' ? 'block' : 'none';
+  ['pix', 'card'].forEach(t => {
+    const btn = document.getElementById('tab-btn-' + t);
+    const active = t === tab;
+    btn.style.color = active ? '#009ee3' : '#888';
+    btn.style.borderBottom = active ? '2px solid #009ee3' : '2px solid transparent';
+  });
+  if (tab === 'card') carregarFormularioCartao();
 }
 
-const modal = document.getElementById('pix-modal');
-const qrContainer = document.getElementById('qr-code-container');
-const pixInput = document.getElementById('pix-copia-cola');
-const statusDiv = document.getElementById('status-pagamento');
-
-unlockButton.disabled = true;
-unlockButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Gerando PIX...';
-
-modal.style.display = 'flex';
-statusDiv.innerHTML = 'Gerando pagamento...';
-qrContainer.innerHTML = '<i class="fa fa-spinner fa-spin" style="font-size: 40px; color: #666;"></i>';
-pixInput.value = '';
-
-try {
-const response = await fetch('/.netlify/functions/create-mp-payment', {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({ placa: placaAtual })
-});
-
-const data = await response.json();
-
-if (!response.ok) {
-throw new Error(data.error || data.message || 'Erro ao gerar pagamento');
-}
-
-const paymentId = data.paymentId || data.payment_id;
-
-if (!paymentId) {
-throw new Error('paymentId não retornado pela função de pagamento');
-}
-
-paymentIdAtual = String(paymentId);
-
-if (data.qr_code_base64) {
-qrContainer.innerHTML = `<img src="data:image/png;base64,${data.qr_code_base64}" style="width: 200px; height: 200px;" alt="QR Code PIX">`;
-} else if (data.qr_code) {
-qrContainer.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.qr_code)}" alt="QR Code PIX">`;
-} else {
-qrContainer.innerHTML = '<p style="color:#333;">QR Code não disponível.</p>';
-}
-
-pixInput.value = data.pix_copia_e_cola || data.qr_code || '';
-statusDiv.innerHTML = '⏳ Pagamento PIX gerado! Aguardando confirmação...';
-
-unlockButton.innerHTML = '<i class="fa fa-clock"></i> Aguardando pagamento...';
-
-verificarPagamentoMP(paymentIdAtual);
-} catch (error) {
-console.error('Erro ao iniciar pagamento:', error);
-statusDiv.innerHTML = '❌ ' + error.message;
-qrContainer.innerHTML = '';
-
-unlockButton.disabled = false;
-unlockButton.innerHTML = '<i class="fa fa-unlock-keyhole"></i> Desbloquear relatório completo';
-}
-}
-
-function verificarPagamentoMP(paymentId) {
-if (pollingInterval) {
-clearInterval(pollingInterval);
-}
-
-pollingInterval = setInterval(async () => {
-try {
-const response = await fetch(`/.netlify/functions/check-mp-payment?payment_id=${encodeURIComponent(paymentId)}`);
-const data = await response.json();
-
-if (data.pago || data.status === 'approved') {
-clearInterval(pollingInterval);
-pollingInterval = null;
-
-document.getElementById('status-pagamento').innerHTML = '✅ PAGAMENTO CONFIRMADO! Redirecionando...';
-
-const unlockButton = document.getElementById('unlock-report-button');
-unlockButton.disabled = true;
-unlockButton.innerHTML = '<i class="fa fa-check"></i> Pagamento confirmado';
-
-setTimeout(() => {
-window.location.href = `/resultado.html?paymentId=${encodeURIComponent(paymentId)}`;
-}, 2000);
-} else if (data.status === 'rejected' || data.status === 'cancelled') {
-clearInterval(pollingInterval);
-pollingInterval = null;
-
-document.getElementById('status-pagamento').innerHTML = '❌ Pagamento não confirmado. Tente novamente.';
-
-const unlockButton = document.getElementById('unlock-report-button');
-unlockButton.disabled = false;
-unlockButton.innerHTML = '<i class="fa fa-unlock-keyhole"></i> Tentar novamente';
-}
-} catch (error) {
-console.error('Erro ao verificar pagamento:', error);
-}
-}, 3000);
+async function gerarPix() {
+  try {
+    const response = await fetch('/.netlify/functions/create-efi-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ placa: placaAtual })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Erro ao gerar PIX');
+    const paymentId = String(data.paymentId || data.payment_id);
+    const qrImg = document.getElementById('pix-qr-img');
+    if (data.qr_code_base64) {
+      qrImg.innerHTML = `<img src="data:image/png;base64,${data.qr_code_base64}" style="width:180px;height:180px;border-radius:8px;" alt="QR Code PIX">`;
+    } else if (data.qr_code) {
+      qrImg.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(data.qr_code)}" style="border-radius:8px;" alt="QR Code PIX">`;
+    }
+    document.getElementById('pix-copia-cola').value = data.pix_copia_e_cola || data.qr_code || '';
+    document.getElementById('pix-loading').style.display = 'none';
+    document.getElementById('pix-content').style.display = 'block';
+    iniciarPolling(paymentId, 'pix');
+  } catch (error) {
+    document.getElementById('pix-loading').style.display = 'none';
+    const errEl = document.getElementById('pix-error');
+    errEl.style.display = 'block';
+    errEl.textContent = error.message || 'Erro ao gerar PIX';
+  }
 }
 
 function copiarPix() {
-const input = document.getElementById('pix-copia-cola');
-input.select();
-input.setSelectionRange(0, 99999);
-document.execCommand('copy');
-alert('Código PIX copiado!');
+  const input = document.getElementById('pix-copia-cola');
+  input.select(); input.setSelectionRange(0, 99999);
+  navigator.clipboard?.writeText(input.value).catch(() => document.execCommand('copy'));
+  const btn = event.currentTarget;
+  btn.textContent = 'Copiado!';
+  setTimeout(() => btn.textContent = 'Copiar', 2000);
 }
 
-function fecharPixModal() {
-document.getElementById('pix-modal').style.display = 'none';
-document.getElementById('qr-code-container').innerHTML = '';
-document.getElementById('pix-copia-cola').value = '';
-document.getElementById('status-pagamento').innerHTML = '';
-
-const unlockButton = document.getElementById('unlock-report-button');
-unlockButton.disabled = false;
-unlockButton.innerHTML = '<i class="fa fa-unlock-keyhole"></i> Desbloquear relatório completo';
-
-if (pollingInterval) {
-clearInterval(pollingInterval);
-pollingInterval = null;
+async function carregarFormularioCartao() {
+  if (efiAccountId !== null) return;
+  try {
+    const configRes = await fetch('/.netlify/functions/get-efi-config');
+    const config = await configRes.json();
+    efiAccountId = config.accountId || '';
+    if (efiAccountId && typeof EfipayCard !== 'undefined') {
+      EfipayCard.setAccount(efiAccountId);
+      EfipayCard.debugger(false);
+    }
+  } catch (e) {
+    console.warn('Aviso ao carregar config EFI:', e);
+    efiAccountId = '';
+  }
 }
+
+function detectCardBrand(number) {
+  const n = number.replace(/\D/g, '');
+  if (/^4/.test(n)) return 'visa';
+  if (/^5[1-5]/.test(n) || /^2[2-7]/.test(n)) return 'mastercard';
+  if (/^3[47]/.test(n)) return 'amex';
+  if (/^606282|^637095/.test(n)) return 'hipercard';
+  if (/^(4011|4312|4389|4514|4576|5041|5067|6277|6362|6516|6550)/.test(n)) return 'elo';
+  return 'visa';
 }
 
-document.getElementById('unlock-report-button').addEventListener('click', iniciarPagamentoMP);
+function formatCardNumber(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 16);
+  el.value = v.replace(/(.{4})/g, '$1 ').trim();
+  const brand = detectCardBrand(v);
+  const icons = { visa: 'fa-cc-visa', mastercard: 'fa-cc-mastercard', amex: 'fa-cc-amex', hipercard: 'fa-credit-card', elo: 'fa-credit-card' };
+  const icon = document.getElementById('card-brand-icon');
+  if (icon) icon.className = `fa-brands ${icons[brand] || 'fa-credit-card'}`;
+}
+
+function formatExpiry(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 6);
+  if (v.length >= 2) v = v.slice(0, 2) + '/' + v.slice(2);
+  el.value = v;
+}
+
+function formatCpf(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 11);
+  v = v.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  el.value = v;
+}
+
+function formatDateBirth(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 8);
+  if (v.length >= 4) v = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
+  else if (v.length >= 2) v = v.slice(0, 2) + '/' + v.slice(2);
+  el.value = v;
+}
+
+function formatPhone(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 11);
+  if (v.length >= 7) v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+  else if (v.length >= 2) v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+  el.value = v;
+}
+
+function formatCep(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 8);
+  if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+  el.value = v;
+}
+
+async function buscarCep() {
+  const cep = document.getElementById('card-cep').value.replace(/\D/g, '');
+  if (cep.length !== 8) return;
+  try {
+    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await res.json();
+    if (data.erro) return;
+    document.getElementById('card-street').value = data.logradouro || '';
+    document.getElementById('card-neighborhood').value = data.bairro || '';
+    document.getElementById('card-city').value = data.localidade || '';
+    document.getElementById('card-state').value = data.uf || '';
+  } catch (e) { /* silencioso */ }
+}
+
+async function submitCardPayment() {
+  const btn = document.getElementById('card-submit-btn');
+  const errorDiv = document.getElementById('card-error');
+  errorDiv.style.display = 'none';
+
+  const cardNumber = document.getElementById('card-number').value.replace(/\D/g, '');
+  const cardName = document.getElementById('card-name').value.trim();
+  const expiryRaw = document.getElementById('card-expiry').value;
+  const cvv = document.getElementById('card-cvv').value.trim();
+  const cpf = document.getElementById('card-cpf').value.replace(/\D/g, '');
+  const birthRaw = document.getElementById('card-birth').value;
+  const phone = document.getElementById('card-phone').value.replace(/\D/g, '');
+  const email = document.getElementById('card-email').value.trim();
+  const cep = document.getElementById('card-cep').value.replace(/\D/g, '');
+  const street = document.getElementById('card-street').value.trim();
+  const streetNum = document.getElementById('card-street-num').value.trim();
+  const neighborhood = document.getElementById('card-neighborhood').value.trim();
+  const city = document.getElementById('card-city').value.trim();
+  const state = document.getElementById('card-state').value.trim().toUpperCase();
+
+  if (cardNumber.length < 15) return mostrarErroCartao('Número do cartão inválido.');
+  if (!cardName) return mostrarErroCartao('Informe o nome no cartão.');
+  if (!expiryRaw.includes('/') || expiryRaw.length < 7) return mostrarErroCartao('Validade inválida (MM/AAAA).');
+  if (cvv.length < 3) return mostrarErroCartao('CVV inválido.');
+  if (cpf.length !== 11) return mostrarErroCartao('CPF inválido.');
+  if (birthRaw.length < 10) return mostrarErroCartao('Data de nascimento inválida.');
+  if (phone.length < 10) return mostrarErroCartao('Telefone inválido.');
+  if (!email.includes('@')) return mostrarErroCartao('E-mail inválido.');
+  if (!street || !streetNum || !neighborhood || !city || state.length !== 2 || cep.length !== 8) return mostrarErroCartao('Preencha todos os campos do endereço.');
+
+  const [expiryMonth, expiryYear] = expiryRaw.split('/');
+  const [birthDay, birthMonth, birthYear] = birthRaw.split('/');
+  const birthFormatted = `${birthYear}-${birthMonth}-${birthDay}`;
+  const brand = detectCardBrand(cardNumber);
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processando...';
+
+  try {
+    const payment_token = await new Promise((resolve, reject) => {
+      EfipayCard.getPaymentToken({
+        brand,
+        number: cardNumber,
+        cvv,
+        expiration_month: expiryMonth,
+        expiration_year: expiryYear,
+        reuse: false,
+      }, (error, response) => {
+        if (error) reject(new Error(error.error_description || 'Erro ao tokenizar cartão'));
+        else resolve(response.data.payment_token);
+      });
+    });
+
+    const response = await fetch('/.netlify/functions/create-efi-card-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        placa: placaAtual,
+        payment_token,
+        customer_name: cardName,
+        customer_cpf: cpf,
+        customer_email: email,
+        customer_phone: phone,
+        customer_birth: birthFormatted,
+        billing_street: street,
+        billing_number: streetNum,
+        billing_neighborhood: neighborhood,
+        billing_zipcode: cep,
+        billing_city: city,
+        billing_state: state,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Erro ao processar pagamento');
+
+    if (data.pago) {
+      if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18020584705' });
+      window.location.href = `/resultado.html?paymentId=${encodeURIComponent(data.paymentId)}`;
+    } else {
+      btn.innerHTML = '<i class="fa fa-clock"></i> Aguardando aprovação...';
+      iniciarPolling(data.paymentId, 'card');
+    }
+  } catch (error) {
+    btn.disabled = false;
+    btn.innerHTML = '🔒 Pagar R$ 14,99';
+    mostrarErroCartao(error.message || 'Erro ao processar pagamento.');
+  }
+}
+
+function mostrarErroCartao(msg) {
+  const errorDiv = document.getElementById('card-error');
+  errorDiv.textContent = msg;
+  errorDiv.style.display = 'block';
+}
+
+function iniciarPolling(paymentId, method) {
+  if (pollingInterval) clearInterval(pollingInterval);
+  const endpoint = method === 'card'
+    ? `/.netlify/functions/check-efi-card-payment?payment_id=${encodeURIComponent(paymentId)}`
+    : `/.netlify/functions/check-efi-payment?payment_id=${encodeURIComponent(paymentId)}`;
+  pollingInterval = setInterval(async () => {
+    try {
+      const res = await fetch(endpoint);
+      const data = await res.json();
+      if (data.pago || data.status === 'approved') {
+        clearInterval(pollingInterval); pollingInterval = null;
+        if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18020584705' });
+        window.location.href = `/resultado.html?paymentId=${encodeURIComponent(paymentId)}`;
+      }
+    } catch(e) { console.error(e); }
+  }, 4000);
+}
+
+function fecharPaymentModal() {
+  document.getElementById('payment-modal').style.display = 'none';
+  if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
+}
+
+document.getElementById('unlock-report-button').addEventListener('click', iniciarCheckout);
 </script>
+
+
+<div id="payment-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,5,20,0.92);z-index:10000;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px 0;">
+  <div style="background:linear-gradient(160deg,#0d1f3c 0%,#0a1628 60%,#0c1e38 100%);border:1px solid rgba(59,130,246,0.25);border-radius:20px;max-width:500px;width:calc(100% - 32px);margin:20px auto;padding:28px 24px 20px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(59,130,246,0.1);">
+
+    <!-- Barra decorativa topo -->
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#06b6d4,#3b82f6);border-radius:20px 20px 0 0;"></div>
+
+    <button onclick="fecharPaymentModal()" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:50%;width:30px;height:30px;font-size:16px;cursor:pointer;color:#94a3b8;line-height:1;display:flex;align-items:center;justify-content:center;">✕</button>
+
+    <!-- Cabeçalho -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);display:flex;align-items:center;justify-content:center;">
+        <i class="fa fa-lock" style="color:#fff;font-size:0.9rem;"></i>
+      </div>
+      <h2 style="color:#e2e8f0;font-size:1.1rem;margin:0;font-weight:800;">Finalizar pagamento</h2>
+    </div>
+    <p style="color:#64748b;font-size:0.85rem;margin:0 0 18px 44px;">Placa: <strong id="modal-placa" style="color:#93c5fd;"></strong> &nbsp;·&nbsp; <strong style="color:#22c55e;">R$ 14,99</strong></p>
+
+    <!-- Tabs -->
+    <div style="display:flex;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:20px;">
+      <button id="tab-btn-pix" onclick="selectPaymentTab('pix')" style="flex:1;padding:10px 8px;border:none;background:none;cursor:pointer;font-size:0.9rem;font-weight:700;color:#06b6d4;border-bottom:2px solid #06b6d4;margin-bottom:-1px;">
+        <i class="fa-brands fa-pix"></i> PIX
+      </button>
+      <button id="tab-btn-card" onclick="selectPaymentTab('card')" style="flex:1;padding:10px 8px;border:none;background:none;cursor:pointer;font-size:0.9rem;font-weight:700;color:#888;border-bottom:2px solid transparent;margin-bottom:-1px;">
+        <i class="fa fa-credit-card"></i> Cartão
+      </button>
+    </div>
+
+    <!-- PIX Content -->
+    <div id="tab-pix-content">
+      <div id="pix-loading" style="text-align:center;padding:30px 20px;">
+        <i class="fa fa-spinner fa-spin" style="font-size:28px;color:#3b82f6;"></i>
+        <p style="color:#64748b;margin-top:10px;font-size:0.85rem;">Gerando código PIX...</p>
+      </div>
+      <div id="pix-content" style="display:none;text-align:center;">
+        <div id="pix-qr-img" style="margin:0 auto 14px;"></div>
+        <p style="color:#94a3b8;font-size:0.85rem;margin-bottom:8px;">Copie o código PIX abaixo:</p>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
+          <input id="pix-copia-cola" type="text" readonly style="flex:1;padding:10px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;font-size:0.78rem;background:rgba(255,255,255,0.05);color:#e2e8f0;min-width:0;">
+          <button onclick="copiarPix()" style="padding:10px 14px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:0.85rem;white-space:nowrap;box-shadow:0 4px 12px rgba(59,130,246,0.3);">Copiar</button>
+        </div>
+        <p style="color:#475569;font-size:0.78rem;"><i class="fa fa-clock" style="color:#06b6d4;"></i> Aguardando confirmação do pagamento...</p>
+      </div>
+      <div id="pix-error" style="display:none;color:#f87171;text-align:center;padding:16px;font-size:0.9rem;"></div>
+    </div>
+
+    <!-- Card Content -->
+    <div id="tab-card-content" style="display:none;">
+      <div id="efi-card-form">
+        <!-- Número do cartão -->
+        <div style="margin-bottom:10px;">
+          <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Número do cartão</label>
+          <div style="position:relative;">
+            <input id="card-number" type="text" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" oninput="formatCardNumber(this)" style="width:100%;padding:10px 40px 10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+            <i id="card-brand-icon" class="fa-brands fa-credit-card" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#475569;pointer-events:none;"></i>
+          </div>
+        </div>
+
+        <!-- Nome no cartão -->
+        <div style="margin-bottom:10px;">
+          <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Nome no cartão</label>
+          <input id="card-name" type="text" placeholder="Como está no cartão" oninput="this.value=this.value.toUpperCase()" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+        </div>
+
+        <!-- Validade + CVV -->
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Validade</label>
+            <input id="card-expiry" type="text" maxlength="7" placeholder="MM/AAAA" oninput="formatExpiry(this)" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">CVV</label>
+            <input id="card-cvv" type="text" inputmode="numeric" maxlength="4" placeholder="123" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <p style="font-size:0.75rem;color:#475569;margin:12px 0 8px;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px;font-weight:600;">Dados do titular</p>
+
+        <!-- CPF + Nascimento -->
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">CPF</label>
+            <input id="card-cpf" type="text" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" oninput="formatCpf(this)" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Nascimento</label>
+            <input id="card-birth" type="text" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA" oninput="formatDateBirth(this)" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+        </div>
+
+        <!-- Telefone + E-mail -->
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Telefone</label>
+            <input id="card-phone" type="text" inputmode="numeric" maxlength="15" placeholder="(11) 99999-9999" oninput="formatPhone(this)" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">E-mail</label>
+            <input id="card-email" type="email" placeholder="seu@email.com" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <p style="font-size:0.75rem;color:#475569;margin:12px 0 8px;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px;font-weight:600;">Endereço de cobrança</p>
+
+        <!-- CEP -->
+        <div style="display:flex;gap:8px;margin-bottom:10px;align-items:flex-end;">
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">CEP</label>
+            <input id="card-cep" type="text" inputmode="numeric" maxlength="9" placeholder="00000-000" oninput="formatCep(this)" onblur="buscarCep()" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <button onclick="buscarCep()" style="padding:10px 14px;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:8px;color:#93c5fd;font-size:0.82rem;font-weight:700;cursor:pointer;white-space:nowrap;margin-bottom:0;">Buscar</button>
+        </div>
+
+        <!-- Rua + Número -->
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <div style="flex:2;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Rua</label>
+            <input id="card-street" type="text" placeholder="Nome da rua" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Número</label>
+            <input id="card-street-num" type="text" placeholder="123" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+        </div>
+
+        <!-- Bairro + Cidade + UF -->
+        <div style="display:flex;gap:10px;margin-bottom:14px;">
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Bairro</label>
+            <input id="card-neighborhood" type="text" placeholder="Bairro" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <div style="flex:1;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">Cidade</label>
+            <input id="card-city" type="text" placeholder="Cidade" style="width:100%;padding:10px 12px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;">
+          </div>
+          <div style="width:58px;">
+            <label style="display:block;font-size:0.78rem;color:#94a3b8;font-weight:600;margin-bottom:4px;">UF</label>
+            <input id="card-state" type="text" maxlength="2" placeholder="SP" style="width:100%;padding:10px 8px;border:1px solid rgba(59,130,246,0.3);border-radius:8px;background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.9rem;box-sizing:border-box;outline:none;text-transform:uppercase;">
+          </div>
+        </div>
+
+        <!-- Erro -->
+        <div id="card-error" style="display:none;color:#f87171;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:10px 12px;font-size:0.85rem;margin-bottom:10px;"></div>
+
+        <!-- Botão pagar -->
+        <button id="card-submit-btn" onclick="submitCardPayment()" style="width:100%;padding:14px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;border:none;border-radius:10px;font-size:0.95rem;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(59,130,246,0.35);transition:opacity 0.2s;">
+          🔒 Pagar R$ 14,99
+        </button>
+      </div>
+    </div>
+
+    <div id="payment-status" style="margin-top:12px;font-weight:600;text-align:center;color:#e2e8f0;font-size:0.9rem;"></div>
+
+    <!-- Selos de segurança -->
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07);">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);color:#86efac;font-size:0.78rem;font-weight:700;">
+          <i class="fa fa-shield-halved"></i> Compra 100% segura
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#93c5fd;font-size:0.78rem;font-weight:700;">
+          <i class="fa fa-lock"></i> Dados criptografados
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.2);color:#fde047;font-size:0.78rem;font-weight:700;">
+          <i class="fa fa-bolt"></i> Resultado imediato
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:#d8b4fe;font-size:0.78rem;font-weight:700;">
+          <i class="fa fa-rotate-left"></i> Garantia de reembolso
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>

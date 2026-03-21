@@ -60,13 +60,12 @@ const placaNormalizada = String(placa)
 .toUpperCase();
 
 const payload = {
-transaction_amount: 19.99,
+transaction_amount: 14.99,
 description: `Consulta veicular placa ${placaNormalizada}`,
 payment_method_id: 'pix',
 payer: {
 email: email || 'cliente@icarsp.com.br'
 },
-notification_url: `${siteUrl}/.netlify/functions/mp-webhook`,
 external_reference: placaNormalizada
 };
 

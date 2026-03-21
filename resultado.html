@@ -33,294 +33,372 @@ align-items: center;
 gap: 16px;
 }
 
-.resultado-brand img {
-height: 72px;
-}
+.resultado-brand img { height: 72px; }
+.resultado-brand h1 { font-size: 1.8rem; color: #fff; margin-bottom: 4px; }
+.resultado-brand p { color: var(--muted); font-size: 0.95rem; }
 
-.resultado-brand h1 {
-font-size: 1.8rem;
-color: #fff;
-margin-bottom: 4px;
-}
+.resultado-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-.resultado-brand p {
-color: var(--muted);
-font-size: 0.95rem;
+.btn-secundario, .btn-primario {
+padding: 12px 18px; border-radius: 10px; text-decoration: none;
+font-weight: 700; font-size: 0.92rem; transition: opacity 0.2s;
+display: inline-flex; align-items: center; gap: 8px;
 }
-
-.resultado-actions {
-display: flex;
-gap: 12px;
-flex-wrap: wrap;
-}
-
-.btn-secundario,
-.btn-primario {
-padding: 12px 18px;
-border-radius: 10px;
-text-decoration: none;
-font-weight: 700;
-font-size: 0.92rem;
-transition: opacity 0.2s;
-display: inline-flex;
-align-items: center;
-gap: 8px;
-}
-
-.btn-primario {
-background: var(--accent);
-color: #000;
-}
-
-.btn-secundario {
-border: 1px solid var(--border);
-color: var(--text);
-background: rgba(255,255,255,0.03);
-}
-
-.btn-primario:hover,
-.btn-secundario:hover {
-opacity: 0.88;
-}
+.btn-primario { background: var(--accent); color: #000; }
+.btn-secundario { border: 1px solid var(--border); color: var(--text); background: rgba(255,255,255,0.03); }
+.btn-primario:hover, .btn-secundario:hover { opacity: 0.88; }
 
 .placa-card {
 background: linear-gradient(145deg, #111b2d 0%, #0d1525 100%);
-border: 1px solid var(--border);
-border-radius: 18px;
-padding: 24px;
-margin-bottom: 24px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 20px;
-flex-wrap: wrap;
+border: 1px solid var(--border); border-radius: 18px; padding: 24px;
+margin-bottom: 24px; display: flex; justify-content: space-between;
+align-items: center; gap: 20px; flex-wrap: wrap;
 }
 
-.placa-info h2 {
-font-size: 0.9rem;
-color: var(--muted);
-text-transform: uppercase;
-letter-spacing: 1px;
-margin-bottom: 8px;
-}
-
-.placa-info .placa {
-font-size: 2rem;
-font-weight: 800;
-color: var(--accent);
-letter-spacing: 4px;
-}
+.placa-info h2 { font-size: 0.9rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.placa-info .placa { font-size: 2rem; font-weight: 800; color: var(--accent); letter-spacing: 4px; }
 
 .status-geral {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-background: rgba(34, 197, 94, 0.12);
-color: #86efac;
-border: 1px solid rgba(34, 197, 94, 0.25);
-padding: 10px 16px;
-border-radius: 999px;
-font-size: 0.92rem;
-font-weight: 700;
+display: inline-flex; align-items: center; gap: 10px;
+background: rgba(34, 197, 94, 0.12); color: #86efac;
+border: 1px solid rgba(34, 197, 94, 0.25); padding: 10px 16px;
+border-radius: 999px; font-size: 0.92rem; font-weight: 700;
 }
 
-.resultado-grid {
-display: grid;
-grid-template-columns: 2fr 1fr;
-gap: 24px;
-}
-
-.resultado-main {
-display: flex;
-flex-direction: column;
-gap: 24px;
-}
-
-.resultado-side {
-display: flex;
-flex-direction: column;
-gap: 24px;
-}
+.resultado-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.resultado-main { display: flex; flex-direction: column; gap: 24px; }
+.resultado-side { display: flex; flex-direction: column; gap: 24px; }
 
 .bloco-relatorio {
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 18px;
-padding: 28px;
+background: var(--bg-card); border: 1px solid var(--border);
+border-radius: 18px; padding: 28px;
 }
 
 .bloco-relatorio h3 {
-color: #fff;
-font-size: 1.1rem;
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 10px;
+color: #fff; font-size: 1.1rem; margin-bottom: 20px;
+display: flex; align-items: center; gap: 10px;
 }
 
-.info-grid {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 16px;
-}
+.info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 
 .info-item {
-background: rgba(255,255,255,0.02);
-border: 1px solid rgba(255,255,255,0.04);
-border-radius: 14px;
-padding: 16px;
+background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+border-radius: 14px; padding: 16px;
 }
+.info-item span { display: block; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 6px; }
+.info-item strong { display: block; color: #fff; font-size: 1rem; line-height: 1.4; word-break: break-word; }
 
-.info-item span {
-display: block;
-color: var(--muted);
-font-size: 0.78rem;
-text-transform: uppercase;
-letter-spacing: 0.7px;
-margin-bottom: 6px;
-}
+.status-lista { display: flex; flex-direction: column; gap: 14px; }
+.status-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.status-item:last-child { border-bottom: none; }
+.status-label { color: #e2eaf5; font-weight: 600; }
+.status-badge { padding: 8px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; white-space: nowrap; text-align: center; }
 
-.info-item strong {
-display: block;
-color: #fff;
-font-size: 1rem;
-line-height: 1.4;
-word-break: break-word;
-}
-
-.status-lista {
-display: flex;
-flex-direction: column;
-gap: 14px;
-}
-
-.status-item {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 16px;
-padding: 14px 0;
-border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.status-item:last-child {
-border-bottom: none;
-}
-
-.status-label {
-color: #e2eaf5;
-font-weight: 600;
-}
-
-.status-badge {
-padding: 8px 12px;
-border-radius: 999px;
-font-size: 0.82rem;
-font-weight: 700;
-white-space: nowrap;
-text-align: center;
-}
-
-.ok {
-background: rgba(34, 197, 94, 0.12);
-color: #86efac;
-border: 1px solid rgba(34, 197, 94, 0.2);
-}
-
-.alerta {
-background: rgba(245, 158, 11, 0.12);
-color: #fcd34d;
-border: 1px solid rgba(245, 158, 11, 0.2);
-}
-
-.critico {
-background: rgba(239, 68, 68, 0.12);
-color: #fca5a5;
-border: 1px solid rgba(239, 68, 68, 0.2);
-}
+.ok { background: rgba(34, 197, 94, 0.12); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.2); }
+.alerta { background: rgba(245, 158, 11, 0.12); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.2); }
+.critico { background: rgba(239, 68, 68, 0.12); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.2); }
 
 .resumo-box {
 background: linear-gradient(145deg, rgba(74, 158, 255, 0.08), rgba(74, 158, 255, 0.03));
-border: 1px solid var(--border);
-border-radius: 16px;
-padding: 18px;
-color: var(--text);
-font-size: 0.95rem;
-line-height: 1.7;
+border: 1px solid var(--border); border-radius: 16px; padding: 18px;
+color: var(--text); font-size: 0.95rem; line-height: 1.7;
 }
 
-.sidebar-card {
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 18px;
-padding: 22px;
+.sidebar-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 22px; }
+.sidebar-card h4 { color: #fff; margin-bottom: 14px; font-size: 1rem; }
+.sidebar-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding: 0; }
+.checklist li { color: var(--text); font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px; }
+.checklist i { color: var(--accent); margin-top: 3px; }
+
+.disclaimer { margin-top: 28px; color: var(--muted); font-size: 0.82rem; line-height: 1.7; text-align: center; }
+
+/* ═══════════════════════════════════════════
+   UPSELL CONTRATOS
+═══════════════════════════════════════════ */
+
+/* BLOCO ATENÇÃO — aviso forte antes do upsell */
+.upsell-atencao {
+  background: linear-gradient(135deg, #1a0505 0%, #0d1525 100%);
+  border: 1px solid rgba(239,68,68,0.35);
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.upsell-atencao::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, #f97316);
+}
+.upsell-atencao-icon {
+  font-size: 1.6rem;
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.upsell-atencao-body h4 {
+  color: #fca5a5;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.upsell-atencao-body p {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.upsell-atencao-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.upsell-atencao-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #e2eaf5;
+  font-weight: 600;
+}
+.upsell-atencao-list li i { color: #22c55e; font-size: 0.75rem; }
+
+/* UPSELL INLINE — após identificação do veículo */
+.upsell-inline {
+  background: linear-gradient(135deg, #0f1e0f 0%, #0d1525 100%);
+  border: 1px solid rgba(34,197,94,0.25);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
 }
 
-.sidebar-card h4 {
-color: #fff;
-margin-bottom: 14px;
-font-size: 1rem;
+.upsell-inline::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
 }
 
-.sidebar-card p {
-color: var(--muted);
-font-size: 0.9rem;
-line-height: 1.6;
+.upsell-inline-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
 }
 
-.checklist {
-list-style: none;
-display: flex;
-flex-direction: column;
-gap: 10px;
-margin-top: 12px;
-padding: 0;
+.upsell-inline-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(34,197,94,0.15);
+  border: 1px solid rgba(34,197,94,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: #22c55e; flex-shrink: 0;
 }
 
-.checklist li {
-color: var(--text);
-font-size: 0.9rem;
-display: flex;
-align-items: flex-start;
-gap: 10px;
+.upsell-inline-text h4 {
+  color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 4px;
 }
 
-.checklist i {
-color: var(--accent);
-margin-top: 3px;
+.upsell-inline-text p {
+  color: #94a3b8; font-size: 0.85rem; line-height: 1.4;
 }
 
-.disclaimer {
-margin-top: 28px;
-color: var(--muted);
-font-size: 0.82rem;
-line-height: 1.7;
-text-align: center;
+.upsell-inline-actions {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
 }
+
+.btn-upsell-avista {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 18px; border-radius: 10px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff; text-decoration: none; font-weight: 800;
+  font-size: 0.88rem; transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(34,197,94,0.25);
+  white-space: nowrap;
+}
+
+.btn-upsell-avista:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34,197,94,0.35); }
+
+.btn-upsell-parcelado {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 18px; border-radius: 10px;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.3);
+  color: #fcd34d; text-decoration: none; font-weight: 800;
+  font-size: 0.88rem; transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-upsell-parcelado:hover { background: rgba(245,158,11,0.2); transform: translateY(-2px); }
+
+/* UPSELL BANNER — no final do relatório */
+.upsell-banner {
+  background: linear-gradient(135deg, #0a1628 0%, #0f2010 50%, #0a1628 100%);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 22px;
+  padding: 36px 32px;
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.upsell-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(34,197,94,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.upsell-banner-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.upsell-banner-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25);
+  color: #86efac; padding: 7px 14px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700; margin-bottom: 14px;
+}
+
+.upsell-banner h2 {
+  color: #fff; font-size: 1.6rem; font-weight: 800;
+  margin-bottom: 8px; line-height: 1.2;
+}
+
+.upsell-banner h2 span { color: #22c55e; }
+
+.upsell-banner p {
+  color: #94a3b8; font-size: 0.95rem; line-height: 1.6;
+  max-width: 560px; margin: 0 auto;
+}
+
+.upsell-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.upsell-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.upsell-card:hover { transform: translateY(-2px); }
+
+.upsell-card.verde { border-color: rgba(34,197,94,0.2); }
+.upsell-card.verde:hover { border-color: rgba(34,197,94,0.4); }
+.upsell-card.amarelo { border-color: rgba(245,158,11,0.2); }
+.upsell-card.amarelo:hover { border-color: rgba(245,158,11,0.4); }
+
+.upsell-card-top {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 12px;
+}
+
+.upsell-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+
+.verde .upsell-card-icon { background: rgba(34,197,94,0.15); color: #22c55e; }
+.amarelo .upsell-card-icon { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+.upsell-card-preco { text-align: right; }
+.upsell-card-preco small { display: block; color: var(--muted); font-size: 0.75rem; }
+.upsell-card-preco strong { font-size: 1.5rem; font-weight: 800; }
+.verde .upsell-card-preco strong { color: #22c55e; }
+.amarelo .upsell-card-preco strong { color: #f59e0b; }
+
+.upsell-card h3 { color: #fff; font-size: 0.98rem; font-weight: 700; }
+.upsell-card p { color: #94a3b8; font-size: 0.83rem; line-height: 1.5; }
+
+.upsell-card-features {
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+.upsell-card-features span {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.82rem; color: var(--text);
+}
+
+.verde .upsell-card-features span i { color: #22c55e; font-size: 0.72rem; }
+.amarelo .upsell-card-features span i { color: #f59e0b; font-size: 0.72rem; }
+
+.btn-upsell-card {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 16px; border-radius: 10px; font-weight: 800;
+  font-size: 0.9rem; text-decoration: none; transition: all 0.2s;
+  border: none; cursor: pointer; width: 100%;
+}
+
+.verde .btn-upsell-card {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff; box-shadow: 0 4px 14px rgba(34,197,94,0.2);
+}
+
+.verde .btn-upsell-card:hover { box-shadow: 0 8px 20px rgba(34,197,94,0.35); transform: translateY(-1px); }
+
+.amarelo .btn-upsell-card {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #000; box-shadow: 0 4px 14px rgba(245,158,11,0.2);
+}
+
+.amarelo .btn-upsell-card:hover { box-shadow: 0 8px 20px rgba(245,158,11,0.35); transform: translateY(-1px); }
+
+.upsell-garantia {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; margin-top: 20px; flex-wrap: wrap;
+}
+
+.upsell-garantia-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; color: var(--muted);
+}
+
+.upsell-garantia-item i { color: #22c55e; }
 
 @media (max-width: 900px) {
-.resultado-grid {
-grid-template-columns: 1fr;
-}
+  .resultado-grid { grid-template-columns: 1fr; }
+  .upsell-cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
-.info-grid {
-grid-template-columns: 1fr;
-}
-
-.placa-info .placa {
-font-size: 1.6rem;
-letter-spacing: 3px;
-}
-
-.resultado-brand {
-align-items: flex-start;
-}
-
-.resultado-brand img {
-height: 56px;
-}
+  .info-grid { grid-template-columns: 1fr; }
+  .placa-info .placa { font-size: 1.6rem; letter-spacing: 3px; }
+  .resultado-brand { align-items: flex-start; }
+  .resultado-brand img { height: 56px; }
+  .upsell-inline { flex-direction: column; align-items: flex-start; }
+  .upsell-inline-actions { width: 100%; }
+  .btn-upsell-avista, .btn-upsell-parcelado { flex: 1; justify-content: center; }
+  .upsell-banner { padding: 24px 18px; }
+  .upsell-banner h2 { font-size: 1.3rem; }
 }
 </style>
 </head>
@@ -328,375 +406,373 @@ height: 56px;
 <div class="resultado-page">
 <div class="resultado-container">
 
-<div class="resultado-topo">
-<div class="resultado-brand">
-<img src="logo.png" alt="icarSP" />
-<div>
-<h1>Relatório Veicular</h1>
-<p>Consulta gerada com base nas informações disponíveis para a placa pesquisada.</p>
-</div>
-</div>
+  <div class="resultado-topo">
+    <div class="resultado-brand">
+      <img src="logo.png" alt="icarSP" />
+      <div>
+        <h1>Relatório Veicular</h1>
+        <p>Consulta gerada com base nas informações disponíveis para a placa pesquisada.</p>
+      </div>
+    </div>
+    <div class="resultado-actions">
+      <a href="/" class="btn-secundario"><i class="fa fa-arrow-left"></i> Nova consulta</a>
+      <a href="#" class="btn-primario" onclick="window.print()"><i class="fa fa-print"></i> Imprimir relatório</a>
+    </div>
+  </div>
 
-<div class="resultado-actions">
-<a href="/" class="btn-secundario">
-<i class="fa fa-arrow-left"></i>
-Nova consulta
-</a>
-<a href="#" class="btn-primario" onclick="window.print()">
-<i class="fa fa-print"></i>
-Imprimir relatório
-</a>
-</div>
-</div>
+  <div class="placa-card">
+    <div class="placa-info">
+      <h2>Consulta</h2>
+      <div class="placa" id="placa-veiculo">-</div>
+    </div>
+    <div class="status-geral">
+      <i class="fa fa-circle-check"></i>
+      Relatório disponível
+    </div>
+  </div>
 
-<div class="placa-card">
-<div class="placa-info">
-<h2>Consulta</h2>
-<div class="placa" id="placa-veiculo">-</div>
-</div>
+  <div class="resultado-grid">
+    <div class="resultado-main">
 
-<div class="status-geral">
-<i class="fa fa-circle-check"></i>
-Relatório disponível
-</div>
-</div>
+      <section class="bloco-relatorio">
+        <h3><i class="fa fa-car"></i> Identificação do veículo</h3>
+        <div class="info-grid">
+          <div class="info-item"><span>Marca / Modelo</span><strong id="marca-modelo">-</strong></div>
+          <div class="info-item"><span>Ano</span><strong id="ano">-</strong></div>
+          <div class="info-item"><span>Cor</span><strong id="cor">-</strong></div>
+          <div class="info-item"><span>Combustível</span><strong id="combustivel">-</strong></div>
+          <div class="info-item"><span>Tabela FIPE</span><strong id="fipe">-</strong></div>
+          <div class="info-item"><span>Chassi</span><strong id="chassi">-</strong></div>
+          <div class="info-item"><span>RENAVAM</span><strong id="renavam">-</strong></div>
+          <div class="info-item"><span>Proprietário atual</span><strong id="proprietario-atual">-</strong></div>
+          <div class="info-item"><span>Documento do proprietário</span><strong id="documento-proprietario">-</strong></div>
+          <div class="info-item"><span>Tipo de documento</span><strong id="tipo-documento-proprietario">-</strong></div>
+        </div>
+      </section>
 
-<div class="resultado-grid">
-<div class="resultado-main">
+      <!-- ✅ UPSELL 1 — Logo após identificação do veículo -->
+      <div class="upsell-atencao">
+        <div class="upsell-atencao-icon"><i class="fa fa-triangle-exclamation"></i></div>
+        <div class="upsell-atencao-body">
+          <h4>⚠ Atenção antes de finalizar a compra</h4>
+          <p>Você <strong>não deve comprar ou vender um veículo sem um contrato</strong>. Sem ele, você não tem proteção jurídica em caso de problemas.</p>
+          <ul class="upsell-atencao-list">
+            <li><i class="fa fa-circle-check"></i> Evite problemas legais</li>
+            <li><i class="fa fa-circle-check"></i> Proteja seu dinheiro</li>
+            <li><i class="fa fa-circle-check"></i> Tenha segurança total na negociação</li>
+          </ul>
+        </div>
+      </div>
 
-<section class="bloco-relatorio">
-<h3><i class="fa fa-car"></i> Identificação do veículo</h3>
-<div class="info-grid">
-<div class="info-item">
-<span>Marca / Modelo</span>
-<strong id="marca-modelo">-</strong>
-</div>
-<div class="info-item">
-<span>Ano</span>
-<strong id="ano">-</strong>
-</div>
-<div class="info-item">
-<span>Cor</span>
-<strong id="cor">-</strong>
-</div>
-<div class="info-item">
-<span>Combustível</span>
-<strong id="combustivel">-</strong>
-</div>
-<div class="info-item">
-<span>Tabela FIPE</span>
-<strong id="fipe">-</strong>
-</div>
-<div class="info-item">
-<span>Chassi</span>
-<strong id="chassi">-</strong>
-</div>
-<div class="info-item">
-<span>RENAVAM</span>
-<strong id="renavam">-</strong>
-</div>
-<div class="info-item">
-<span>Proprietário atual</span>
-<strong id="proprietario-atual">-</strong>
-</div>
-<div class="info-item">
-<span>Documento do proprietário</span>
-<strong id="documento-proprietario">-</strong>
-</div>
-<div class="info-item">
-<span>Tipo de documento</span>
-<strong id="tipo-documento-proprietario">-</strong>
-</div>
-</div>
-</section>
+      <div class="upsell-inline">
+        <div class="upsell-inline-left">
+          <div class="upsell-inline-icon"><i class="fa fa-file-signature"></i></div>
+          <div class="upsell-inline-text">
+            <h4>Gere seu contrato completo agora por apenas R$ 19,99</h4>
+            <p>PDF profissional gerado na hora. Entrega imediata. Validade jurídica nacional.</p>
+          </div>
+        </div>
+        <div class="upsell-inline-actions">
+          <a href="/contrato.html" class="btn-upsell-avista">
+            <i class="fa fa-file-contract"></i> GERAR CONTRATO AGORA
+          </a>
+          <a href="/contrato-parcelado.html" class="btn-upsell-parcelado">
+            <i class="fa fa-calendar-days"></i> Contrato Parcelado
+          </a>
+        </div>
+      </div>
 
-<section class="bloco-relatorio">
-<h3><i class="fa fa-file-circle-check"></i> Situação do veículo</h3>
-<div class="status-lista">
-<div class="status-item">
-<div class="status-label">Status de roubo/furto</div>
-<div class="status-badge" id="roubo-furto">-</div>
-</div>
-<div class="status-item">
-<div class="status-label">Status de leilão</div>
-<div class="status-badge" id="leilao">-</div>
-</div>
-<div class="status-item">
-<div class="status-label">Débitos</div>
-<div class="status-badge" id="debitos">-</div>
-</div>
-<div class="status-item">
-<div class="status-label">Restrições</div>
-<div class="status-badge" id="restricoes">-</div>
-</div>
-<div class="status-item">
-<div class="status-label">Gravame</div>
-<div class="status-badge" id="gravame">-</div>
-</div>
-<div class="status-item">
-<div class="status-label">Licenciamento / IPVA / Status</div>
-<div class="status-badge" id="licenciamento">-</div>
-</div>
-</div>
-</section>
+      <section class="bloco-relatorio">
+        <h3><i class="fa fa-file-circle-check"></i> Situação do veículo</h3>
+        <div class="status-lista">
+          <div class="status-item"><div class="status-label">Status de roubo/furto</div><div class="status-badge" id="roubo-furto">-</div></div>
+          <div class="status-item"><div class="status-label">Status de leilão</div><div class="status-badge" id="leilao">-</div></div>
+          <div class="status-item"><div class="status-label">Débitos</div><div class="status-badge" id="debitos">-</div></div>
+          <div class="status-item"><div class="status-label">Restrições</div><div class="status-badge" id="restricoes">-</div></div>
+          <div class="status-item"><div class="status-label">Gravame</div><div class="status-badge" id="gravame">-</div></div>
+          <div class="status-item"><div class="status-label">Licenciamento / IPVA / Status</div><div class="status-badge" id="licenciamento">-</div></div>
+        </div>
+      </section>
 
-<section class="bloco-relatorio">
-<h3><i class="fa fa-building-columns"></i> Informações complementares</h3>
-<div class="info-grid">
-<div class="info-item">
-<span>Instituição credora</span>
-<strong id="instituicao-credora">-</strong>
-</div>
-<div class="info-item">
-<span>Detalhes de bloqueio</span>
-<strong id="detalhes-bloqueio">-</strong>
-</div>
-<div class="info-item">
-<span>Data do registro do gravame</span>
-<strong id="data-registro-gravame">-</strong>
-</div>
-<div class="info-item">
-<span>Código FIPE</span>
-<strong id="codigo-fipe">-</strong>
-</div>
-<div class="info-item">
-<span>Modelo / versão FIPE</span>
-<strong id="modelo-versao-fipe">-</strong>
-</div>
-<div class="info-item">
-<span>Mês de referência FIPE</span>
-<strong id="mes-referencia-fipe">-</strong>
-</div>
-<div class="info-item">
-<span>Infrações RENAINF</span>
-<strong id="quantidade-infracoes-renainf">-</strong>
-</div>
-<div class="info-item">
-<span>Valor total RENAINF</span>
-<strong id="valor-total-infracoes-renainf">-</strong>
-</div>
-<div class="info-item">
-<span>Resumo infrações RENAINF</span>
-<strong id="resumo-infracoes-renainf">-</strong>
-</div>
-</div>
-</section>
+      <section class="bloco-relatorio">
+        <h3><i class="fa fa-building-columns"></i> Informações complementares</h3>
+        <div class="info-grid">
+          <div class="info-item"><span>Instituição credora</span><strong id="instituicao-credora">-</strong></div>
+          <div class="info-item"><span>Detalhes de bloqueio</span><strong id="detalhes-bloqueio">-</strong></div>
+          <div class="info-item"><span>Data do registro do gravame</span><strong id="data-registro-gravame">-</strong></div>
+          <div class="info-item"><span>Código FIPE</span><strong id="codigo-fipe">-</strong></div>
+          <div class="info-item"><span>Modelo / versão FIPE</span><strong id="modelo-versao-fipe">-</strong></div>
+          <div class="info-item"><span>Mês de referência FIPE</span><strong id="mes-referencia-fipe">-</strong></div>
+          <div class="info-item"><span>Infrações RENAINF</span><strong id="quantidade-infracoes-renainf">-</strong></div>
+          <div class="info-item"><span>Valor total RENAINF</span><strong id="valor-total-infracoes-renainf">-</strong></div>
+          <div class="info-item"><span>Resumo infrações RENAINF</span><strong id="resumo-infracoes-renainf">-</strong></div>
+        </div>
+      </section>
 
-<section class="bloco-relatorio">
-<h3><i class="fa fa-clipboard-list"></i> Resumo da consulta</h3>
-<div class="resumo-box" id="resumo-consulta">
-Carregando relatório...
-</div>
-</section>
+      <section class="bloco-relatorio">
+        <h3><i class="fa fa-clipboard-list"></i> Resumo da consulta</h3>
+        <div class="resumo-box" id="resumo-consulta">Carregando relatório...</div>
+      </section>
 
-</div>
+    </div>
 
-<aside class="resultado-side">
-<div class="sidebar-card">
-<h4>O que verificar agora</h4>
-<p>Use este relatório como apoio para análise do veículo e decisão da próxima etapa.</p>
-<ul class="checklist">
-<li><i class="fa fa-check"></i> Confirmar dados do veículo</li>
-<li><i class="fa fa-check"></i> Validar FIPE como referência de mercado</li>
-<li><i class="fa fa-check"></i> Revisar dados do proprietário atual</li>
-<li><i class="fa fa-check"></i> Fazer consultas complementares se necessário</li>
-</ul>
-</div>
+    <aside class="resultado-side">
+      <div class="sidebar-card">
+        <h4>O que verificar agora</h4>
+        <p>Use este relatório como apoio para análise do veículo e decisão da próxima etapa.</p>
+        <ul class="checklist">
+          <li><i class="fa fa-check"></i> Confirmar dados do veículo</li>
+          <li><i class="fa fa-check"></i> Validar FIPE como referência de mercado</li>
+          <li><i class="fa fa-check"></i> Revisar dados do proprietário atual</li>
+          <li><i class="fa fa-check"></i> Fazer consultas complementares se necessário</li>
+        </ul>
+      </div>
 
-<div class="sidebar-card">
-<h4>Importante</h4>
-<p>
-Algumas verificações complementares não fazem parte deste plano e podem exigir consultas adicionais específicas.
-</p>
-</div>
-</aside>
-</div>
+      <!-- SIDEBAR UPSELL -->
+      <div class="sidebar-card" style="border-color: rgba(34,197,94,0.2); background: linear-gradient(145deg, #0a1a0a, #0d1525);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(34,197,94,0.15);display:flex;align-items:center;justify-content:center;color:#22c55e;font-size:1rem;">
+            <i class="fa fa-file-contract"></i>
+          </div>
+          <h4 style="margin:0;color:#fff;">Precisa de contrato?</h4>
+        </div>
+        <p style="margin-bottom:14px;">Gere um contrato jurídico profissional em PDF para essa negociação.</p>
+        <a href="/contrato.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-bottom:8px;">
+          <i class="fa fa-file-contract"></i> À vista — R$ 19,99
+        </a>
+        <a href="/contrato-parcelado.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);color:#fcd34d;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;">
+          <i class="fa fa-calendar-days"></i> Parcelado — R$ 29,99
+        </a>
+      </div>
 
-<div class="disclaimer">
-Este relatório possui finalidade informativa e de apoio à análise veicular. A disponibilidade e apresentação das informações podem variar conforme a base consultada e a situação do veículo no momento da pesquisa.
-</div>
+      <div class="sidebar-card">
+        <h4>Importante</h4>
+        <p>Algumas verificações complementares não fazem parte deste plano e podem exigir consultas adicionais específicas.</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ✅ UPSELL 2 — Banner no final do relatório -->
+  <div class="upsell-banner">
+    <div class="upsell-banner-header">
+      <div class="upsell-banner-badge"><i class="fa fa-shield-halved"></i> Proteja sua negociação</div>
+      <h2>Feche o negócio com <span>segurança jurídica</span></h2>
+      <p>Você já tem as informações do veículo. Agora proteja a compra ou venda com um contrato profissional gerado na hora.</p>
+    </div>
+
+    <div class="upsell-cards">
+
+      <!-- CARD À VISTA -->
+      <div class="upsell-card verde">
+        <div class="upsell-card-top">
+          <div class="upsell-card-icon"><i class="fa fa-file-contract"></i></div>
+          <div class="upsell-card-preco">
+            <small>Pagamento único</small>
+            <strong>R$ 19,99</strong>
+          </div>
+        </div>
+        <h3>Contrato de Compra e Venda</h3>
+        <p>Para negociações à vista. Contrato completo com todos os dados do veículo, comprador e vendedor.</p>
+        <div class="upsell-card-features">
+          <span><i class="fa fa-check"></i> PDF profissional gerado na hora</span>
+          <span><i class="fa fa-check"></i> Válido juridicamente</span>
+          <span><i class="fa fa-check"></i> Dados preenchidos por IA</span>
+          <span><i class="fa fa-check"></i> Cláusulas de proteção</span>
+        </div>
+        <a href="/contrato.html" class="btn-upsell-card">
+          <i class="fa fa-file-contract"></i> Gerar contrato à vista
+        </a>
+      </div>
+
+      <!-- CARD PARCELADO -->
+      <div class="upsell-card amarelo">
+        <div class="upsell-card-top">
+          <div class="upsell-card-icon"><i class="fa fa-calendar-days"></i></div>
+          <div class="upsell-card-preco">
+            <small>Pagamento único</small>
+            <strong>R$ 29,99</strong>
+          </div>
+        </div>
+        <h3>Contrato com Reserva de Domínio</h3>
+        <p>Para negociações parceladas. O vendedor mantém a propriedade até o pagamento total. Art. 521 CC.</p>
+        <div class="upsell-card-features">
+          <span><i class="fa fa-check"></i> Cláusula de reserva de domínio</span>
+          <span><i class="fa fa-check"></i> Cronograma de parcelas</span>
+          <span><i class="fa fa-check"></i> Penalidades por inadimplência</span>
+          <span><i class="fa fa-check"></i> Vedação de alienação</span>
+        </div>
+        <a href="/contrato-parcelado.html" class="btn-upsell-card">
+          <i class="fa fa-calendar-days"></i> Gerar contrato parcelado
+        </a>
+      </div>
+
+    </div>
+
+    <div class="upsell-garantia">
+      <div class="upsell-garantia-item"><i class="fa fa-lock"></i> Pagamento seguro via PIX</div>
+      <div class="upsell-garantia-item"><i class="fa fa-bolt"></i> Download imediato</div>
+      <div class="upsell-garantia-item"><i class="fa fa-scale-balanced"></i> Válido em todo o Brasil</div>
+      <div class="upsell-garantia-item"><i class="fa fa-shield-halved"></i> Dados protegidos</div>
+      <div class="upsell-garantia-item"><i class="fa fa-users"></i> Centenas de usuários protegidos</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Este relatório possui finalidade informativa e de apoio à análise veicular. A disponibilidade e apresentação das informações podem variar conforme a base consultada e a situação do veículo no momento da pesquisa.
+  </div>
 
 </div>
 </div>
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const paymentId = params.get('paymentId');
+const paymentId = params.get('paymentId') || params.get('payment_id') || params.get('collection_id');
 
 function valorOuTraco(valor) {
-if (valor === null || valor === undefined || valor === '') return '-';
-return String(valor);
+  if (valor === null || valor === undefined || valor === '') return '-';
+  return String(valor);
 }
 
 function getFirst(...values) {
-for (const value of values) {
-if (value !== undefined && value !== null && value !== '') {
-return value;
-}
-}
-return '-';
+  for (const value of values) {
+    if (value !== undefined && value !== null && value !== '') return value;
+  }
+  return '-';
 }
 
 function formatarMoeda(valor) {
-if (!valor || valor === '-') return '-';
-
-if (typeof valor === 'number') {
-return valor.toLocaleString('pt-BR', {
-style: 'currency',
-currency: 'BRL'
-});
-}
-
-let texto = String(valor).trim().replace(/[^\d.,-]/g, '');
-
-if (/^\d+\.\d{2}$/.test(texto)) {
-const numero = parseFloat(texto);
-return numero.toLocaleString('pt-BR', {
-style: 'currency',
-currency: 'BRL'
-});
-}
-
-if (/^\d{1,3}(\.\d{3})*,\d{2}$/.test(texto)) {
-const numero = parseFloat(texto.replace(/\./g, '').replace(',', '.'));
-return numero.toLocaleString('pt-BR', {
-style: 'currency',
-currency: 'BRL'
-});
-}
-
-const numero = Number(texto.replace(',', '.'));
-
-if (isNaN(numero)) return valor;
-
-return numero.toLocaleString('pt-BR', {
-style: 'currency',
-currency: 'BRL'
-});
+  if (!valor || valor === '-') return '-';
+  if (typeof valor === 'number') return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  let texto = String(valor).trim().replace(/[^\d.,-]/g, '');
+  if (/^\d+\.\d{2}$/.test(texto)) return parseFloat(texto).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  if (/^\d{1,3}(\.\d{3})*,\d{2}$/.test(texto)) return parseFloat(texto.replace(/\./g, '').replace(',', '.')).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const numero = Number(texto.replace(',', '.'));
+  if (isNaN(numero)) return valor;
+  return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function setText(id, value, formatter = null) {
-const el = document.getElementById(id);
-if (!el) return;
-el.textContent = formatter ? formatter(value) : valorOuTraco(value);
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = formatter ? formatter(value) : valorOuTraco(value);
 }
 
 function setStatusBadge(id, value) {
-const el = document.getElementById(id);
-if (!el) return;
-
-const texto = valorOuTraco(value);
-el.textContent = texto;
-el.classList.remove('ok', 'alerta', 'critico');
-
-const t = texto.toLowerCase();
-
-if (
-t.includes('não consultado') ||
-t.includes('nao consultado') ||
-t.includes('não consultadas') ||
-t.includes('nao consultadas')
-) {
-el.classList.add('alerta');
-} else if (
-t.includes('não possui') ||
-t.includes('nao possui') ||
-t.includes('sem') ||
-t.includes('regular')
-) {
-el.classList.add('ok');
-} else {
-el.classList.add('alerta');
-}
+  const el = document.getElementById(id);
+  if (!el) return;
+  const texto = valorOuTraco(value);
+  el.textContent = texto;
+  el.classList.remove('ok', 'alerta', 'critico');
+  const t = texto.toLowerCase();
+  if (t.includes('não consultado') || t.includes('nao consultado') || t.includes('não consultadas') || t.includes('nao consultadas')) {
+    el.classList.add('alerta');
+  } else if (t.includes('não possui') || t.includes('nao possui') || t.includes('sem') || t.includes('regular')) {
+    el.classList.add('ok');
+  } else {
+    el.classList.add('alerta');
+  }
 }
 
 function preencherRelatorio(payload) {
-const report = payload.report || {};
+  const report = payload.report || {};
+  const veiculoInfo = report.veiculo?.dados?.informacoes_veiculo?.dados_veiculo
+    || report.veiculo?.dados?.dados_veiculo
+    || report.veiculo?.dados_veiculo
+    || {};
+  const veiculoInfoFipe = report.precoFipe?.dados?.informacoes_veiculo?.dados_veiculo || {};
+  const proprietario = report.proprietarioAtual?.dados?.proprietario_atual
+    || report.proprietarioAtual?.proprietario_atual
+    || {};
+  const fipeLista = report.precoFipe?.dados?.informacoes_fipe
+    || report.precoFipe?.informacoes_fipe
+    || [];
+  const fipe = fipeLista[0] || {};
+  const marcaModelo = [
+    getFirst(veiculoInfo.marca, veiculoInfoFipe.marca),
+    getFirst(veiculoInfo.modelo, veiculoInfoFipe.modelo)
+  ].filter(v => v && v !== '-').join(' ');
 
-const veiculoInfo = report.veiculo?.dados?.informacoes_veiculo?.dados_veiculo || {};
-const proprietario = report.proprietarioAtual?.dados?.proprietario_atual || {};
-const fipeLista = report.precoFipe?.dados?.informacoes_fipe || [];
-const fipe = fipeLista[0] || {};
+  setText('placa-veiculo', getFirst(report.placa, payload.placa));
+  setText('marca-modelo', marcaModelo);
+  setText('ano', getFirst(veiculoInfo.ano_modelo, veiculoInfoFipe.ano_modelo, veiculoInfo.ano_fabricacao, veiculoInfoFipe.ano_frabricacao));
+  setText('cor', getFirst(veiculoInfo.cor, veiculoInfoFipe.cor));
+  setText('combustivel', getFirst(veiculoInfo.combustivel, veiculoInfoFipe.combustivel));
+  setText('fipe', getFirst(fipe.preco, fipe.valor), formatarMoeda);
+  setText('chassi', getFirst(veiculoInfo.chassi, veiculoInfoFipe.chassi));
+  setText('renavam', getFirst(veiculoInfo.renavam, veiculoInfo.numero_renavam, veiculoInfoFipe.renavam, veiculoInfoFipe.numero_renavam));
+  setText('proprietario-atual', getFirst(proprietario.nome, proprietario.nome_proprietario));
+  setText('documento-proprietario', proprietario.documento);
+  setText('tipo-documento-proprietario', proprietario.tipo_documento);
 
-const marcaModelo = [veiculoInfo.marca, veiculoInfo.modelo].filter(Boolean).join(' ');
+  setStatusBadge('roubo-furto', 'Roubo/furto não consultado');
+  setStatusBadge('leilao', 'Leilão não consultado');
+  setStatusBadge('debitos', 'Débitos não consultados');
+  setStatusBadge('restricoes', 'Restrições não consultadas');
+  setStatusBadge('gravame', 'Gravame não incluído nesta consulta');
+  setStatusBadge('licenciamento', 'Licenciamento/IPVA não consultado');
 
-setText('placa-veiculo', getFirst(report.placa, payload.placa));
-setText('marca-modelo', marcaModelo);
-setText('ano', getFirst(veiculoInfo.ano_modelo, veiculoInfo.ano_fabricacao));
-setText('cor', veiculoInfo.cor);
-setText('combustivel', veiculoInfo.combustivel);
-setText('fipe', fipe.preco, formatarMoeda);
-setText('chassi', veiculoInfo.chassi);
-setText('renavam', '-');
+  setText('instituicao-credora', 'Não incluído nesta consulta');
+  setText('detalhes-bloqueio', 'Não incluído nesta consulta');
+  setText('data-registro-gravame', 'Não incluído nesta consulta');
+  setText('codigo-fipe', fipe.codigo_fipe);
+  setText('modelo-versao-fipe', fipe.modelo_versao);
+  setText('mes-referencia-fipe', fipe.mes_referencia);
+  setText('quantidade-infracoes-renainf', 'Não consultado');
+  setText('valor-total-infracoes-renainf', 'Não consultado');
+  setText('resumo-infracoes-renainf', 'Não consultado');
 
-setText('proprietario-atual', proprietario.nome);
-setText('documento-proprietario', proprietario.documento);
-setText('tipo-documento-proprietario', proprietario.tipo_documento);
+  const resumo = [
+    `Relatório gerado com sucesso para a placa ${getFirst(report.placa, payload.placa)}.`,
+    marcaModelo ? `Veículo: ${marcaModelo}.` : null,
+    veiculoInfo.ano_modelo ? `Ano/modelo: ${veiculoInfo.ano_modelo}.` : null,
+    fipe.preco ? `Preço FIPE: ${formatarMoeda(fipe.preco)}.` : null,
+    proprietario.nome ? `Proprietário atual identificado.` : null
+  ].filter(Boolean).join(' ');
 
-setStatusBadge('roubo-furto', 'Roubo/furto não consultado');
-setStatusBadge('leilao', 'Leilão não consultado');
-setStatusBadge('debitos', 'Débitos não consultados');
-setStatusBadge('restricoes', 'Restrições não consultadas');
-setStatusBadge('gravame', 'Gravame não incluído nesta consulta');
-setStatusBadge('licenciamento', 'Licenciamento/IPVA não consultado');
-
-setText('instituicao-credora', 'Não incluído nesta consulta');
-setText('detalhes-bloqueio', 'Não incluído nesta consulta');
-setText('data-registro-gravame', 'Não incluído nesta consulta');
-
-setText('codigo-fipe', fipe.codigo_fipe);
-setText('modelo-versao-fipe', fipe.modelo_versao);
-setText('mes-referencia-fipe', fipe.mes_referencia);
-setText('quantidade-infracoes-renainf', 'Não consultado');
-setText('valor-total-infracoes-renainf', 'Não consultado');
-setText('resumo-infracoes-renainf', 'Não consultado');
-
-const resumo = [
-`Relatório gerado com sucesso para a placa ${getFirst(report.placa, payload.placa)}.`,
-marcaModelo ? `Veículo: ${marcaModelo}.` : null,
-veiculoInfo.ano_modelo ? `Ano/modelo: ${veiculoInfo.ano_modelo}.` : null,
-fipe.preco ? `Preço FIPE: ${formatarMoeda(fipe.preco)}.` : null,
-proprietario.nome ? `Proprietário atual identificado.` : null
-].filter(Boolean).join(' ');
-
-setText('resumo-consulta', resumo);
+  setText('resumo-consulta', resumo);
 }
+
+let tentativas = 0;
+const MAX_TENTATIVAS = 12;
 
 async function carregarRelatorio() {
-if (!paymentId) {
-setText('placa-veiculo', 'PAGAMENTO NÃO INFORMADO');
-setText('resumo-consulta', 'Nenhum paymentId foi informado na URL.');
-return;
-}
+  if (!paymentId) {
+    setText('placa-veiculo', 'PAGAMENTO NÃO INFORMADO');
+    setText('resumo-consulta', 'Nenhum paymentId foi informado na URL.');
+    return;
+  }
 
-setText('placa-veiculo', 'CARREGANDO...');
-setText('resumo-consulta', 'Buscando relatório salvo...');
+  setText('placa-veiculo', 'CARREGANDO...');
+  setText('resumo-consulta', 'Buscando relatório...');
 
-try {
-const response = await fetch(`/.netlify/functions/get-saved-report?paymentId=${encodeURIComponent(paymentId)}`);
-const data = await response.json();
+  try {
+    const response = await fetch(`/.netlify/functions/get-saved-report?paymentId=${encodeURIComponent(paymentId)}`);
+    const data = await response.json();
 
-if (!response.ok) {
-throw new Error(data.error || 'Erro ao buscar relatório salvo');
-}
+    if (!response.ok) throw new Error(data.error || 'Erro ao buscar relatório salvo');
 
-if (data.status === 'pending' || data.status === 'processing') {
-setText('placa-veiculo', data.placa || '-');
-setText('resumo-consulta', 'Pagamento encontrado, mas o relatório ainda está sendo processado. Atualize novamente em alguns instantes.');
-return;
-}
+    if (data.status === 'pending' || data.status === 'processing' || !data.report) {
+      tentativas++;
+      setText('placa-veiculo', data.placa || '-');
+      if (tentativas < MAX_TENTATIVAS) {
+        setText('resumo-consulta', `Processando relatório... (${tentativas}/${MAX_TENTATIVAS})`);
+        setTimeout(carregarRelatorio, 5000);
+      } else {
+        setText('resumo-consulta', 'Relatório em processamento. Por favor, atualize a página em alguns instantes.');
+      }
+      return;
+    }
 
-if (!data.report) {
-setText('placa-veiculo', data.placa || '-');
-setText('resumo-consulta', 'O relatório ainda não está disponível.');
-return;
-}
-
-preencherRelatorio(data);
-} catch (error) {
-console.error('Erro ao carregar relatório salvo:', error);
-setText('resumo-consulta', `Não foi possível carregar o relatório salvo. ${error.message || ''}`);
-}
+    preencherRelatorio(data);
+  } catch (error) {
+    console.error('Erro ao carregar relatório salvo:', error);
+    tentativas++;
+    if (tentativas < MAX_TENTATIVAS) {
+      setTimeout(carregarRelatorio, 5000);
+    } else {
+      setText('resumo-consulta', `Não foi possível carregar o relatório. ${error.message || ''}`);
+    }
+  }
 }
 
 carregarRelatorio();

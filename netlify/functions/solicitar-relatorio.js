@@ -12,8 +12,12 @@ function buildAuth() {
 }
 
 export const handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: JSON.stringify({ error: 'Método não permitido' }) };
+  }
+
   try {
-    const { placa } = JSON.parse(event.body);
+    const { placa } = JSON.parse(event.body || '{}');
     const auth = buildAuth();
 
     const response = await fetch(`https://api.consultarplaca.com.br/v2/solicitarRelatorio?placa=${placa}`, {

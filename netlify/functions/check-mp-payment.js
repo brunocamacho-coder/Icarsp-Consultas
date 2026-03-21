@@ -10,6 +10,7 @@ error: 'Método não permitido'
 }
 
 const paymentId = event.queryStringParameters?.payment_id;
+const tipo = event.queryStringParameters?.tipo || '';
 
 if (!paymentId) {
 return {
@@ -63,7 +64,9 @@ details: mpData
 const status = mpData.status || 'unknown';
 const pago = status === 'approved';
 
-if (pago) {
+const isContrato = tipo === 'contrato' || tipo === 'contrato_reserva';
+
+if (pago && !isContrato) {
 try {
 await fetch(`${siteUrl}/.netlify/functions/generate-report`, {
 method: 'POST',

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FHS0PHSTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8FHS0PHSTY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta Veicular Gratuita | iCarSP</title>
+<meta name="description" content="Consulte IPVA, multas, licenciamento e débitos do seu veículo gratuitamente. Dados oficiais SEFAZ-SP e DETRAN-SP.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+.cv-hero {
+  background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+.cv-hero .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.3);
+  color: #86efac;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.cv-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+.cv-hero p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.cv-section {
+  background: #0f1419;
+  padding: 60px 20px 80px;
+}
+.cv-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.cv-group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.cv-group-title.green { color: #22c55e; }
+.cv-group-title.blue  { color: #3b82f6; }
+.cv-group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.cv-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 20px;
+  padding: 24px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.cv-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.cv-card.green { border-color: rgba(34,197,94,0.15); }
+.cv-card.green:hover { border-color: rgba(34,197,94,0.4); box-shadow: 0 8px 30px rgba(34,197,94,0.1); }
+.cv-card.blue  { border-color: rgba(59,130,246,0.15); }
+.cv-card.blue:hover  { border-color: rgba(59,130,246,0.4); box-shadow: 0 8px 30px rgba(59,130,246,0.1); }
+
+.cv-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.cv-card.green .cv-card-icon { background: rgba(34,197,94,0.1); color: #22c55e; }
+.cv-card.blue  .cv-card-icon { background: rgba(59,130,246,0.1); color: #3b82f6; }
+
+.cv-card h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 0;
+}
+.cv-card p {
+  color: #94a3b8;
+  font-size: 0.83rem;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+}
+.cv-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.tag-free {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(34,197,94,0.1);
+  color: #86efac;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.tag-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(234,179,8,0.1);
+  color: #fde68a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.cv-card-arrow { color: #475569; font-size: 0.9rem; }
+.cv-card.green .cv-card-arrow { color: #22c55e; }
+.cv-card.blue  .cv-card-arrow { color: #3b82f6; }
+
+.aviso-login {
+  background: rgba(234,179,8,0.06);
+  border: 1px solid rgba(234,179,8,0.2);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.aviso-login i { color: #eab308; font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
+.aviso-login p { color: #fde68a; font-size: 0.85rem; margin: 0; line-height: 1.6; }
+
+@media (max-width: 600px) {
+  .cv-hero h1 { font-size: 1.8rem; }
+  .cv-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+  <img src="logo.png" alt="icarSP" class="header-logo" />
+  <nav class="nav">
+    <a href="/">Início</a>
+    <a href="/#como-funciona">Como funciona</a>
+    <a href="/consulta-ipva.html" style="color:#22c55e;">Consulta Gratuita</a>
+    <a href="/sobre.html">Sobre nós</a>
+  </nav>
+</div>
+</header>
+
+<section class="cv-hero">
+  <div class="badge"><i class="fa fa-shield-halved"></i> Dados oficiais SEFAZ-SP e DETRAN-SP — 100% gratuito</div>
+  <h1>Consulta <span style="color:#22c55e;">Veicular</span> Gratuita</h1>
+  <p>Acesse diretamente os portais oficiais do Governo de São Paulo para consultar IPVA, multas, licenciamento e muito mais — sem pagar nada.</p>
+</section>
+
+<section class="cv-section">
+<div class="cv-inner">
+
+  <div class="aviso-login">
+    <i class="fa fa-circle-info"></i>
+    <p>Serviços marcados com <strong>⚠ Requer login gov.br</strong> precisam de uma conta no portal do governo federal. O cadastro é gratuito em <strong>gov.br</strong>. Os demais não precisam de login.</p>
+  </div>
+
+  <!-- SEM LOGIN -->
+  <div class="cv-group-title green"><i class="fa fa-circle-check"></i> Sem necessidade de login</div>
+  <div class="cv-grid">
+
+    <a href="https://www.fazenda.sp.gov.br/ipva/" target="_blank" class="cv-card green">
+      <div class="cv-card-icon"><i class="fa fa-money-bill-wave"></i></div>
+      <h3>IPVA</h3>
+      <p>Consulte parcelas, situação e gere boleto ou Pix para pagamento do IPVA do seu veículo.</p>
+      <div class="cv-card-footer">
+        <span class="tag-free"><i class="fa fa-circle-check"></i> Sem login</span>
+        <i class="fa fa-arrow-up-right-from-square cv-card-arrow"></i>
+      </div>
+    </a>
+
+    <a href="https://www.detran.sp.gov.br/wps/portal/detran/servicos/veiculos/consultarMultasVeiculo" target="_blank" class="cv-card green">
+      <div class="cv-card-icon"><i class="fa fa-triangle-exclamation"></i></div>
+      <h3>Multas do Veículo</h3>
+      <p>Consulte autuações e infrações registradas no veículo pelo RENAVAM no portal DETRAN-SP.</p>
+      <div class="cv-card-footer">
+        <span class="tag-free"><i class="fa fa-circle-check"></i> Sem login</span>
+        <i class="fa fa-arrow-up-right-from-square cv-card-arrow"></i>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- COM LOGIN -->
+  <div class="cv-group-title blue"><i class="fa fa-lock"></i> Requer login gov.br</div>
+  <div class="cv-grid">
+
+    <a href="https://pixveiculos.fazenda.sp.gov.br/pix/home" target="_blank" class="cv-card blue">
+      <div class="cv-card-icon"><i class="fa fa-id-card"></i></div>
+      <h3>Licenciamento de Veículo</h3>
+      <p>Consulte a situação do licenciamento anual e gere guia de pagamento.</p>
+      <div class="cv-card-footer">
+        <span class="tag-login"><i class="fa fa-triangle-exclamation"></i> Requer login gov.br</span>
+        <i class="fa fa-arrow-up-right-from-square cv-card-arrow"></i>
+      </div>
+    </a>
+
+    <a href="https://pixveiculos.fazenda.sp.gov.br/pix/home" target="_blank" class="cv-card blue">
+      <div class="cv-card-icon"><i class="fa fa-file-invoice-dollar"></i></div>
+      <h3>Débitos Pendentes</h3>
+      <p>Veja todos os débitos pendentes do veículo: IPVA, multas, licenciamento e taxas em um só lugar.</p>
+      <div class="cv-card-footer">
+        <span class="tag-login"><i class="fa fa-triangle-exclamation"></i> Requer login gov.br</span>
+        <i class="fa fa-arrow-up-right-from-square cv-card-arrow"></i>
+      </div>
+    </a>
+
+    <a href="https://pixveiculos.fazenda.sp.gov.br/pix/home" target="_blank" class="cv-card blue">
+      <div class="cv-card-icon"><i class="fa fa-right-left"></i></div>
+      <h3>Transferência de Veículo</h3>
+      <p>Inicie o processo de transferência de propriedade do veículo pelo portal oficial.</p>
+      <div class="cv-card-footer">
+        <span class="tag-login"><i class="fa fa-triangle-exclamation"></i> Requer login gov.br</span>
+        <i class="fa fa-arrow-up-right-from-square cv-card-arrow"></i>
+      </div>
+    </a>
+
+    <a href="https://pixveiculos.fazenda.sp.gov.br/pix/home" target="_blank" class="cv-card blue">
+      <div class="cv-card-icon"><i class="fa fa-receipt"></i></div>
+      <h3>Taxas Detran</h3>
+      <p>Consulte e pague taxas administrativas do DETRAN como segunda via de CNH, alterações e registros.</p>
+      <div class="cv-card-footer">
+        <span class="tag-login"><i class="fa fa-triangle-exclamation"></i> Requer login gov.br</span>
+        <i class="fa fa-arrow-up-right-from-square cv-card-arrow"></i>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-col">
+<img src="logo.png" alt="icarSP" class="footer-logo" />
+<p>Bruno Henrique Camacho</p>
+<p>Despachante veicular - São Paulo</p>
+<p>CRDD 005636-7</p>
+</div>
+<div class="footer-col">
+<h4>Links</h4>
+<a href="/">Início</a>
+<a href="/#como-funciona">Como funciona</a>
+<a href="/consulta-ipva.html">Consulta Gratuita</a>
+<a href="/sobre.html">Sobre nós</a>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<a href="#">Termos de uso</a>
+<a href="#">Privacidade</a>
+<a href="#">Cookies</a>
+</div>
+<div class="footer-col">
+<h4>Contato</h4>
+<a href="mailto:icarspconsultas@gmail.com">icarspconsultas@gmail.com</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 icarSP. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+</body>
+</html>

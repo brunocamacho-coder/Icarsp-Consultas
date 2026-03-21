@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contrato com Reserva de Domínio | iCarSP</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-deep: #060d1a;
+  --bg-card: #0d1525;
+  --bg-card2: #111b2d;
+  --accent: #f59e0b;
+  --accent2: #22c55e;
+  --accent3: #3b82f6;
+  --border: rgba(255,255,255,0.08);
+  --text: #e2eaf5;
+  --muted: #7a93b0;
+  --font: 'Segoe UI', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-deep); color: var(--text); font-family: var(--font); min-height: 100vh; }
+
+.page { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* HEADER */
+.page-header { text-align: center; margin-bottom: 40px; }
+.page-header .logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
+.page-header .logo img { height: 120px; }
+
+.badge-topo {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+  color: #fcd34d; padding: 8px 16px; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;
+}
+
+.page-header h1 { font-size: 2.1rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 12px; }
+.page-header h1 span { color: var(--accent); }
+.page-header p { color: var(--muted); font-size: 1rem; max-width: 580px; margin: 0 auto; line-height: 1.6; }
+
+/* AVISO LEGAL */
+.aviso-legal {
+  background: rgba(245,158,11,0.07);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.aviso-legal i { color: var(--accent); font-size: 1.3rem; margin-top: 2px; flex-shrink: 0; }
+.aviso-legal h4 { color: #fcd34d; font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
+.aviso-legal p { color: #d97706; font-size: 0.83rem; line-height: 1.5; }
+
+/* STEPS */
+.steps-bar { display: flex; align-items: center; justify-content: center; margin-bottom: 36px; }
+.step-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.step-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem;
+  border: 2px solid var(--border);
+  background: var(--bg-card); color: var(--muted);
+  transition: all 0.3s;
+}
+.step-circle.active { background: var(--accent); border-color: var(--accent); color: #000; }
+.step-circle.done { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.step-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.step-label.active { color: var(--accent); }
+.step-line { width: 50px; height: 2px; background: var(--border); margin-bottom: 22px; }
+.step-line.done { background: var(--accent2); }
+
+/* CARDS */
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 20px; }
+.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.card-icon.amber { background: rgba(245,158,11,0.15); color: var(--accent); }
+.card-icon.blue { background: rgba(59,130,246,0.15); color: var(--accent3); }
+.card-icon.green { background: rgba(34,197,94,0.15); color: var(--accent2); }
+.card-icon.red { background: rgba(239,68,68,0.15); color: #f87171; }
+.card-icon.purple { background: rgba(168,85,247,0.15); color: #a855f7; }
+.card-header h2 { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.card-header p { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+
+/* UPLOAD */
+.upload-area {
+  border: 2px dashed rgba(245,158,11,0.3); border-radius: 16px;
+  padding: 36px 20px; text-align: center; cursor: pointer;
+  transition: all 0.3s; background: rgba(245,158,11,0.03); position: relative;
+}
+.upload-area:hover { border-color: var(--accent); background: rgba(245,158,11,0.07); }
+.upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload-icon { font-size: 2.2rem; color: var(--accent); margin-bottom: 10px; }
+.upload-area h3 { color: #fff; font-size: 0.98rem; font-weight: 700; margin-bottom: 4px; }
+.upload-area p { color: var(--muted); font-size: 0.83rem; }
+.upload-formats { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+.format-badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; font-size: 0.73rem; color: var(--muted); font-weight: 600; }
+
+.upload-preview { display: none; margin-top: 14px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 12px 14px; align-items: center; gap: 10px; }
+.upload-preview.show { display: flex; }
+.upload-preview i { color: var(--accent2); }
+.upload-preview span { color: #86efac; font-size: 0.88rem; font-weight: 600; flex: 1; }
+.btn-remover { background: none; border: none; color: var(--muted); cursor: pointer; }
+
+.ia-reading { display: none; background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2); border-radius: 10px; padding: 14px; margin-top: 12px; align-items: center; gap: 10px; }
+.ia-reading.show { display: flex; }
+.ia-reading i { color: var(--accent); animation: spin 1s linear infinite; }
+.ia-reading span { color: #fcd34d; font-size: 0.88rem; font-weight: 600; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* FORM */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 0.77rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.form-group input, .form-group select {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; color: #fff; font-size: 0.93rem;
+  font-family: var(--font); transition: border-color 0.2s; outline: none; width: 100%;
+}
+.form-group input:focus, .form-group select:focus { border-color: var(--accent); background: rgba(245,158,11,0.05); }
+.form-group input::placeholder { color: rgba(255,255,255,0.2); }
+.form-group input.filled { border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.04); }
+.form-group select option { background: #0d1525; color: #fff; }
+
+/* PARCELAS */
+.parcelas-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
+}
+.parcelas-header h3 { color: #fff; font-size: 1rem; font-weight: 700; }
+
+.resumo-financeiro {
+  background: rgba(245,158,11,0.07);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.resumo-item { text-align: center; }
+.resumo-item span { display: block; font-size: 0.75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.resumo-item strong { font-size: 1.1rem; color: #fcd34d; font-weight: 800; }
+
+.parcela-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr 36px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.parcela-row:last-child { border-bottom: none; }
+.parcela-num { 
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 800; color: #fcd34d;
+}
+.parcela-row input {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; color: #fff; font-size: 0.88rem;
+  font-family: var(--font); outline: none; width: 100%;
+}
+.parcela-row input:focus { border-color: var(--accent); }
+.btn-remover-parcela {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
+  color: #f87171; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; transition: all 0.2s;
+}
+.btn-remover-parcela:hover { background: rgba(239,68,68,0.2); }
+
+.btn-add-parcela {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(245,158,11,0.08); border: 1px dashed rgba(245,158,11,0.3);
+  color: #fcd34d; border-radius: 10px; padding: 12px 16px;
+  cursor: pointer; font-size: 0.88rem; font-weight: 700;
+  width: 100%; justify-content: center; margin-top: 12px;
+  transition: all 0.2s;
+}
+.btn-add-parcela:hover { background: rgba(245,158,11,0.14); }
+
+/* CLÁUSULAS */
+.clausulas-grid { display: flex; flex-direction: column; gap: 12px; }
+.clausula-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.clausula-check { 
+  width: 20px; height: 20px; border-radius: 6px;
+  background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.clausula-check i { color: var(--accent2); font-size: 0.7rem; }
+.clausula-texto h4 { color: #fff; font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; }
+.clausula-texto p { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+/* MULTA */
+.multa-box {
+  background: rgba(239,68,68,0.06);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 16px;
+}
+.multa-box h4 { color: #fca5a5; font-size: 0.92rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 22px 0; }
+
+/* PRICE CARD */
+.price-card {
+  background: linear-gradient(145deg, #1a1200, #0d1525);
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.price-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.price-card-left h3 { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+.price-card-left p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.price-box { text-align: right; flex-shrink: 0; }
+.price-box small { display: block; color: var(--muted); font-size: 0.8rem; margin-bottom: 4px; }
+.price-box strong { font-size: 2.2rem; color: #fcd34d; font-weight: 800; }
+.includes-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.includes-item { display: flex; align-items: center; gap: 8px; font-size: 0.87rem; color: var(--text); }
+.includes-item i { color: var(--accent2); font-size: 0.82rem; flex-shrink: 0; }
+
+/* BUTTONS */
+.btn-primary {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 18px 24px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #000; border: none; border-radius: 14px;
+  font-size: 1.05rem; font-weight: 800; cursor: pointer;
+  transition: all 0.25s; box-shadow: 0 8px 24px rgba(245,158,11,0.25);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,158,11,0.35); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 14px 24px;
+  background: rgba(255,255,255,0.04); color: var(--text);
+  border: 1px solid var(--border); border-radius: 14px;
+  font-size: 0.95rem; font-weight: 700; cursor: pointer;
+  transition: all 0.2s; margin-top: 10px;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.08); }
+
+.security-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+.security-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--muted); }
+.security-item i { color: var(--accent2); }
+
+/* PIX MODAL */
+.pix-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.pix-modal.show { display: flex; }
+.pix-box { background: #fff; border-radius: 20px; padding: 32px; max-width: 400px; width: 100%; text-align: center; }
+.pix-box h2 { color: #333; margin-bottom: 6px; }
+.pix-box p { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+#pix-qr { margin: 0 auto 16px; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+#pix-code { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 12px; background: #f5f5f5; margin-bottom: 12px; color: #333; }
+.pix-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pix-btns button { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.9rem; }
+.btn-copiar { background: #f59e0b; color: #000; }
+.btn-fechar { background: #666; color: #fff; }
+#pix-status { margin-top: 14px; font-weight: 700; color: #333; font-size: 0.92rem; }
+
+/* SUCCESS */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.show { display: flex; }
+.modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px 32px; max-width: 440px; width: 100%; text-align: center; }
+.modal-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(245,158,11,0.15); border: 2px solid rgba(245,158,11,0.3); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--accent); margin: 0 auto 20px; }
+.modal h2 { color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
+.modal p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
+.btn-download { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; border: none; border-radius: 12px; font-size: 1rem; font-weight: 800; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
+
+@media (max-width: 640px) {
+  .form-grid, .form-grid.cols-3 { grid-template-columns: 1fr; }
+  .includes-list { grid-template-columns: 1fr; }
+  .resumo-financeiro { grid-template-columns: 1fr; }
+  .parcela-row { grid-template-columns: 36px 1fr 1fr; }
+  .parcela-row .venc { grid-column: 1 / -1; }
+  .page-header h1 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="logo"><a href="/"><img src="logo.png" alt="iCarSP" /></a></div>
+    <a href="/" style="display:inline-flex;align-items:center;gap:6px;color:#7a93b0;text-decoration:none;font-size:0.85rem;font-weight:600;margin-bottom:16px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#7a93b0'">
+      <i class="fa fa-arrow-left"></i> Voltar ao início
+    </a>
+    <div class="badge-topo"><i class="fa fa-shield-halved"></i> Contrato com Reserva de Domínio — Art. 521 CC</div>
+    <h1>Compra e Venda <span>Reserva de domínio</span> de Veículo</h1>
+    <p>Contrato juridicamente válido com reserva de domínio. O vendedor mantém a propriedade até o pagamento integral. Proteção total para ambas as partes.</p>
+  </div>
+
+  <!-- AVISO LEGAL -->
+  <div class="aviso-legal">
+    <i class="fa fa-scale-balanced"></i>
+    <div>
+      <h4>Validade Jurídica — Art. 521 a 528 do Código Civil Brasileiro</h4>
+      <p>Este contrato tem plena validade legal no Brasil. Com reserva de domínio, o vendedor mantém a propriedade do veículo até o pagamento total, podendo retomá-lo judicialmente em caso de inadimplência. Recomenda-se reconhecimento de firma em cartório para maior segurança.</p>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps-bar">
+    <div class="step-item">
+      <div class="step-circle active" id="step1-circle">1</div>
+      <div class="step-label active" id="step1-label">Veículo</div>
+    </div>
+    <div class="step-line" id="line1"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step2-circle">2</div>
+      <div class="step-label" id="step2-label">Vendedor</div>
+    </div>
+    <div class="step-line" id="line2"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step3-circle">3</div>
+      <div class="step-label" id="step3-label">Comprador</div>
+    </div>
+    <div class="step-line" id="line3"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step4-circle">4</div>
+      <div class="step-label" id="step4-label">Parcelas</div>
+    </div>
+    <div class="step-line" id="line4"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step5-circle">5</div>
+      <div class="step-label" id="step5-label">Pagamento</div>
+    </div>
+  </div>
+
+  <!-- STEP 1: VEÍCULO -->
+  <div id="section-veiculo">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon amber"><i class="fa fa-camera"></i></div>
+        <div><h2>Envie o CRLV do veículo</h2><p>A IA lê automaticamente todos os dados</p></div>
+      </div>
+      <div class="upload-area" id="upload-area">
+        <input type="file" id="crlv-file" accept="image/*,.pdf" />
+        <div class="upload-icon"><i class="fa fa-cloud-arrow-up"></i></div>
+        <h3>Clique ou arraste o CRLV aqui</h3>
+        <p>Foto ou PDF do documento do veículo</p>
+        <div class="upload-formats">
+          <span class="format-badge">JPG</span><span class="format-badge">PNG</span>
+          <span class="format-badge">PDF</span><span class="format-badge">WEBP</span>
+        </div>
+      </div>
+      <div class="upload-preview" id="upload-preview">
+        <i class="fa fa-file-image"></i>
+        <span id="upload-filename">arquivo.jpg</span>
+        <button class="btn-remover" onclick="removerArquivo()"><i class="fa fa-times"></i></button>
+      </div>
+      <div class="ia-reading" id="ia-reading">
+        <i class="fa fa-spinner"></i>
+        <span>IA lendo o documento e extraindo os dados...</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon blue"><i class="fa fa-car"></i></div>
+        <div><h2>Dados do veículo</h2><p>Preenchidos automaticamente ou insira manualmente</p></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label>Placa</label><input type="text" id="v-placa" placeholder="ABC-1234" maxlength="8" /></div>
+        <div class="form-group"><label>Marca / Modelo</label><input type="text" id="v-modelo" placeholder="Ex: Honda Civic" /></div>
+        <div class="form-group"><label>Ano Fabricação</label><input type="text" id="v-ano-fab" placeholder="Ex: 2020" maxlength="4" /></div>
+        <div class="form-group"><label>Ano Modelo</label><input type="text" id="v-ano-mod" placeholder="Ex: 2021" maxlength="4" /></div>
+        <div class="form-group"><label>Cor</label><input type="text" id="v-cor" placeholder="Ex: Prata" /></div>
+        <div class="form-group"><label>Combustível</label>
+          <select id="v-combustivel">
+            <option value="">Selecione</option>
+            <option>Gasolina</option><option>Etanol</option>
+            <option>Flex (Gasolina/Etanol)</option><option>Diesel</option>
+            <option>Elétrico</option><option>GNV</option>
+          </select>
+        </div>
+        <div class="form-group full"><label>Chassi</label><input type="text" id="v-chassi" placeholder="Ex: 9BWZZZ377VT004251" maxlength="17" style="text-transform:uppercase;" /></div>
+        <div class="form-group"><label>RENAVAM</label><input type="text" id="v-renavam" placeholder="Ex: 00123456789" maxlength="11" /></div>
+        <div class="form-group"><label>Quilometragem atual</label><input type="text" id="v-km" placeholder="Ex: 45.000 km" /></div>
+      </div>
+      <div class="divider"></div>
+      <div class="form-grid cols-3">
+        <div class="form-group"><label>Cidade da venda</label><input type="text" id="v-cidade" placeholder="Ex: São Paulo" /></div>
+        <div class="form-group"><label>Estado (UF)</label>
+          <select id="v-uf">
+            <option value="">UF</option>
+            <option>SP</option><option>RJ</option><option>MG</option><option>RS</option>
+            <option>PR</option><option>SC</option><option>BA</option><option>GO</option>
+            <option>DF</option><option>PE</option><option>CE</option><option>ES</option>
+            <option>PB</option><option>RN</option><option>AL</option><option>PI</option>
+            <option>MA</option><option>SE</option><option>RO</option><option>TO</option>
+            <option>AC</option><option>AP</option><option>RR</option><option>AM</option>
+            <option>MT</option><option>MS</option><option>PA</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Data do contrato</label><input type="date" id="v-data" /></div>
+      </div>
+      <div style="margin-top:24px;">
+        <button class="btn-primary" onclick="avancarStep(2)"><i class="fa fa-arrow-right"></i> Avançar — Dados do Vendedor</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: VENDEDOR -->
+  <div id="section-vendedor" style="display:none;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon amber"><i class="fa fa-user-tie"></i></div>
+        <div><h2>Dados do Vendedor</h2><p>Quem está vendendo e retém a propriedade até o pagamento total</p></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group full"><label>Nome completo</label><input type="text" id="vend-nome" placeholder="Nome completo do vendedor" /></div>
+        <div class="form-group"><label>CPF</label><input type="text" id="vend-cpf" placeholder="000.000.000-00" maxlength="14" /></div>
+        <div class="form-group"><label>RG</label><input type="text" id="vend-rg" placeholder="00.000.000-0" maxlength="12" /></div>
+        <div class="form-group"><label>Órgão Emissor</label><input type="text" id="vend-rg-org" placeholder="SSP/SP" maxlength="10" /></div>
+        <div class="form-group"><label>Estado Civil</label>
+          <select id="vend-estado-civil">
+            <option value="">Selecione</option><option>Solteiro(a)</option>
+            <option>Casado(a)</option><option>Divorciado(a)</option>
+            <option>Viúvo(a)</option><option>União Estável</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Profissão</label><input type="text" id="vend-profissao" placeholder="Ex: Comerciante" /></div>
+        <div class="form-group"><label>Telefone</label><input type="text" id="vend-tel" placeholder="(11) 99999-9999" maxlength="15" /></div>
+        <div class="form-group"><label>E-mail</label><input type="email" id="vend-email" placeholder="email@exemplo.com" /></div>
+        <div class="form-group full"><label>Endereço completo</label><input type="text" id="vend-end" placeholder="Rua, número, complemento" /></div>
+        <div class="form-group"><label>Bairro</label><input type="text" id="vend-bairro" placeholder="Bairro" /></div>
+        <div class="form-group"><label>Cidade</label><input type="text" id="vend-cidade" placeholder="Cidade" /></div>
+        <div class="form-group"><label>UF</label>
+          <select id="vend-uf">
+            <option value="">UF</option><option>SP</option><option>RJ</option><option>MG</option>
+            <option>RS</option><option>PR</option><option>SC</option><option>BA</option>
+            <option>GO</option><option>DF</option><option>PE</option><option>CE</option><option>ES</option>
+          </select>
+        </div>
+        <div class="form-group"><label>CEP</label><input type="text" id="vend-cep" placeholder="00000-000" maxlength="9" /></div>
+      </div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+        <button class="btn-primary" onclick="avancarStep(3)"><i class="fa fa-arrow-right"></i> Avançar — Dados do Comprador</button>
+        <button class="btn-secondary" onclick="voltarStep(1)"><i class="fa fa-arrow-left"></i> Voltar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: COMPRADOR -->
+  <div id="section-comprador" style="display:none;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon green"><i class="fa fa-user"></i></div>
+        <div><h2>Dados do Comprador</h2><p>Quem está comprando e ficará na posse do veículo</p></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group full"><label>Nome completo</label><input type="text" id="comp-nome" placeholder="Nome completo do comprador" /></div>
+        <div class="form-group"><label>CPF</label><input type="text" id="comp-cpf" placeholder="000.000.000-00" maxlength="14" /></div>
+        <div class="form-group"><label>RG</label><input type="text" id="comp-rg" placeholder="00.000.000-0" maxlength="12" /></div>
+        <div class="form-group"><label>Órgão Emissor</label><input type="text" id="comp-rg-org" placeholder="SSP/SP" maxlength="10" /></div>
+        <div class="form-group"><label>Estado Civil</label>
+          <select id="comp-estado-civil">
+            <option value="">Selecione</option><option>Solteiro(a)</option>
+            <option>Casado(a)</option><option>Divorciado(a)</option>
+            <option>Viúvo(a)</option><option>União Estável</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Profissão</label><input type="text" id="comp-profissao" placeholder="Ex: Engenheiro" /></div>
+        <div class="form-group"><label>Telefone</label><input type="text" id="comp-tel" placeholder="(11) 99999-9999" maxlength="15" /></div>
+        <div class="form-group"><label>E-mail</label><input type="email" id="comp-email" placeholder="email@exemplo.com" /></div>
+        <div class="form-group full"><label>Endereço completo</label><input type="text" id="comp-end" placeholder="Rua, número, complemento" /></div>
+        <div class="form-group"><label>Bairro</label><input type="text" id="comp-bairro" placeholder="Bairro" /></div>
+        <div class="form-group"><label>Cidade</label><input type="text" id="comp-cidade" placeholder="Cidade" /></div>
+        <div class="form-group"><label>UF</label>
+          <select id="comp-uf">
+            <option value="">UF</option><option>SP</option><option>RJ</option><option>MG</option>
+            <option>RS</option><option>PR</option><option>SC</option><option>BA</option>
+            <option>GO</option><option>DF</option><option>PE</option><option>CE</option><option>ES</option>
+          </select>
+        </div>
+        <div class="form-group"><label>CEP</label><input type="text" id="comp-cep" placeholder="00000-000" maxlength="9" /></div>
+      </div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+        <button class="btn-primary" onclick="avancarStep(4)"><i class="fa fa-arrow-right"></i> Avançar — Condições de Pagamento</button>
+        <button class="btn-secondary" onclick="voltarStep(2)"><i class="fa fa-arrow-left"></i> Voltar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: PARCELAS -->
+  <div id="section-parcelas" style="display:none;">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon amber"><i class="fa fa-money-bill-wave"></i></div>
+        <div><h2>Condições Financeiras</h2><p>Valor total, entrada e parcelas</p></div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Valor total do veículo (R$)</label>
+          <input type="text" id="valor-total" placeholder="Ex: 35.000,00" oninput="calcularResumo()" />
+        </div>
+        <div class="form-group">
+          <label>Valor da entrada (R$)</label>
+          <input type="text" id="valor-entrada" placeholder="Ex: 10.000,00" oninput="calcularResumo()" />
+        </div>
+        <div class="form-group">
+          <label>Data de entrega do veículo</label>
+          <input type="date" id="data-entrega" />
+        </div>
+        <div class="form-group">
+          <label>Data limite para transferência</label>
+          <input type="date" id="data-transferencia" />
+          <span style="font-size:0.73rem;color:var(--muted);margin-top:3px;">Após quitação total</span>
+        </div>
+      </div>
+
+      <div class="resumo-financeiro" id="resumo-financeiro">
+        <div class="resumo-item"><span>Valor Total</span><strong id="res-total">R$ 0,00</strong></div>
+        <div class="resumo-item"><span>Entrada</span><strong id="res-entrada">R$ 0,00</strong></div>
+        <div class="resumo-item"><span>Saldo a Parcelar</span><strong id="res-saldo">R$ 0,00</strong></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon purple"><i class="fa fa-calendar-days"></i></div>
+        <div><h2>Parcelas</h2><p>Defina o valor e vencimento de cada parcela</p></div>
+      </div>
+
+      <div class="parcelas-header">
+        <h3>Cronograma de pagamento</h3>
+        <div style="font-size:0.8rem;color:var(--muted);">Mínimo 1 parcela</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:40px 1fr 1fr 1fr 36px;gap:10px;margin-bottom:8px;">
+        <div></div>
+        <div style="font-size:0.73rem;color:var(--muted);font-weight:700;text-transform:uppercase;">Parcela Nº</div>
+        <div style="font-size:0.73rem;color:var(--muted);font-weight:700;text-transform:uppercase;">Valor (R$)</div>
+        <div style="font-size:0.73rem;color:var(--muted);font-weight:700;text-transform:uppercase;">Vencimento</div>
+        <div></div>
+      </div>
+
+      <div id="parcelas-container"></div>
+
+      <button class="btn-add-parcela" onclick="adicionarParcela()">
+        <i class="fa fa-plus"></i> Adicionar parcela
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon red"><i class="fa fa-triangle-exclamation"></i></div>
+        <div><h2>Penalidades por Inadimplência</h2><p>Proteção do vendedor em caso de não pagamento</p></div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Multa por atraso (%)</label>
+          <input type="text" id="multa-percent" placeholder="Ex: 2%" value="2%" />
+        </div>
+        <div class="form-group">
+          <label>Juros mensais (%)</label>
+          <input type="text" id="juros-percent" placeholder="Ex: 1% ao mês" value="1% ao mês" />
+        </div>
+        <div class="form-group">
+          <label>Prazo para regularização (dias)</label>
+          <input type="text" id="prazo-regular" placeholder="Ex: 15 dias" value="15 dias" />
+        </div>
+        <div class="form-group">
+          <label>Após inadimplência, vendedor pode:</label>
+          <select id="acao-inadimplencia">
+            <option>Retomar o veículo judicialmente</option>
+            <option>Cobrar saldo total imediatamente</option>
+            <option>Retomar o veículo ou cobrar saldo total</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="clausulas-grid">
+        <div class="clausula-item">
+          <div class="clausula-check"><i class="fa fa-check"></i></div>
+          <div class="clausula-texto">
+            <h4>Reserva de Domínio</h4>
+            <p>O vendedor mantém a propriedade legal do veículo até o pagamento integral de todas as parcelas.</p>
+          </div>
+        </div>
+        <div class="clausula-item">
+          <div class="clausula-check"><i class="fa fa-check"></i></div>
+          <div class="clausula-texto">
+            <h4>Responsabilidade Civil do Comprador</h4>
+            <p>O comprador assume toda responsabilidade por multas, acidentes, IPVA e danos a terceiros a partir da entrega do veículo.</p>
+          </div>
+        </div>
+        <div class="clausula-item">
+          <div class="clausula-check"><i class="fa fa-check"></i></div>
+          <div class="clausula-texto">
+            <h4>Vedação de Alienação</h4>
+            <p>O comprador fica proibido de vender, transferir, dar em garantia ou alienar o veículo antes da quitação total.</p>
+          </div>
+        </div>
+        <div class="clausula-item">
+          <div class="clausula-check"><i class="fa fa-check"></i></div>
+          <div class="clausula-texto">
+            <h4>Transferência Após Quitação</h4>
+            <p>O vendedor se compromete a providenciar toda a documentação para transferência após o pagamento integral.</p>
+          </div>
+        </div>
+        <div class="clausula-item">
+          <div class="clausula-check"><i class="fa fa-check"></i></div>
+          <div class="clausula-texto">
+            <h4>Retomada em Caso de Inadimplência</h4>
+            <p>Em caso de não pagamento, o vendedor pode retomar o veículo judicialmente com base nos arts. 521-528 do CC.</p>
+          </div>
+        </div>
+        <div class="clausula-item">
+          <div class="clausula-check"><i class="fa fa-check"></i></div>
+          <div class="clausula-texto">
+            <h4>Conservação do Veículo</h4>
+            <p>O comprador se obriga a manter o veículo em boas condições de conservação durante todo o período de pagamento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <button class="btn-primary" onclick="avancarStep(5)"><i class="fa fa-arrow-right"></i> Avançar — Pagamento do Contrato</button>
+      <button class="btn-secondary" onclick="voltarStep(3)"><i class="fa fa-arrow-left"></i> Voltar</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: PAGAMENTO -->
+  <div id="section-pagamento" style="display:none;">
+    <div class="price-card">
+      <div class="price-card-header">
+        <div class="price-card-left">
+          <h3>Contrato com Reserva de Domínio — PDF Jurídico</h3>
+          <p>Documento completo baseado nos Arts. 521-528 do Código Civil. Com cronograma de parcelas, cláusulas de proteção e penalidades por inadimplência.</p>
+        </div>
+        <div class="price-box">
+          <small>Pagamento único</small>
+          <strong>R$ 29,99</strong>
+        </div>
+      </div>
+      <div class="includes-list">
+        <div class="includes-item"><i class="fa fa-check"></i> Contrato PDF profissional</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Cláusula de reserva de domínio</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Cronograma completo de parcelas</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Penalidades por inadimplência</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Vedação de alienação</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Download imediato</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Válido em todo território nacional</div>
+        <div class="includes-item"><i class="fa fa-check"></i> Baseado no Código Civil Brasileiro</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <button class="btn-primary" id="btn-pagar" onclick="gerarPagamento()">
+        <i class="fa fa-pix"></i> Gerar PIX e receber contrato
+      </button>
+      <div class="security-row">
+        <div class="security-item"><i class="fa fa-lock"></i> Pagamento seguro</div>
+        <div class="security-item"><i class="fa fa-shield-halved"></i> Dados protegidos</div>
+        <div class="security-item"><i class="fa fa-bolt"></i> Entrega instantânea</div>
+      </div>
+      <button class="btn-secondary" onclick="voltarStep(4)"><i class="fa fa-arrow-left"></i> Voltar e revisar</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- PIX MODAL -->
+<div class="pix-modal" id="pix-modal">
+  <div class="pix-box">
+    <h2>Pagamento PIX</h2>
+    <p>Escaneie o QR Code ou copie o código abaixo</p>
+    <div id="pix-qr"><i class="fa fa-spinner fa-spin" style="font-size:40px;color:#666;"></i></div>
+    <input type="text" id="pix-code" readonly />
+    <div class="pix-btns">
+      <button class="btn-copiar" onclick="copiarPix()">Copiar código</button>
+      <button class="btn-fechar" onclick="fecharPix()">Fechar</button>
+    </div>
+    <div id="pix-status"></div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal">
+    <div class="modal-icon"><i class="fa fa-file-contract"></i></div>
+    <h2>Contrato gerado! 🎉</h2>
+    <p>Seu contrato com reserva de domínio foi gerado com sucesso em PDF profissional.</p>
+    <a href="#" id="btn-download" class="btn-download">
+      <i class="fa fa-download"></i> Baixar Contrato em PDF
+    </a>
+    <button onclick="document.getElementById('success-modal').classList.remove('show')" style="margin-top:12px;width:100%;padding:12px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:10px;color:#7a93b0;font-size:0.9rem;cursor:pointer;">
+      <i class="fa fa-times"></i> Fechar
+    </button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+let currentStep = 1;
+let arquivoBase64 = null;
+let pollingInterval = null;
+let parcelas = [];
+let dadosContrato = {};
+
+// STEPS
+function avancarStep(step) {
+  ['veiculo','vendedor','comprador','parcelas','pagamento'].forEach((s, i) => {
+    document.getElementById(`section-${s}`).style.display = (i + 1 === step) ? 'block' : 'none';
+  });
+  currentStep = step;
+  atualizarSteps();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function voltarStep(step) { avancarStep(step); }
+
+function atualizarSteps() {
+  for (let i = 1; i <= 5; i++) {
+    const circle = document.getElementById(`step${i}-circle`);
+    const label = document.getElementById(`step${i}-label`);
+    const line = document.getElementById(`line${i}`);
+    circle.className = 'step-circle';
+    label.className = 'step-label';
+    if (line) line.className = 'step-line';
+    if (i < currentStep) {
+      circle.classList.add('done');
+      circle.innerHTML = '<i class="fa fa-check" style="font-size:0.75rem;"></i>';
+      if (line) line.classList.add('done');
+    } else if (i === currentStep) {
+      circle.classList.add('active');
+      circle.textContent = i;
+      label.classList.add('active');
+    } else {
+      circle.textContent = i;
+    }
+  }
+}
+
+// UPLOAD & IA
+document.getElementById('crlv-file').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('upload-filename').textContent = file.name;
+  document.getElementById('upload-preview').classList.add('show');
+  document.getElementById('ia-reading').classList.add('show');
+  const reader = new FileReader();
+  reader.onload = async (ev) => {
+    arquivoBase64 = ev.target.result.split(',')[1];
+    await lerDocumentoIA(arquivoBase64, file.type || 'image/jpeg');
+  };
+  reader.readAsDataURL(file);
+});
+
+// ✅ FUNÇÃO SEGURA — usa backend Netlify (chave protegida no servidor)
+async function lerDocumentoIA(base64, mediaType) {
+  try {
+    const response = await fetch('/.netlify/functions/ler-crlv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imageBase64: base64, mediaType: mediaType })
+    });
+    const data = await response.json();
+    if (!data.success) throw new Error(data.error || 'Erro na leitura do documento');
+    preencherDadosVeiculo(data.dados);
+  } catch (e) {
+    console.error('Erro IA:', e);
+    alert('Não foi possível ler o documento automaticamente. Por favor, preencha os dados manualmente.');
+  } finally {
+    document.getElementById('ia-reading').classList.remove('show');
+  }
+}
+
+function preencherDadosVeiculo(d) {
+  const campos = { 'v-placa': d.placa, 'v-modelo': d.marca_modelo, 'v-ano-fab': d.ano_fabricacao, 'v-ano-mod': d.ano_modelo, 'v-cor': d.cor, 'v-chassi': d.chassi, 'v-renavam': d.renavam };
+  Object.entries(campos).forEach(([id, val]) => { if (val) { const el = document.getElementById(id); el.value = val; el.classList.add('filled'); } });
+  if (d.combustivel) { const sel = document.getElementById('v-combustivel'); for (let opt of sel.options) { if (opt.text.toLowerCase().includes(d.combustivel.toLowerCase())) { sel.value = opt.value; break; } } }
+}
+
+function removerArquivo() {
+  document.getElementById('crlv-file').value = '';
+  document.getElementById('upload-preview').classList.remove('show');
+  arquivoBase64 = null;
+}
+
+// PARCELAS
+let parcelaCount = 0;
+
+function adicionarParcela() {
+  parcelaCount++;
+  const container = document.getElementById('parcelas-container');
+  const div = document.createElement('div');
+  div.className = 'parcela-row';
+  div.id = `parcela-${parcelaCount}`;
+  div.innerHTML = `
+    <div class="parcela-num">${parcelaCount}</div>
+    <div style="font-size:0.88rem;color:var(--muted);font-weight:600;display:flex;align-items:center;">Parcela ${parcelaCount}</div>
+    <input type="text" placeholder="R$ 0,00" id="p-valor-${parcelaCount}" oninput="calcularResumo()" />
+    <input type="date" id="p-venc-${parcelaCount}" />
+    <button class="btn-remover-parcela" onclick="removerParcela(${parcelaCount})"><i class="fa fa-times"></i></button>
+  `;
+  container.appendChild(div);
+
+  // Auto-set next month
+  const hoje = new Date();
+  hoje.setMonth(hoje.getMonth() + parcelaCount);
+  document.getElementById(`p-venc-${parcelaCount}`).value = hoje.toISOString().split('T')[0];
+}
+
+function removerParcela(id) {
+  const el = document.getElementById(`parcela-${id}`);
+  if (el) el.remove();
+  calcularResumo();
+}
+
+function calcularResumo() {
+  const total = parseMoeda(document.getElementById('valor-total').value);
+  const entrada = parseMoeda(document.getElementById('valor-entrada').value);
+  const saldo = Math.max(0, total - entrada);
+  document.getElementById('res-total').textContent = formatarMoeda(total);
+  document.getElementById('res-entrada').textContent = formatarMoeda(entrada);
+  document.getElementById('res-saldo').textContent = formatarMoeda(saldo);
+}
+
+function parseMoeda(v) {
+  if (!v) return 0;
+  return parseFloat(v.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+}
+
+function formatarMoeda(v) {
+  return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+function formatarValor(str) {
+  if (!str) return '—';
+  // Remove tudo que não é número ou vírgula/ponto
+  const limpo = String(str).replace(/[^\d,.]/g, '').replace(',', '.');
+  const num = parseFloat(limpo);
+  if (isNaN(num)) return str;
+  return num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function U(str) {
+  return str ? String(str).toUpperCase() : '';
+}
+
+// PAGAMENTO
+async function gerarPagamento() {
+  coletarDados();
+  const btn = document.getElementById('btn-pagar');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Gerando PIX...';
+  document.getElementById('pix-modal').classList.add('show');
+  document.getElementById('pix-status').innerHTML = 'Gerando pagamento...';
+  try {
+    const response = await fetch('/.netlify/functions/create-mp-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ placa: dadosContrato.veiculo?.placa || 'CONTRATO-RD', tipo: 'contrato_reserva', valor: 19.90 })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Erro ao gerar pagamento');
+    const paymentId = data.paymentId || data.payment_id;
+    if (data.qr_code_base64) { document.getElementById('pix-qr').innerHTML = `<img src="data:image/png;base64,${data.qr_code_base64}" style="width:200px;height:200px;" />`; }
+    else if (data.qr_code) { document.getElementById('pix-qr').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data.qr_code)}" />`; }
+    document.getElementById('pix-code').value = data.pix_copia_e_cola || data.qr_code || '';
+    document.getElementById('pix-status').innerHTML = '⏳ Aguardando confirmação...';
+    btn.innerHTML = '<i class="fa fa-clock"></i> Aguardando pagamento...';
+    aguardarPagamento(paymentId);
+  } catch (e) {
+    document.getElementById('pix-status').innerHTML = '❌ ' + e.message;
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa fa-pix"></i> Gerar PIX e receber contrato';
+  }
+}
+
+function aguardarPagamento(paymentId) {
+  if (pollingInterval) clearInterval(pollingInterval);
+  pollingInterval = setInterval(async () => {
+    try {
+      const r = await fetch(`/.netlify/functions/check-mp-payment?payment_id=${encodeURIComponent(paymentId)}&tipo=contrato_reserva`);
+      const d = await r.json();
+      if (d.pago || d.status === 'approved') {
+        clearInterval(pollingInterval);
+        document.getElementById('pix-status').innerHTML = '✅ Pagamento confirmado! Gerando contrato...';
+        setTimeout(() => { document.getElementById('pix-modal').classList.remove('show'); gerarPDF(); }, 1500);
+      }
+    } catch (e) { console.error(e); }
+  }, 3000);
+}
+
+function copiarPix() { const i = document.getElementById('pix-code'); i.select(); document.execCommand('copy'); alert('Código PIX copiado!'); }
+function fecharPix() {
+  document.getElementById('pix-modal').classList.remove('show');
+  if (pollingInterval) clearInterval(pollingInterval);
+  const btn = document.getElementById('btn-pagar');
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fa fa-pix"></i> Gerar PIX e receber contrato';
+}
+
+// COLETAR
+function coletarDados() {
+  const parcelasData = [];
+  document.querySelectorAll('[id^="p-valor-"]').forEach(el => {
+    const num = el.id.replace('p-valor-', '');
+    const venc = document.getElementById(`p-venc-${num}`);
+    if (el.value) parcelasData.push({ num, valor: el.value, vencimento: venc?.value || '' });
+  });
+
+  dadosContrato = {
+    veiculo: {
+      placa: document.getElementById('v-placa').value,
+      modelo: document.getElementById('v-modelo').value,
+      ano_fab: document.getElementById('v-ano-fab').value,
+      ano_mod: document.getElementById('v-ano-mod').value,
+      cor: document.getElementById('v-cor').value,
+      combustivel: document.getElementById('v-combustivel').value,
+      chassi: document.getElementById('v-chassi').value,
+      renavam: document.getElementById('v-renavam').value,
+      km: document.getElementById('v-km').value,
+      cidade: document.getElementById('v-cidade').value,
+      uf: document.getElementById('v-uf').value,
+      data: document.getElementById('v-data').value,
+    },
+    vendedor: {
+      nome: document.getElementById('vend-nome').value,
+      cpf: document.getElementById('vend-cpf').value,
+      rg: document.getElementById('vend-rg').value,
+      rg_org: document.getElementById('vend-rg-org').value,
+      estado_civil: document.getElementById('vend-estado-civil').value,
+      profissao: document.getElementById('vend-profissao').value,
+      tel: document.getElementById('vend-tel').value,
+      email: document.getElementById('vend-email').value,
+      end: document.getElementById('vend-end').value,
+      bairro: document.getElementById('vend-bairro').value,
+      cidade: document.getElementById('vend-cidade').value,
+      uf: document.getElementById('vend-uf').value,
+      cep: document.getElementById('vend-cep').value,
+    },
+    comprador: {
+      nome: document.getElementById('comp-nome').value,
+      cpf: document.getElementById('comp-cpf').value,
+      rg: document.getElementById('comp-rg').value,
+      rg_org: document.getElementById('comp-rg-org').value,
+      estado_civil: document.getElementById('comp-estado-civil').value,
+      profissao: document.getElementById('comp-profissao').value,
+      tel: document.getElementById('comp-tel').value,
+      email: document.getElementById('comp-email').value,
+      end: document.getElementById('comp-end').value,
+      bairro: document.getElementById('comp-bairro').value,
+      cidade: document.getElementById('comp-cidade').value,
+      uf: document.getElementById('comp-uf').value,
+      cep: document.getElementById('comp-cep').value,
+    },
+    financeiro: {
+      valor_total: document.getElementById('valor-total').value,
+      valor_entrada: document.getElementById('valor-entrada').value,
+      data_entrega: document.getElementById('data-entrega').value,
+      data_transferencia: document.getElementById('data-transferencia').value,
+      multa: document.getElementById('multa-percent').value,
+      juros: document.getElementById('juros-percent').value,
+      prazo_regular: document.getElementById('prazo-regular').value,
+      acao_inadimplencia: document.getElementById('acao-inadimplencia').value,
+      parcelas: parcelasData,
+    }
+  };
+}
+
+// PDF
+async function gerarPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const d = dadosContrato;
+  const v = d.veiculo;
+  const vend = d.vendedor;
+  const comp = d.comprador;
+  const fin = d.financeiro;
+
+  const dataFormatada = v.data ? new Date(v.data + 'T12:00:00').toLocaleDateString('pt-BR') : new Date().toLocaleDateString('pt-BR');
+  const dataEntregaFmt = fin.data_entrega ? new Date(fin.data_entrega + 'T12:00:00').toLocaleDateString('pt-BR') : '___/___/______';
+  const dataTransfFmt = fin.data_transferencia ? new Date(fin.data_transferencia + 'T12:00:00').toLocaleDateString('pt-BR') : '___/___/______';
+
+  const lm = 12, rm = 198, pw = 186;
+  let y = 0;
+
+  // ══════════════════════════════════════════════════
+  // CABEÇALHO PREMIUM — degradê laranja/dourado
+  // ══════════════════════════════════════════════════
+  doc.setFillColor(180, 83, 9);
+  doc.rect(0, 0, 210, 24, 'F');
+  doc.setFillColor(217, 119, 6);
+  doc.rect(0, 16, 210, 8, 'F');
+
+  doc.setFontSize(15);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text('iCarSP', lm, 10);
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(253, 230, 138);
+  doc.text('Serviços Automotivos', lm, 15);
+
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text('CONTRATO COM RESERVA DE DOMÍNIO', 105, 9, { align: 'center' });
+  doc.setFontSize(7.5);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(253, 230, 138);
+  doc.text('Arts. 521 a 528 do Código Civil Brasileiro — O VENDEDOR mantém a propriedade até quitação total', 105, 14, { align: 'center' });
+
+  doc.setFontSize(7);
+  doc.setTextColor(255, 255, 255);
+  doc.text(`Gerado em ${dataFormatada}`, 105, 20, { align: 'center' });
+
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(253, 230, 138);
+  doc.text(`Placa: ${U(v.placa) || '---'}`, rm, 10, { align: 'right' });
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text(`Valor: R$ ${formatarValor(fin.valor_total)}`, rm, 16, { align: 'right' });
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(253, 230, 138);
+  doc.text(`Entrada: R$ ${formatarValor(fin.valor_entrada)}`, rm, 21, { align: 'right' });
+
+  y = 28;
+
+
+  // ══════════════════════════════════════════════════
+  // VENDEDOR / COMPRADOR — 2 colunas
+  // ══════════════════════════════════════════════════
+  const colW = 89;
+  const col1x = lm;
+  const col2x = lm + colW + 6;
+
+  function blocoTitulo(label, x, w, r, g, b) {
+    doc.setFillColor(r, g, b);
+    doc.rect(x, y, w, 7, 'F');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(255, 255, 255);
+    doc.text(label, x + 2, y + 5);
+    doc.setTextColor(0, 0, 0);
+  }
+
+  function miniCampo(label, valor, x, maxW) {
+    doc.setFontSize(6.2);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(100, 60, 0);
+    doc.text(label + ':', x, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(20, 20, 20);
+    const lines = doc.splitTextToSize(valor || '—', maxW - 20);
+    doc.text(lines, x + 18, y);
+    y += lines.length * 3.5;
+  }
+
+  blocoTitulo('VENDEDOR — Proprietário Legal', col1x, colW, 180, 83, 9);
+  y += 10;
+  const yV = y;
+  miniCampo('Nome', (vend.nome||'').toUpperCase(), col1x, colW);
+  miniCampo('CPF', vend.cpf, col1x, colW);
+  miniCampo('RG', `${vend.rg || ''}${vend.rg_org ? ' / ' + vend.rg_org : ''}`, col1x, colW);
+  miniCampo('Est.Civil', (vend.estado_civil||'').toUpperCase(), col1x, colW);
+  miniCampo('Profissão', (vend.profissao||'').toUpperCase(), col1x, colW);
+  miniCampo('Endereço', U(`${vend.end || ''}${vend.bairro ? ', ' + vend.bairro : ''}`), col1x, colW);
+  miniCampo('Cidade/UF', U(`${vend.cidade || ''}${vend.uf ? '/' + vend.uf : ''}`), col1x, colW);
+  miniCampo('CEP', vend.cep, col1x, colW);
+  miniCampo('Contato', `${vend.tel || ''} | ${U(vend.email)}`, col1x, colW);
+  const yEndV = y;
+
+  y = yV - 10;
+  blocoTitulo('COMPRADOR — Posse do Veículo', col2x, colW, 5, 120, 85);
+  y += 10;
+  miniCampo('Nome', (comp.nome||'').toUpperCase(), col2x, colW);
+  miniCampo('CPF', comp.cpf, col2x, colW);
+  miniCampo('RG', `${comp.rg || ''}${comp.rg_org ? ' / ' + comp.rg_org : ''}`, col2x, colW);
+  miniCampo('Est.Civil', (comp.estado_civil||'').toUpperCase(), col2x, colW);
+  miniCampo('Profissão', (comp.profissao||'').toUpperCase(), col2x, colW);
+  miniCampo('Endereço', U(`${comp.end || ''}${comp.bairro ? ', ' + comp.bairro : ''}`), col2x, colW);
+  miniCampo('Cidade/UF', U(`${comp.cidade || ''}${comp.uf ? '/' + comp.uf : ''}`), col2x, colW);
+  miniCampo('CEP', comp.cep, col2x, colW);
+  miniCampo('Contato', `${comp.tel || ''} | ${U(comp.email)}`, col2x, colW);
+
+  y = Math.max(yEndV, y) + 3;
+
+  // ══════════════════════════════════════════════════
+  // VEÍCULO + FINANCEIRO — 2 colunas
+  // ══════════════════════════════════════════════════
+  const yVeic = y;
+  blocoTitulo('DADOS DO VEÍCULO', col1x, colW, 180, 83, 9);
+  y += 10;
+  const yAfterVeic = y;
+  miniCampo('Marca/Mod.', (v.modelo||'').toUpperCase(), col1x, colW);
+  miniCampo('Placa', (v.placa||'').toUpperCase(), col1x, colW);
+  miniCampo('Ano', `${v.ano_fab || ''}/${v.ano_mod || ''}`, col1x, colW);
+  miniCampo('Cor', (v.cor||'').toUpperCase(), col1x, colW);
+  miniCampo('Combustível', (v.combustivel||'').toUpperCase(), col1x, colW);
+  miniCampo('KM', (v.km||'').toUpperCase(), col1x, colW);
+  miniCampo('Chassi', v.chassi, col1x, colW);
+  miniCampo('RENAVAM', v.renavam, col1x, colW);
+  const yEndVeic = y;
+
+  y = yVeic;
+  blocoTitulo('CONDIÇÕES FINANCEIRAS', col2x, colW, 5, 120, 85);
+  y += 10;
+  miniCampo('Valor total', `R$ ${formatarValor(fin.valor_total)}`, col2x, colW);
+  miniCampo('Entrada', `R$ ${formatarValor(fin.valor_entrada)}`, col2x, colW);
+  miniCampo('Dt. entrega', dataEntregaFmt, col2x, colW);
+  miniCampo('Dt. transf.', dataTransfFmt, col2x, colW);
+  miniCampo('Multa atraso', fin.multa || '2%', col2x, colW);
+  miniCampo('Juros', fin.juros || '1% ao mês', col2x, colW);
+  miniCampo('Inadimpl.', (fin.acao_inadimplencia||'RETOMADA JUDICIAL').toUpperCase(), col2x, colW);
+
+  y = Math.max(yEndVeic, y) + 3;
+
+  // ══════════════════════════════════════════════════
+  // TABELA DE PARCELAS
+  // ══════════════════════════════════════════════════
+  if (fin.parcelas && fin.parcelas.length > 0) {
+    doc.setFillColor(180, 83, 9);
+    doc.rect(lm, y, pw, 7, 'F');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(255, 255, 255);
+    doc.text('CRONOGRAMA DE PARCELAS', lm + 2, y + 5);
+    y += 10;
+
+    // Cabeçalho tabela
+    doc.setFillColor(253, 230, 138);
+    doc.rect(lm, y - 3, pw, 5, 'F');
+    doc.setFontSize(6.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(120, 53, 15);
+    const nParcelas = fin.parcelas.length;
+    const colPW = pw / nParcelas;
+    doc.text('Nº', lm + 4, y + 0.5);
+    doc.text('Valor (R$)', lm + 20, y + 0.5);
+    doc.text('Vencimento', lm + 60, y + 0.5);
+    doc.text('Status', lm + 110, y + 0.5);
+    y += 4;
+
+    fin.parcelas.forEach((p, i) => {
+      if (i % 2 === 0) { doc.setFillColor(255, 251, 235); } else { doc.setFillColor(255, 255, 255); }
+      doc.rect(lm, y - 3, pw, 4.5, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.5);
+      doc.setTextColor(30, 30, 30);
+      const vencFmt = p.vencimento ? new Date(p.vencimento + 'T12:00:00').toLocaleDateString('pt-BR') : '—';
+      doc.text(`${i + 1}ª`, lm + 4, y + 0.5);
+      doc.text(`R$ ${formatarValor(p.valor)}`, lm + 20, y + 0.5);
+      doc.text(vencFmt, lm + 60, y + 0.5);
+      doc.setTextColor(180, 83, 9);
+      doc.setFont('helvetica', 'bold');
+      doc.text('A vencer', lm + 110, y + 0.5);
+      y += 4.5;
+    });
+    y += 3;
+  }
+
+  // ══════════════════════════════════════════════════
+  // CLÁUSULAS COMPACTAS
+  // ══════════════════════════════════════════════════
+  doc.setFillColor(180, 83, 9);
+  doc.rect(lm, y, pw, 7, 'F');
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text('CLÁUSULAS ESPECIAIS — RESERVA DE DOMÍNIO (Arts. 521-528 CC)', lm + 2, y + 5);
+  y += 10;
+
+  const clausulas = [
+    '1. RESERVA DE DOMÍNIO: O VENDEDOR transfere apenas a posse direta, mantendo a propriedade até pagamento integral de todas as parcelas.',
+    '2. VEDAÇÃO DE ALIENAÇÃO: É expressamente vedado ao COMPRADOR vender, transferir, dar em garantia ou alienar o veículo antes da quitação total.',
+    '3. RESPONSABILIDADE CIVIL: O COMPRADOR assume toda responsabilidade por multas, acidentes, IPVA e danos a terceiros a partir da entrega.',
+    `4. MORA: Atraso sujeita multa de ${fin.multa || '2%'} + juros de ${fin.juros || '1%/mês'}. Prazo para regularização: ${fin.prazo_regular || '15 dias'}.`,
+    '5. RETOMADA: Em caso de inadimplência, o VENDEDOR poderá promover busca e apreensão judicial do veículo independentemente de notificação prévia.',
+    `6. FORO: ${v.cidade || '___'}/${v.uf || '__'} — renúncia expressa a qualquer outro foro, por mais privilegiado que seja.`
+  ];
+
+  clausulas.forEach(c => {
+    doc.setFontSize(6.3);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(25, 25, 25);
+    const lines = doc.splitTextToSize(c, pw);
+    doc.text(lines, lm, y);
+    y += lines.length * 3.4 + 0.8;
+  });
+
+  y += 2;
+  doc.setFontSize(6.3);
+  doc.setFont('helvetica', 'italic');
+  doc.setTextColor(80, 80, 80);
+  doc.text(`${U(v.cidade) || '___'}, ${dataFormatada}. Firmado em duas vias de igual teor e forma.`, lm, y);
+  y += 6;
+
+  // ══════════════════════════════════════════════════
+  // ASSINATURAS
+  // ══════════════════════════════════════════════════
+  doc.setFillColor(180, 83, 9);
+  doc.rect(lm, y, pw, 5.5, 'F');
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(255, 255, 255);
+  doc.text('ASSINATURAS', lm + 2, y + 5);
+  y += 11;
+
+  const sigs = [
+    { label: 'VENDEDOR', nome: vend.nome, cpf: vend.cpf, x: lm },
+    { label: 'COMPRADOR', nome: comp.nome, cpf: comp.cpf, x: rm - 75 },
+  ];
+
+  sigs.forEach(s => {
+    doc.setDrawColor(180, 83, 9);
+    doc.setLineWidth(0.4);
+    doc.line(s.x, y + 18, s.x + 75, y + 18);
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(120, 53, 15);
+    doc.text(s.label, s.x + 37.5, y + 22, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(6.5);
+    doc.setTextColor(40, 40, 40);
+    if (s.nome) doc.text(s.nome.toUpperCase(), s.x + 37.5, y + 26, { align: 'center' });
+    if (s.cpf) doc.text('CPF: ' + s.cpf, s.x + 37.5, y + 29.5, { align: 'center' });
+  });
+
+  y += 14;
+
+  // ══════════════════════════════════════════════════
+  // RODAPÉ
+  // ══════════════════════════════════════════════════
+  doc.setFillColor(254, 243, 199);
+  doc.rect(0, 284, 210, 13, 'F');
+  doc.setDrawColor(217, 119, 6);
+  doc.setLineWidth(0.3);
+  doc.line(0, 284, 210, 284);
+  doc.setFontSize(6.5);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(120, 53, 15);
+  doc.text('iCarSP — Serviços Automotivos | Despachante Documentalista CRDD 005636-7', 105, 289, { align: 'center' });
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 70, 0);
+  doc.text('icarspconsultas@gmail.com | www.icarsp.com.br | Contrato com Reserva de Domínio — Arts. 521-528 do Código Civil', 105, 293, { align: 'center' });
+
+  const blob = doc.output('blob');
+  const url = URL.createObjectURL(blob);
+  document.getElementById('btn-download').href = url;
+  document.getElementById('btn-download').download = `CONTRATO RESERVA DE DOMINIO.pdf`;
+  document.getElementById('success-modal').classList.add('show');
+
+  // Enviar PDF por email e salvar lead
+  const emailDestino = dadosContrato.vendedor?.email || dadosContrato.comprador?.email;
+  if (emailDestino) {
+    try {
+      const pdfBase64 = doc.output('datauristring').split(',')[1];
+      await fetch('/.netlify/functions/enviar-contrato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pdfBase64,
+          email: emailDestino,
+          telefone: dadosContrato.vendedor?.tel || dadosContrato.comprador?.tel,
+          nome: dadosContrato.vendedor?.nome || dadosContrato.comprador?.nome,
+          placa: dadosContrato.veiculo?.placa,
+          tipoContrato: 'reserva_dominio'
+        })
+      });
+    } catch (e) { console.error('Erro ao enviar email do contrato:', e); }
+  }
+}
+
+// MÁSCARAS
+['vend-cpf','comp-cpf'].forEach(id => document.getElementById(id).addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,'').substring(0,11).replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); }));
+['vend-cep','comp-cep'].forEach(id => document.getElementById(id).addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,'').substring(0,8).replace(/(\d{5})(\d)/,'$1-$2'); }));
+
+// INIT
+document.getElementById('v-data').value = new Date().toISOString().split('T')[0];
+adicionarParcela();
+adicionarParcela();
+adicionarParcela();
+</script>
+</body>
+</html>
