@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FHS0PHSTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8FHS0PHSTY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico do Motor | iCarSP</title>
+<meta name="description" content="Descubra a vida útil do motor do seu veículo gratuitamente. Informe o modelo, ano e KM e veja quando será necessário fazer manutenção.">
+<meta name="keywords" content="vida útil motor, manutenção carro, diagnóstico veicular, troca de óleo, correia dentada, quando fazer revisão">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://icarsp.com.br/diagnostico-motor">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ── Hero ── */
+.dm-hero {
+  background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+.dm-hero .badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3);
+  color: #fde68a; padding: 8px 18px; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 700; margin-bottom: 20px;
+}
+.dm-hero h1 { font-size: 2.6rem; font-weight: 800; color: #fff; margin: 0 0 16px; line-height: 1.2; }
+.dm-hero p  { color: #94a3b8; font-size: 1.05rem; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+/* ── Form section ── */
+.dm-section { background: #0f1419; padding: 60px 20px 80px; }
+.dm-inner   { max-width: 640px; margin: 0 auto; }
+
+.dm-form-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 24px; padding: 36px 32px;
+}
+.dm-form-card h2 { color: #fff; font-size: 1.2rem; font-weight: 800; margin: 0 0 24px; }
+
+.dm-field { margin-bottom: 18px; }
+.dm-field label { display: block; color: #94a3b8; font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.dm-field input, .dm-field select {
+  width: 100%; padding: 13px 16px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05); color: #e2e8f0;
+  font-size: 0.95rem; outline: none; box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.dm-field input:focus, .dm-field select:focus { border-color: rgba(251,191,36,0.5); }
+.dm-field select option { background: #1a2332; }
+
+.dm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.btn-diagnostico {
+  width: 100%; padding: 15px; margin-top: 8px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff; border: none; border-radius: 12px;
+  font-size: 1rem; font-weight: 800; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+}
+.btn-diagnostico:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.4); }
+
+/* ── CTA consulta veicular ── */
+.dm-cta {
+  margin-top: 32px; padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(59,130,246,0.04));
+  border: 1px solid rgba(59,130,246,0.2); border-radius: 16px;
+  text-align: center;
+}
+.dm-cta p { color: #94a3b8; font-size: 0.88rem; margin: 0 0 14px; line-height: 1.6; }
+.dm-cta a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #fff; border-radius: 10px; font-weight: 800; font-size: 0.9rem;
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.25);
+}
+.dm-cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59,130,246,0.4); }
+
+/* ── Modal ── */
+.dm-modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75); z-index: 1000;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.dm-modal-overlay.open { display: flex; }
+
+.dm-modal {
+  background: linear-gradient(145deg, #0d1117, #161b22);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px; padding: 32px 28px;
+  max-width: 560px; width: 100%; position: relative;
+  max-height: 90vh; overflow-y: auto;
+  animation: modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.88) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.dm-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.07); border: none; border-radius: 50%;
+  width: 34px; height: 34px; color: #94a3b8; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.dm-modal-close:hover { background: rgba(255,255,255,0.15); }
+
+.dm-modal-header { text-align: center; margin-bottom: 24px; }
+.dm-modal-header .veiculo-nome { color: #fbbf24; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.dm-modal-header h2 { color: #fff; font-size: 1.3rem; font-weight: 800; margin: 0; }
+
+/* ── Carro SVG animado ── */
+.car-wrapper {
+  display: flex; justify-content: center; margin: 0 0 28px;
+  position: relative;
+}
+.car-svg { width: 220px; filter: drop-shadow(0 8px 20px rgba(251,191,36,0.2)); }
+.car-wheels { animation: rodando 1.2s linear infinite; transform-origin: center; }
+.car-body  { animation: flutuando 3s ease-in-out infinite; }
+
+@keyframes rodando {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes flutuando {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Fumaça do escapamento */
+.smoke { position: absolute; bottom: 18px; left: 22px; display: flex; gap: 4px; }
+.smoke span {
+  display: block; width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(148,163,184,0.35); animation: fumaca 1.8s ease-in-out infinite;
+}
+.smoke span:nth-child(2) { animation-delay: 0.3s; }
+.smoke span:nth-child(3) { animation-delay: 0.6s; }
+@keyframes fumaca {
+  0%   { opacity: 0.6; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-22px) scale(2.5); }
+}
+
+/* ── Diagnóstico geral ── */
+.dm-status-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px; border-radius: 999px; font-weight: 800; font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+.dm-status-badge.verde  { background: rgba(34,197,94,0.12);  border: 1px solid rgba(34,197,94,0.3);  color: #86efac; }
+.dm-status-badge.amarelo{ background: rgba(234,179,8,0.12);  border: 1px solid rgba(234,179,8,0.3);  color: #fde68a; }
+.dm-status-badge.vermelho{ background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3);  color: #fca5a5; }
+
+/* ── Barras de vida útil ── */
+.dm-bars { display: flex; flex-direction: column; gap: 18px; margin-bottom: 28px; }
+
+.dm-bar-item {}
+.dm-bar-label {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 7px;
+}
+.dm-bar-label span { color: #e2e8f0; font-size: 0.85rem; font-weight: 700; }
+.dm-bar-label .dm-pct { font-size: 0.8rem; font-weight: 800; }
+.pct-verde   { color: #22c55e; }
+.pct-amarelo { color: #eab308; }
+.pct-vermelho{ color: #ef4444; }
+
+.dm-bar-track {
+  width: 100%; height: 10px; border-radius: 999px;
+  background: rgba(255,255,255,0.07); overflow: hidden;
+}
+.dm-bar-fill {
+  height: 100%; border-radius: 999px; width: 0%;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fill-verde   { background: linear-gradient(90deg, #22c55e, #16a34a); }
+.fill-amarelo { background: linear-gradient(90deg, #eab308, #ca8a04); }
+.fill-vermelho{ background: linear-gradient(90deg, #ef4444, #dc2626); }
+
+.dm-bar-sub { color: #64748b; font-size: 0.75rem; margin-top: 5px; }
+
+/* ── Próximas manutenções ── */
+.dm-manut-title {
+  color: #fff; font-size: 0.95rem; font-weight: 800;
+  margin: 0 0 14px; display: flex; align-items: center; gap: 8px;
+}
+.dm-manut-title i { color: #f59e0b; }
+.dm-manut-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.dm-manut-item {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 12px 14px;
+}
+.dm-manut-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+}
+.dm-manut-icon.ok     { background: rgba(34,197,94,0.1);  color: #22c55e; }
+.dm-manut-icon.alerta { background: rgba(234,179,8,0.1);  color: #eab308; }
+.dm-manut-icon.urgente{ background: rgba(239,68,68,0.1);  color: #ef4444; }
+
+.dm-manut-info { flex: 1; }
+.dm-manut-info strong { display: block; color: #e2e8f0; font-size: 0.85rem; font-weight: 700; }
+.dm-manut-info span   { color: #64748b; font-size: 0.78rem; }
+
+.dm-manut-km { color: #94a3b8; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+
+/* ── Rodapé do modal ── */
+.dm-modal-cta {
+  padding: 18px; background: rgba(59,130,246,0.07);
+  border: 1px solid rgba(59,130,246,0.2); border-radius: 14px;
+  text-align: center;
+}
+.dm-modal-cta p { color: #94a3b8; font-size: 0.83rem; margin: 0 0 12px; line-height: 1.5; }
+.dm-modal-cta a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 22px; background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #fff; border-radius: 10px; font-weight: 800; font-size: 0.88rem;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .dm-hero h1 { font-size: 1.9rem; }
+  .dm-form-card { padding: 24px 18px; }
+  .dm-row { grid-template-columns: 1fr; }
+  .dm-modal { padding: 24px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+  <img src="logo.png" alt="icarSP" class="header-logo" />
+  <nav class="nav">
+    <a href="/">Início</a>
+    <a href="/#como-funciona">Como funciona</a>
+    <a href="/consulta-ipva.html">Consulta Gratuita</a>
+    <a href="/sobre.html">Sobre nós</a>
+  </nav>
+</div>
+</header>
+
+<!-- Hero -->
+<section class="dm-hero">
+  <div class="badge"><i class="fa fa-wrench"></i> Ferramenta gratuita — sem cadastro</div>
+  <h1>Diagnóstico de <span style="color:#fbbf24;">Vida Útil</span> do Motor</h1>
+  <p>Informe o modelo, ano e quilometragem do seu veículo e descubra a saúde dos principais componentes.</p>
+</section>
+
+<!-- Form -->
+<section class="dm-section">
+<div class="dm-inner">
+
+  <div class="dm-form-card">
+    <h2><i class="fa fa-car" style="color:#fbbf24;margin-right:10px;"></i>Dados do Veículo</h2>
+
+    <div class="dm-field">
+      <label>Marca</label>
+      <select id="dm-marca" onchange="atualizarModelos()">
+        <option value="">Selecione a marca...</option>
+        <option value="fiat">Fiat</option>
+        <option value="volkswagen">Volkswagen</option>
+        <option value="chevrolet">Chevrolet</option>
+        <option value="ford">Ford</option>
+        <option value="toyota">Toyota</option>
+        <option value="honda">Honda</option>
+        <option value="hyundai">Hyundai</option>
+        <option value="renault">Renault</option>
+        <option value="jeep">Jeep</option>
+        <option value="nissan">Nissan</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
+
+    <div class="dm-field">
+      <label>Modelo</label>
+      <select id="dm-modelo">
+        <option value="">Selecione a marca primeiro...</option>
+      </select>
+    </div>
+
+    <div class="dm-row">
+      <div class="dm-field">
+        <label>Ano do Veículo</label>
+        <input type="number" id="dm-ano" placeholder="Ex: 2018" min="1990" max="2025">
+      </div>
+      <div class="dm-field">
+        <label>Quilometragem atual</label>
+        <input type="number" id="dm-km" placeholder="Ex: 85000" min="0">
+      </div>
+    </div>
+
+    <button class="btn-diagnostico" onclick="gerarDiagnostico()">
+      <i class="fa fa-magnifying-glass-chart"></i> Gerar Diagnóstico
+    </button>
+  </div>
+
+  <div class="dm-cta">
+    <p>Quer saber o histórico completo do veículo? Restrições, gravame, roubo e muito mais.</p>
+    <a href="/"><i class="fa fa-shield-halved"></i> Consulta Veicular Completa — R$ 14,99</a>
+  </div>
+
+</div>
+</section>
+
+<!-- Modal -->
+<div class="dm-modal-overlay" id="dm-overlay" onclick="fecharModal(event)">
+  <div class="dm-modal" id="dm-modal">
+    <button class="dm-modal-close" onclick="fecharModalBtn()"><i class="fa fa-xmark"></i></button>
+
+    <div class="dm-modal-header">
+      <div class="veiculo-nome" id="dm-veiculo-nome"></div>
+      <h2>Diagnóstico do Veículo</h2>
+    </div>
+
+    <!-- Carro animado -->
+    <div class="car-wrapper">
+      <svg class="car-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Corpo do carro -->
+        <g class="car-body">
+          <!-- Sombra -->
+          <ellipse cx="110" cy="96" rx="85" ry="5" fill="rgba(0,0,0,0.25)"/>
+          <!-- Carroceria inferior -->
+          <rect x="18" y="62" width="184" height="24" rx="8" fill="#1e3a5f"/>
+          <!-- Carroceria superior -->
+          <path d="M55 62 Q65 34 88 30 L132 30 Q155 34 165 62 Z" fill="#1e3a5f"/>
+          <!-- Vidro dianteiro -->
+          <path d="M132 32 Q150 38 160 62 L138 62 Z" fill="rgba(147,197,253,0.35)" stroke="rgba(147,197,253,0.2)" stroke-width="1"/>
+          <!-- Vidro traseiro -->
+          <path d="M88 32 Q70 38 60 62 L82 62 Z" fill="rgba(147,197,253,0.35)" stroke="rgba(147,197,253,0.2)" stroke-width="1"/>
+          <!-- Teto -->
+          <rect x="87" y="30" width="46" height="32" rx="2" fill="#1e3a5f"/>
+          <!-- Vidro lateral esquerdo -->
+          <rect x="88" y="32" width="20" height="28" rx="3" fill="rgba(147,197,253,0.3)" stroke="rgba(147,197,253,0.15)" stroke-width="1"/>
+          <!-- Vidro lateral direito -->
+          <rect x="112" y="32" width="20" height="28" rx="3" fill="rgba(147,197,253,0.3)" stroke="rgba(147,197,253,0.15)" stroke-width="1"/>
+          <!-- Farol dianteiro -->
+          <rect x="185" y="66" width="14" height="8" rx="3" fill="#fbbf24" opacity="0.9"/>
+          <!-- Farol traseiro -->
+          <rect x="21" y="66" width="10" height="8" rx="3" fill="#ef4444" opacity="0.8"/>
+          <!-- Paralama dianteiro -->
+          <rect x="160" y="72" width="44" height="14" rx="4" fill="#1a3356"/>
+          <!-- Paralama traseiro -->
+          <rect x="16" y="72" width="44" height="14" rx="4" fill="#1a3356"/>
+          <!-- Detalhe cromado lateral -->
+          <rect x="18" y="75" width="184" height="3" rx="1" fill="rgba(255,255,255,0.12)"/>
+          <!-- Escapamento -->
+          <rect x="14" y="80" width="10" height="4" rx="2" fill="#374151"/>
+        </g>
+
+        <!-- Rodas (animadas separadamente via JS por posição) -->
+        <!-- Roda traseira -->
+        <g transform="translate(48,86)">
+          <circle r="14" fill="#111827" stroke="#374151" stroke-width="2"/>
+          <circle r="9"  fill="#1f2937"/>
+          <circle r="4"  fill="#374151"/>
+          <g class="car-wheels" style="transform-origin:0px 0px">
+            <line x1="0" y1="-9" x2="0" y2="-5"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="5"  x2="0" y2="9"   stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-9" y1="0" x2="-5" y2="0"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="5"  y1="0" x2="9" y2="0"   stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-6.4" y1="-6.4" x2="-3.5" y2="-3.5" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="3.5"  y1="3.5"  x2="6.4"  y2="6.4"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6.4"  y1="-6.4" x2="3.5"  y2="-3.5" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-3.5" y1="3.5"  x2="-6.4" y2="6.4"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <circle r="3" fill="#9ca3af"/>
+        </g>
+        <!-- Roda dianteira -->
+        <g transform="translate(172,86)">
+          <circle r="14" fill="#111827" stroke="#374151" stroke-width="2"/>
+          <circle r="9"  fill="#1f2937"/>
+          <circle r="4"  fill="#374151"/>
+          <g class="car-wheels" style="transform-origin:0px 0px">
+            <line x1="0" y1="-9" x2="0" y2="-5"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="5"  x2="0" y2="9"   stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-9" y1="0" x2="-5" y2="0"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="5"  y1="0" x2="9" y2="0"   stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-6.4" y1="-6.4" x2="-3.5" y2="-3.5" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="3.5"  y1="3.5"  x2="6.4"  y2="6.4"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6.4"  y1="-6.4" x2="3.5"  y2="-3.5" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-3.5" y1="3.5"  x2="-6.4" y2="6.4"  stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <circle r="3" fill="#9ca3af"/>
+        </g>
+      </svg>
+
+      <!-- Fumaça do escapamento -->
+      <div class="smoke">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Status geral -->
+    <div style="text-align:center;margin-bottom:20px;">
+      <div class="dm-status-badge" id="dm-status-badge"></div>
+    </div>
+
+    <!-- Barras de vida útil -->
+    <div class="dm-bars" id="dm-bars"></div>
+
+    <!-- Próximas manutenções -->
+    <div class="dm-manut-title"><i class="fa fa-calendar-check"></i> Próximas Manutenções</div>
+    <div class="dm-manut-list" id="dm-manut-list"></div>
+
+    <!-- CTA consulta veicular -->
+    <div class="dm-modal-cta">
+      <p>Quer conferir o histórico completo deste veículo? Veja restrições, gravame, multas e muito mais.</p>
+      <a href="/"><i class="fa fa-shield-halved"></i> Ver Consulta Veicular Completa</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const modelos = {
+  fiat:       ['Uno','Palio','Siena','Strada','Toro','Mobi','Cronos','Pulse','Fastback','Fiorino','Doblo','500'],
+  volkswagen: ['Gol','Polo','Virtus','T-Cross','Taos','Nivus','Saveiro','Voyage','Amarok','Fox','Up!'],
+  chevrolet:  ['Onix','Tracker','Cruze','S10','Spin','Montana','Prisma','Cobalt','Equinox','Trailblazer'],
+  ford:       ['Ka','EcoSport','Ranger','Territory','Bronco Sport','Maverick','Fusion','Focus'],
+  toyota:     ['Corolla','Hilux','SW4','RAV4','Yaris','Camry','Etios','Corolla Cross'],
+  honda:      ['Civic','City','HR-V','CR-V','Fit','WR-V','Accord'],
+  hyundai:    ['HB20','Creta','Tucson','i30','Santa Fé','ix35','Azera'],
+  renault:    ['Kwid','Sandero','Logan','Duster','Oroch','Captur','Megane','Fluence'],
+  jeep:       ['Renegade','Compass','Commander','Wrangler','Grand Cherokee'],
+  nissan:     ['Kicks','Versa','Frontier','Sentra','March','Livina'],
+  outro:      ['Outro modelo'],
+};
+
+function atualizarModelos() {
+  const marca = document.getElementById('dm-marca').value;
+  const sel = document.getElementById('dm-modelo');
+  sel.innerHTML = '';
+  if (!marca) { sel.innerHTML = '<option value="">Selecione a marca primeiro...</option>'; return; }
+  sel.innerHTML = '<option value="">Selecione o modelo...</option>';
+  (modelos[marca] || []).forEach(m => {
+    const o = document.createElement('option');
+    o.value = m.toLowerCase().replace(/\s+/g, '-');
+    o.textContent = m;
+    sel.appendChild(o);
+  });
+}
+
+// Vida útil esperada em km por componente (valores médios de mercado)
+const vidaUtil = {
+  motor:      300000,
+  cambio:     250000,
+  correia:    80000,
+  embreagem:  120000,
+  amortecedor:80000,
+  oleo:       7500,
+  filtroAr:   20000,
+  filtroCombs:30000,
+  velas:      40000,
+  fluinoFreio:40000,
+};
+
+function calcularPct(km, limite) {
+  return Math.min(Math.round((km / limite) * 100), 100);
+}
+
+function classePct(pct) {
+  if (pct < 60) return 'verde';
+  if (pct < 85) return 'amarelo';
+  return 'vermelho';
+}
+
+function kmRestante(km, limite) {
+  const rest = limite - (km % limite);
+  if (rest < 0) return 0;
+  return rest;
+}
+
+function formatKm(n) {
+  return n.toLocaleString('pt-BR') + ' km';
+}
+
+function gerarDiagnostico() {
+  const marca  = document.getElementById('dm-marca').value;
+  const modelo = document.getElementById('dm-modelo');
+  const ano    = parseInt(document.getElementById('dm-ano').value);
+  const km     = parseInt(document.getElementById('dm-km').value);
+
+  if (!marca || !modelo.value || !ano || !km) {
+    alert('Preencha todos os campos antes de gerar o diagnóstico.');
+    return;
+  }
+
+  const modeloTexto = modelo.options[modelo.selectedIndex].text;
+  const marcaTexto  = document.getElementById('dm-marca').options[document.getElementById('dm-marca').selectedIndex].text;
+  const anoAtual    = new Date().getFullYear();
+  const idade       = anoAtual - ano;
+
+  // Ajuste de vida útil pelo fator idade (carros mais velhos têm vida útil reduzida)
+  const fatorIdade = Math.max(0.65, 1 - (idade * 0.015));
+
+  // KM efetivo considerando desgaste por tempo
+  const kmEfetivo = km + (idade * 5000);
+
+  // Nome do veículo
+  document.getElementById('dm-veiculo-nome').textContent = `${marcaTexto} ${modeloTexto} ${ano}`;
+
+  // ── Barras de vida útil ──
+  const componentes = [
+    { nome: 'Motor',            icone: 'fa-gear',        limite: Math.round(vidaUtil.motor      * fatorIdade) },
+    { nome: 'Câmbio',           icone: 'fa-rotate',      limite: Math.round(vidaUtil.cambio     * fatorIdade) },
+    { nome: 'Amortecedores',    icone: 'fa-car-bump',    limite: Math.round(vidaUtil.amortecedor* fatorIdade) },
+    { nome: 'Embreagem',        icone: 'fa-circle-dot',  limite: Math.round(vidaUtil.embreagem  * fatorIdade) },
+    { nome: 'Correia Dentada',  icone: 'fa-link',        limite: vidaUtil.correia },
+  ];
+
+  const barsEl = document.getElementById('dm-bars');
+  barsEl.innerHTML = '';
+
+  componentes.forEach(c => {
+    const pct   = calcularPct(kmEfetivo, c.limite);
+    const classe = classePct(pct);
+    const rest  = Math.max(c.limite - km, 0);
+    const subMsg = pct >= 100
+      ? 'Atenção: vida útil estimada atingida — avalie com mecânico'
+      : `Estimativa de ${formatKm(rest)} restantes`;
+
+    barsEl.innerHTML += `
+      <div class="dm-bar-item">
+        <div class="dm-bar-label">
+          <span><i class="fa ${c.icone}" style="margin-right:7px;opacity:0.7;"></i>${c.nome}</span>
+          <span class="dm-pct pct-${classe}">${pct}% usado</span>
+        </div>
+        <div class="dm-bar-track">
+          <div class="dm-bar-fill fill-${classe}" data-pct="${pct}" style="width:0%"></div>
+        </div>
+        <div class="dm-bar-sub">${subMsg}</div>
+      </div>`;
+  });
+
+  // ── Manutenções ──
+  const manutencoes = [
+    { nome: 'Troca de Óleo',         icone: 'fa-oil-can',        limite: vidaUtil.oleo,      urgencia: 0.85 },
+    { nome: 'Filtro de Ar',          icone: 'fa-wind',           limite: vidaUtil.filtroAr,  urgencia: 0.85 },
+    { nome: 'Filtro de Combustível', icone: 'fa-filter',         limite: vidaUtil.filtroCombs,urgencia:0.85 },
+    { nome: 'Velas de Ignição',      icone: 'fa-bolt',           limite: vidaUtil.velas,     urgencia: 0.85 },
+    { nome: 'Correia Dentada',       icone: 'fa-link',           limite: vidaUtil.correia,   urgencia: 0.80 },
+    { nome: 'Fluido de Freio',       icone: 'fa-circle-stop',    limite: vidaUtil.fluinoFreio,urgencia:0.85 },
+  ];
+
+  const manutEl = document.getElementById('dm-manut-list');
+  manutEl.innerHTML = '';
+
+  manutencoes.forEach(m => {
+    const restKm = kmRestante(km, m.limite);
+    const pctCiclo = calcularPct(km % m.limite || km, m.limite);
+    let tipo, iconeTipo, subtexto;
+
+    if (pctCiclo >= 100) {
+      tipo = 'urgente'; iconeTipo = 'fa-triangle-exclamation';
+      subtexto = 'Vencida — faça agora';
+    } else if (pctCiclo >= Math.round(m.urgencia * 100)) {
+      tipo = 'alerta'; iconeTipo = 'fa-circle-exclamation';
+      subtexto = `Faça em até ${formatKm(restKm)}`;
+    } else {
+      tipo = 'ok'; iconeTipo = 'fa-circle-check';
+      subtexto = `Em dia — próxima em ${formatKm(restKm)}`;
+    }
+
+    manutEl.innerHTML += `
+      <div class="dm-manut-item">
+        <div class="dm-manut-icon ${tipo}"><i class="fa ${iconeTipo}"></i></div>
+        <div class="dm-manut-info">
+          <strong>${m.nome}</strong>
+          <span>${subtexto}</span>
+        </div>
+        <div class="dm-manut-km">a cada ${formatKm(m.limite)}</div>
+      </div>`;
+  });
+
+  // ── Status geral ──
+  const motorPct = calcularPct(kmEfetivo, Math.round(vidaUtil.motor * fatorIdade));
+  const badge = document.getElementById('dm-status-badge');
+  if (motorPct < 50) {
+    badge.className = 'dm-status-badge verde';
+    badge.innerHTML = '<i class="fa fa-circle-check"></i> Veículo em boa condição geral';
+  } else if (motorPct < 80) {
+    badge.className = 'dm-status-badge amarelo';
+    badge.innerHTML = '<i class="fa fa-triangle-exclamation"></i> Atenção: mantenha manutenção em dia';
+  } else {
+    badge.className = 'dm-status-badge vermelho';
+    badge.innerHTML = '<i class="fa fa-circle-xmark"></i> Avaliação mecânica recomendada';
+  }
+
+  // Abre modal
+  document.getElementById('dm-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Anima as barras com delay
+  setTimeout(() => {
+    document.querySelectorAll('.dm-bar-fill').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 200);
+}
+
+function fecharModal(e) {
+  if (e.target === document.getElementById('dm-overlay')) fecharModalBtn();
+}
+function fecharModalBtn() {
+  document.getElementById('dm-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
