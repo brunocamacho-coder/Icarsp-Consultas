@@ -167,7 +167,7 @@ valor_total_infracoes_renainf: 'Disponível no relatório completo',
 resumo_infracoes_renainf: 'Disponível no relatório completo'
 },
 offer: {
-price: 'R$ 19,99'
+price: 'R$ 14,99'
 }
 };
 }

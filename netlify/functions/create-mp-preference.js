@@ -26,7 +26,7 @@ export async function handler(event) {
         id: 'consulta-veicular',
         title: `Consulta Veicular - Placa ${placaNormalizada}`,
         quantity: 1,
-        unit_price: 19.99,
+        unit_price: 9.99,
         currency_id: 'BRL'
       }],
       payer: {

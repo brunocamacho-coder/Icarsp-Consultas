@@ -187,11 +187,15 @@
 <header class="header">
 <div class="header-inner">
   <img src="logo.png" alt="icarSP" class="header-logo" />
-  <nav class="nav">
-    <a href="/">Início</a>
-    <a href="/#como-funciona">Como funciona</a>
-    <a href="/consulta-ipva.html" style="color:#22c55e;">Consulta Gratuita</a>
-    <a href="/sobre.html">Sobre nós</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" id="main-nav">
+    <a href="/" onclick="fecharMenu()">Início</a>
+    <a href="/#busca" onclick="fecharMenu()">Consultar Placa</a>
+    <a href="/#contratos" onclick="fecharMenu()">Contratos</a>
+    <a href="/sobre" onclick="fecharMenu()">Sobre nós</a>
+    <a href="/#contato" onclick="fecharMenu()">Contato</a>
   </nav>
 </div>
 </header>
@@ -285,6 +289,22 @@
 </div>
 </section>
 
+<!-- CTA para relatório completo -->
+<section style="background:#0a1117;padding:48px 20px;border-top:1px solid rgba(255,255,255,0.06);">
+<div style="max-width:720px;margin:0 auto;background:linear-gradient(135deg,#0a1f0a 0%,#0d1525 100%);border:1px solid rgba(34,197,94,0.3);border-radius:20px;padding:36px 32px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22c55e,#16a34a);"></div>
+  <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);color:#86efac;padding:6px 14px;border-radius:999px;font-size:0.82rem;font-weight:700;margin-bottom:16px;">
+    <i class="fa fa-magnifying-glass"></i> Relatório completo com gravame, restrições e histórico
+  </div>
+  <h2 style="color:#fff;font-size:1.6rem;font-weight:800;margin:0 0 10px;">Quer saber se o veículo tem <span style="color:#22c55e;">gravame, restrição ou sinistro?</span></h2>
+  <p style="color:#94a3b8;font-size:0.95rem;line-height:1.6;max-width:520px;margin:0 auto 24px;">Os portais gratuitos mostram IPVA e multas — mas <strong style="color:#e2e8f0;">não revelam gravame, bloqueio RENAJUD, sinistro, leilão ou histórico de proprietários.</strong> Para isso você precisa do relatório completo.</p>
+  <a href="/" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-weight:800;font-size:1rem;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 6px 24px rgba(34,197,94,0.3);">
+    <i class="fa fa-unlock-keyhole"></i> Ver relatório completo por R$ 14,99
+  </a>
+  <p style="color:#64748b;font-size:0.78rem;margin:12px 0 0;">Acesso imediato • PIX, Cartão ou Débito • Pagamento único</p>
+</div>
+</section>
+
 <footer class="footer">
 <div class="footer-inner">
 <div class="footer-col">
@@ -308,13 +328,24 @@
 </div>
 <div class="footer-col">
 <h4>Contato</h4>
-<a href="mailto:icarspconsultas@gmail.com">icarspconsultas@gmail.com</a>
+<a href="mailto:contato@icarsp.com.br">contato@icarsp.com.br</a>
 </div>
 </div>
 <div class="footer-bottom">
 <p>© 2026 icarSP. Todos os direitos reservados.</p>
 </div>
 </footer>
-
+<script>
+function toggleMenu() {
+  const nav = document.getElementById('main-nav');
+  const btn = document.querySelector('.nav-toggle');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function fecharMenu() {
+  document.getElementById('main-nav').classList.remove('open');
+  document.querySelector('.nav-toggle').classList.remove('open');
+}
+</script>
 </body>
 </html>

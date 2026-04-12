@@ -47,7 +47,9 @@ Formato exato do JSON:
   "cor": "",
   "combustivel": "",
   "chassi": "",
-  "renavam": ""
+  "renavam": "",
+  "nome_proprietario": "",
+  "cpf_proprietario": ""
 }`
       }
     ];

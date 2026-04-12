@@ -1066,7 +1066,7 @@ body {
         </div>
         <div class="price-box">
           <small>Pagamento único</small>
-          <strong>R$ 19,99</strong>
+          <strong>R$ 9,99</strong>
         </div>
       </div>
 
@@ -1216,6 +1216,8 @@ function preencherDadosVeiculo(d) {
   if (d.cor) { document.getElementById('v-cor').value = d.cor; document.getElementById('v-cor').classList.add('filled'); }
   if (d.chassi) { document.getElementById('v-chassi').value = d.chassi; document.getElementById('v-chassi').classList.add('filled'); }
   if (d.renavam) { document.getElementById('v-renavam').value = d.renavam; document.getElementById('v-renavam').classList.add('filled'); }
+  if (d.nome_proprietario) { document.getElementById('vend-nome').value = d.nome_proprietario; document.getElementById('vend-nome').classList.add('filled'); }
+  if (d.cpf_proprietario) { document.getElementById('vend-cpf').value = d.cpf_proprietario; document.getElementById('vend-cpf').classList.add('filled'); }
   if (d.combustivel) {
     const sel = document.getElementById('v-combustivel');
     for (let opt of sel.options) {
@@ -1398,7 +1400,7 @@ async function gerarPDF() {
   doc.setFontSize(7);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(180, 200, 255);
-  doc.text(`Gerado em ${dataFormatada} | icarspconsultas@gmail.com`, 210/2, 16, { align: 'center' });
+  doc.text(`Gerado em ${dataFormatada} | contato@icarsp.com.br`, 210/2, 16, { align: 'center' });
 
   // Número do contrato à direita
   doc.setFontSize(7);
@@ -1569,7 +1571,7 @@ async function gerarPDF() {
   doc.setFontSize(6.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100, 100, 130);
-  doc.text('iCarSP — Serviços Automotivos | icarspconsultas@gmail.com | www.icarsp.com.br', 105, 289, { align: 'center' });
+  doc.text('iCarSP — Serviços Automotivos | contato@icarsp.com.br | www.icarsp.com.br', 105, 289, { align: 'center' });
   doc.text('Despachante Documentalista — CRDD 005636-7 | Documento com validade jurídica nos termos do Código Civil Brasileiro', 105, 293, { align: 'center' });
 
   const url = URL.createObjectURL(doc.output('blob'));

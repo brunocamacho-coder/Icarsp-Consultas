@@ -45,7 +45,7 @@ export async function handler(event) {
       },
       body: JSON.stringify({
         from: { email: 'contratos@icarsp.com.br', name: 'iCarSP' },
-        reply_to: { email: 'icarspconsultas@gmail.com', name: 'iCarSP' },
+        reply_to: { email: 'contato@icarsp.com.br', name: 'iCarSP' },
         to: [{ email: email, name: nome || email }],
         subject: `Seu contrato iCarSP — ${placa || 'Veículo'}`,
         html: `
@@ -58,7 +58,7 @@ export async function handler(event) {
             </p>
             <p style="color:#666;font-size:0.85rem;margin-top:24px;">
               iCarSP — Despachante Documentalista CRDD 005636-7<br>
-              icarspconsultas@gmail.com | www.icarsp.com.br
+              contato@icarsp.com.br | www.icarsp.com.br
             </p>
           </div>
         `,

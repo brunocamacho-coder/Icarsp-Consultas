@@ -664,7 +664,7 @@ body { background: var(--bg-deep); color: var(--text); font-family: var(--font);
         </div>
         <div class="price-box">
           <small>Pagamento único</small>
-          <strong>R$ 29,99</strong>
+          <strong>R$ 12,99</strong>
         </div>
       </div>
       <div class="includes-list">
@@ -803,6 +803,8 @@ async function lerDocumentoIA(base64, mediaType) {
 function preencherDadosVeiculo(d) {
   const campos = { 'v-placa': d.placa, 'v-modelo': d.marca_modelo, 'v-ano-fab': d.ano_fabricacao, 'v-ano-mod': d.ano_modelo, 'v-cor': d.cor, 'v-chassi': d.chassi, 'v-renavam': d.renavam };
   Object.entries(campos).forEach(([id, val]) => { if (val) { const el = document.getElementById(id); el.value = val; el.classList.add('filled'); } });
+  if (d.nome_proprietario) { const el = document.getElementById('vend-nome'); el.value = d.nome_proprietario; el.classList.add('filled'); }
+  if (d.cpf_proprietario) { const el = document.getElementById('vend-cpf'); el.value = d.cpf_proprietario; el.classList.add('filled'); }
   if (d.combustivel) { const sel = document.getElementById('v-combustivel'); for (let opt of sel.options) { if (opt.text.toLowerCase().includes(d.combustivel.toLowerCase())) { sel.value = opt.value; break; } } }
 }
 
@@ -1273,7 +1275,7 @@ async function gerarPDF() {
   doc.text('iCarSP — Serviços Automotivos | Despachante Documentalista CRDD 005636-7', 105, 289, { align: 'center' });
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100, 70, 0);
-  doc.text('icarspconsultas@gmail.com | www.icarsp.com.br | Contrato com Reserva de Domínio — Arts. 521-528 do Código Civil', 105, 293, { align: 'center' });
+  doc.text('contato@icarsp.com.br | www.icarsp.com.br | Contrato com Reserva de Domínio — Arts. 521-528 do Código Civil', 105, 293, { align: 'center' });
 
   const blob = doc.output('blob');
   const url = URL.createObjectURL(blob);

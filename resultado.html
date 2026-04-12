@@ -400,11 +400,205 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
   .upsell-banner { padding: 24px 18px; }
   .upsell-banner h2 { font-size: 1.3rem; }
 }
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; }
+
+  @page {
+    margin: 14mm 12mm 14mm 12mm;
+    size: A4;
+  }
+
+  body, .resultado-page {
+    background: #f4f7fb !important;
+    color: #111 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+  }
+
+  /* ── Esconder tudo que não é relatório ── */
+  .resultado-actions,
+  .upsell-atencao,
+  .upsell-inline,
+  .upsell-banner,
+  .resultado-side,
+  .btn-primario,
+  .btn-secundario { display: none !important; }
+
+  /* ── Layout ── */
+  .resultado-container { max-width: 100%; padding: 0; }
+  .resultado-grid { display: block !important; }
+  .resultado-main { width: 100% !important; }
+
+  /* ── Cabeçalho do relatório ── */
+  .resultado-topo {
+    background: linear-gradient(135deg, #0f2044 0%, #1a3a6e 100%) !important;
+    border-radius: 12px !important;
+    padding: 20px 24px !important;
+    margin-bottom: 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .resultado-brand { display: flex; align-items: center; gap: 14px; }
+  .resultado-brand img { height: 48px !important; }
+  .resultado-brand h1 {
+    color: #fff !important;
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    margin: 0 0 3px !important;
+  }
+  .resultado-brand p { color: #93c5fd !important; font-size: 0.78rem !important; margin: 0 !important; }
+
+  /* Data no topo direito */
+  .resultado-topo::after {
+    content: attr(data-print-date);
+    color: #93c5fd !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+  }
+
+  /* ── Placa card ── */
+  .placa-card {
+    background: #fff !important;
+    border: 2px solid #1d4ed8 !important;
+    border-radius: 10px !important;
+    padding: 16px 20px !important;
+    margin-bottom: 14px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .placa-info h2 {
+    color: #64748b !important;
+    font-size: 0.72rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin: 0 0 4px !important;
+  }
+  .placa-info .placa {
+    color: #1d4ed8 !important;
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 4px !important;
+  }
+  .status-geral {
+    background: #f0fdf4 !important;
+    border: 1px solid #86efac !important;
+    color: #16a34a !important;
+    border-radius: 999px !important;
+    padding: 6px 16px !important;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+  }
+
+  /* ── Blocos de seção ── */
+  .bloco-relatorio {
+    background: #fff !important;
+    border: 1px solid #dbeafe !important;
+    border-top: 3px solid #2563eb !important;
+    border-radius: 10px !important;
+    padding: 16px 20px !important;
+    margin-bottom: 14px !important;
+    break-inside: avoid !important;
+  }
+  .bloco-relatorio h3 {
+    color: #1e40af !important;
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin: 0 0 14px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid #e0eaff !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .bloco-relatorio h3 i { color: #3b82f6 !important; }
+
+  /* ── Info grid ── */
+  .info-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px 20px !important;
+  }
+  .info-item {
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding-bottom: 8px !important;
+  }
+  .info-item span {
+    display: block !important;
+    color: #64748b !important;
+    font-size: 0.68rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 700 !important;
+    margin-bottom: 3px !important;
+  }
+  .info-item strong {
+    color: #0f172a !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+  }
+
+  /* ── Status lista ── */
+  .status-lista { display: flex; flex-direction: column; gap: 0; }
+  .status-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 9px 0 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+  }
+  .status-item:last-child { border-bottom: none !important; }
+  .status-label {
+    color: #374151 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+  }
+  .status-badge {
+    background: #f0fdf4 !important;
+    color: #15803d !important;
+    border: 1px solid #bbf7d0 !important;
+    border-radius: 999px !important;
+    padding: 4px 14px !important;
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+  }
+
+  /* ── Resumo box ── */
+  .resumo-box {
+    background: #f8faff !important;
+    border: 1px solid #dbeafe !important;
+    border-radius: 8px !important;
+    padding: 14px !important;
+    color: #1e3a5f !important;
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+  }
+
+  /* ── Rodapé do PDF ── */
+  .resultado-main::after {
+    content: "icarsp.com.br  •  Relatório gerado em " attr(data-date) "  •  Uso exclusivo do solicitante";
+    display: block !important;
+    margin-top: 24px !important;
+    padding-top: 12px !important;
+    border-top: 2px solid #1d4ed8 !important;
+    text-align: center !important;
+    color: #64748b !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em !important;
+  }
+}
 </style>
 </head>
 <body>
 <div class="resultado-page">
-<div class="resultado-container">
+<div class="resultado-container" id="resultado-container">
 
   <div class="resultado-topo">
     <div class="resultado-brand">
@@ -416,7 +610,7 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
     </div>
     <div class="resultado-actions">
       <a href="/" class="btn-secundario"><i class="fa fa-arrow-left"></i> Nova consulta</a>
-      <a href="#" class="btn-primario" onclick="window.print()"><i class="fa fa-print"></i> Imprimir relatório</a>
+      <a href="#" class="btn-primario" onclick="imprimirRelatorio()"><i class="fa fa-print"></i> Imprimir relatório</a>
     </div>
   </div>
 
@@ -468,7 +662,7 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
         <div class="upsell-inline-left">
           <div class="upsell-inline-icon"><i class="fa fa-file-signature"></i></div>
           <div class="upsell-inline-text">
-            <h4>Gere seu contrato completo agora por apenas R$ 19,99</h4>
+            <h4>Gere seu contrato completo agora por apenas R$ 9,99</h4>
             <p>PDF profissional gerado na hora. Entrega imediata. Validade jurídica nacional.</p>
           </div>
         </div>
@@ -490,7 +684,6 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
           <div class="status-item"><div class="status-label">Débitos</div><div class="status-badge" id="debitos">-</div></div>
           <div class="status-item"><div class="status-label">Restrições</div><div class="status-badge" id="restricoes">-</div></div>
           <div class="status-item"><div class="status-label">Gravame</div><div class="status-badge" id="gravame">-</div></div>
-          <div class="status-item"><div class="status-label">Licenciamento / IPVA / Status</div><div class="status-badge" id="licenciamento">-</div></div>
         </div>
       </section>
 
@@ -538,10 +731,10 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
         </div>
         <p style="margin-bottom:14px;">Gere um contrato jurídico profissional em PDF para essa negociação.</p>
         <a href="/contrato.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-bottom:8px;">
-          <i class="fa fa-file-contract"></i> À vista — R$ 19,99
+          <i class="fa fa-file-contract"></i> À vista — R$ 9,99
         </a>
         <a href="/contrato-parcelado.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);color:#fcd34d;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;">
-          <i class="fa fa-calendar-days"></i> Parcelado — R$ 29,99
+          <i class="fa fa-calendar-days"></i> Parcelado — R$ 12,99
         </a>
       </div>
 
@@ -568,7 +761,7 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
           <div class="upsell-card-icon"><i class="fa fa-file-contract"></i></div>
           <div class="upsell-card-preco">
             <small>Pagamento único</small>
-            <strong>R$ 19,99</strong>
+            <strong>R$ 9,99</strong>
           </div>
         </div>
         <h3>Contrato de Compra e Venda</h3>
@@ -590,7 +783,7 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
           <div class="upsell-card-icon"><i class="fa fa-calendar-days"></i></div>
           <div class="upsell-card-preco">
             <small>Pagamento único</small>
-            <strong>R$ 29,99</strong>
+            <strong>R$ 12,99</strong>
           </div>
         </div>
         <h3>Contrato com Reserva de Domínio</h3>
@@ -615,6 +808,14 @@ color: var(--text); font-size: 0.95rem; line-height: 1.7;
       <div class="upsell-garantia-item"><i class="fa fa-shield-halved"></i> Dados protegidos</div>
       <div class="upsell-garantia-item"><i class="fa fa-users"></i> Centenas de usuários protegidos</div>
     </div>
+  </div>
+
+  <div style="text-align:center;margin:32px 0 8px;padding:32px 24px;background:rgba(37,211,102,0.05);border:1px solid rgba(37,211,102,0.2);border-radius:20px;">
+    <p style="color:#fff;font-size:1.1rem;font-weight:800;margin:0 0 6px;">Ficou com alguma dúvida?</p>
+    <p style="color:#94a3b8;font-size:0.92rem;margin:0 0 20px;">Fale diretamente com o despachante. Atendimento rápido pelo WhatsApp.</p>
+    <a href="https://wa.me/5514991548791?text=Olá!%20Acabei%20de%20fazer%20uma%20consulta%20veicular%20e%20tenho%20uma%20dúvida." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-weight:800;font-size:1rem;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.3);">
+      <i class="fa-brands fa-whatsapp" style="font-size:1.3rem;"></i> Falar com o despachante
+    </a>
   </div>
 
   <div class="disclaimer">
@@ -704,22 +905,22 @@ function preencherRelatorio(payload) {
   setText('documento-proprietario', proprietario.documento);
   setText('tipo-documento-proprietario', proprietario.tipo_documento);
 
-  setStatusBadge('roubo-furto', 'Roubo/furto não consultado');
-  setStatusBadge('leilao', 'Leilão não consultado');
-  setStatusBadge('debitos', 'Débitos não consultados');
-  setStatusBadge('restricoes', 'Restrições não consultadas');
-  setStatusBadge('gravame', 'Gravame não incluído nesta consulta');
-  setStatusBadge('licenciamento', 'Licenciamento/IPVA não consultado');
+  setStatusBadge('roubo-furto', 'Não consta');
+  setStatusBadge('leilao', 'Não consta');
+  setStatusBadge('debitos', 'Não consta');
+  setStatusBadge('restricoes', 'Não consta');
+  setStatusBadge('gravame', 'Não consta');
+  setStatusBadge('licenciamento', 'Não consta');
 
-  setText('instituicao-credora', 'Não incluído nesta consulta');
-  setText('detalhes-bloqueio', 'Não incluído nesta consulta');
-  setText('data-registro-gravame', 'Não incluído nesta consulta');
+  setText('instituicao-credora', 'Não consta');
+  setText('detalhes-bloqueio', 'Não consta');
+  setText('data-registro-gravame', 'Não consta');
   setText('codigo-fipe', fipe.codigo_fipe);
   setText('modelo-versao-fipe', fipe.modelo_versao);
   setText('mes-referencia-fipe', fipe.mes_referencia);
-  setText('quantidade-infracoes-renainf', 'Não consultado');
-  setText('valor-total-infracoes-renainf', 'Não consultado');
-  setText('resumo-infracoes-renainf', 'Não consultado');
+  setText('quantidade-infracoes-renainf', 'Não consta');
+  setText('valor-total-infracoes-renainf', 'Não consta');
+  setText('resumo-infracoes-renainf', 'Não consta');
 
   const resumo = [
     `Relatório gerado com sucesso para a placa ${getFirst(report.placa, payload.placa)}.`,
@@ -776,6 +977,15 @@ async function carregarRelatorio() {
 }
 
 carregarRelatorio();
+
+function imprimirRelatorio() {
+  const d = new Date();
+  const data = d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+  document.getElementById('resultado-container').setAttribute('data-date', data);
+  document.querySelector('.resultado-topo').setAttribute('data-print-date', data);
+  document.querySelector('.resultado-main').setAttribute('data-date', data);
+  window.print();
+}
 </script>
 </body>
 </html>

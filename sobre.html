@@ -90,11 +90,17 @@
 <header class="header">
 <div class="header-inner">
   <img src="logo.png" alt="icarSP" class="header-logo" />
-  <nav class="nav">
-    <a href="/">Início</a>
-    <a href="/#como-funciona">Como funciona</a>
-    <a href="/consulta-ipva.html">Consulta Gratuita</a>
-    <a href="/sobre.html" style="color:#3b82f6;">Sobre nós</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" id="main-nav">
+    <a href="/" onclick="fecharMenu()">Início</a>
+    <a href="/#busca" onclick="fecharMenu()">Consulta</a>
+    <a href="/#contratos" onclick="fecharMenu()">Contratos</a>
+    <a href="/consulta-ipva" onclick="fecharMenu()">Consulta Gratuita</a>
+    <a href="/diagnostico-motor" onclick="fecharMenu()">Diagnóstico do Motor</a>
+    <a href="/sobre" style="color:#3b82f6;" onclick="fecharMenu()">Sobre nós</a>
+    <a href="/#contato" onclick="fecharMenu()">Contato</a>
   </nav>
 </div>
 </header>
@@ -149,13 +155,24 @@
 </div>
 <div class="footer-col">
 <h4>Contato</h4>
-<a href="mailto:icarspconsultas@gmail.com">icarspconsultas@gmail.com</a>
+<a href="mailto:contato@icarsp.com.br">contato@icarsp.com.br</a>
 </div>
 </div>
 <div class="footer-bottom">
 <p>© 2026 icarSP. Todos os direitos reservados.</p>
 </div>
 </footer>
-
+<script>
+function toggleMenu() {
+  const nav = document.getElementById('main-nav');
+  const btn = document.querySelector('.nav-toggle');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function fecharMenu() {
+  document.getElementById('main-nav').classList.remove('open');
+  document.querySelector('.nav-toggle').classList.remove('open');
+}
+</script>
 </body>
 </html>

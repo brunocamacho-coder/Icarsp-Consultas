@@ -331,8 +331,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 @media (max-width: 480px) {
   .servicos-grid { grid-template-columns: 1fr; }
 }
+/* ── DEPOIMENTOS ── */
+.depoimentos-section{background:#0a1117;padding:60px 20px;border-top:1px solid rgba(255,255,255,0.05);}
+.depoimentos-inner{max-width:900px;margin:0 auto;}
+.depoimentos-header{text-align:center;margin-bottom:36px;}
+.dep-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);color:#fde68a;padding:7px 14px;border-radius:999px;font-size:0.82rem;font-weight:700;margin-bottom:14px;}
+.dep-badge i{color:#f59e0b;}
+.depoimentos-header h2{font-size:1.8rem;font-weight:800;color:#fff;margin:0 0 8px 0;}
+.depoimentos-header p{color:#94a3b8;font-size:0.95rem;margin:0;}
+.dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.dep-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px;}
+.dep-stars{color:#f59e0b;font-size:1.05rem;letter-spacing:2px;}
+.dep-card>p{color:#cbd5e1;font-size:0.88rem;line-height:1.65;flex:1;font-style:italic;margin:0;}
+.dep-author{display:flex;align-items:center;gap:12px;}
+.dep-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.dep-author strong{display:block;color:#fff;font-size:0.88rem;}
+.dep-author span{display:block;color:#64748b;font-size:0.78rem;margin-top:2px;}
+@media(max-width:768px){.dep-grid{grid-template-columns:1fr;}}
+/* ── FAQ ── */
+.faq-section{background:#0f1419;padding:60px 20px;border-top:1px solid rgba(255,255,255,0.05);}
+.faq-inner{max-width:720px;margin:0 auto;}
+.faq-header{text-align:center;margin-bottom:36px;}
+.faq-header h2{font-size:1.8rem;font-weight:800;color:#fff;margin:0 0 8px 0;}
+.faq-header p{color:#94a3b8;font-size:0.95rem;margin:0;}
+.faq-list{display:flex;flex-direction:column;gap:10px;}
+.faq-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:none;border:none;cursor:pointer;text-align:left;}
+.faq-question span{color:#e2e8f0;font-size:0.95rem;font-weight:700;}
+.faq-question i{color:#64748b;font-size:0.85rem;flex-shrink:0;transition:transform 0.2s;}
+.faq-question.aberta i{transform:rotate(180deg);color:#22c55e;}
+.faq-answer{display:none;padding:0 20px 18px;}
+.faq-answer p{color:#94a3b8;font-size:0.9rem;line-height:1.7;margin:0;}
 </style>
 <script src="https://js.efipay.com.br/efipay.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "iCar SP",
+  "url": "https://icarsp.com.br",
+  "telephone": "+55-14-99154-8791",
+  "email": "contato@icarsp.com.br",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "description": "Despachante veicular e consultoria em São Paulo. Consulta de veículo por placa, transferência e regularização.",
+  "areaServed": "São Paulo, SP",
+  "priceRange": "R$"
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -342,21 +392,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="header">
 <div class="header-inner">
   <img src="logo.png" alt="icarSP" class="header-logo" />
-  <nav class="nav">
-    <a href="#busca" onclick="setTimeout(()=>{document.getElementById('placa-input').focus();},300)">Consulta</a>
-    <a href="#contratos">Contratos</a>
-    <a href='/consulta-ipva'>Consulta Gratuita</a>
-    <a href='/diagnostico-motor'>Diagnóstico do Motor</a>
-    <a href='/sobre'>Sobre nós</a>
-    <a href="#contato">Contato</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" id="main-nav">
+    <a href="#busca" onclick="fecharMenu();setTimeout(()=>{document.getElementById('placa-input').focus();},300)">Consultar Placa</a>
+    <a href="#contratos" onclick="fecharMenu()">Contratos</a>
+    <a href='/diagnostico-motor' onclick="fecharMenu()">Diagnóstico do Motor</a>
+    <a href='/sobre' onclick="fecharMenu()">Sobre nós</a>
+    <a href="#contato" onclick="fecharMenu()">Contato</a>
   </nav>
 </div>
 </header>
 
 <section class="hero" id="busca">
 <div class="hero-inner">
-<h1> Consulte o veiculo <span class="highlight">Pela placa</span>  </h1>
-<p class="hero-sub">Consulte pela placa e descubra, restrições e histórico completo em segundos. <strong>Não compre sem consultar.</strong></p>
+<h1>Antes de comprar, <span class="highlight">consulte o veículo pela placa</span></h1>
+<p class="hero-sub">Serviço privado de consulta veicular por placa. Acesso a informações de forma rápida, segura e independente do DETRAN.</p>
+<ul class="hero-trust-list">
+  <li><i class="fa fa-circle-check"></i> Acesso imediato após pagamento</li>
+  <li><i class="fa fa-circle-check"></i> PIX, Cartão de crédito ou Débito</li>
+  <li><i class="fa fa-circle-check"></i> Pagamento único sem mensalidade</li>
+  <li><i class="fa fa-circle-check"></i> Dados de bases oficiais</li>
+</ul>
 
 
 <div class="search-box">
@@ -394,17 +452,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
   <div class="preview-grid">
     <div class="preview-item"><span>Placa</span><strong id="preview-placa">-</strong></div>
-    <div class="preview-item locked"><span>Marca / Modelo</span><strong>••••• •••••••</strong></div>
-    <div class="preview-item locked"><span>Ano</span><strong>••••/••••</strong></div>
-    <div class="preview-item locked"><span>Combustível</span><strong>•••••</strong></div>
-    <div class="preview-item locked"><span>Cidade de registro</span><strong>••••••••• - ••</strong></div>
+    <div class="preview-item"><span>Marca / Modelo</span><strong id="preview-marca-modelo" style="color:#94a3b8;">Consultando...</strong></div>
+    <div class="preview-item"><span>Ano / Modelo</span><strong id="preview-ano" style="color:#94a3b8;">Consultando...</strong></div>
+    <div class="preview-item"><span>Combustível</span><strong id="preview-combustivel" style="color:#94a3b8;">Consultando...</strong></div>
+    <div class="preview-item"><span>Cor</span><strong id="preview-cor" style="color:#94a3b8;">Consultando...</strong></div>
+    <div class="preview-item"><span>Cidade de registro</span><strong id="preview-cidade" style="color:#94a3b8;">Consultando...</strong></div>
     <div class="preview-item locked"><span>Proprietário atual</span><strong>•••• •• •••••</strong></div>
     <div class="preview-item locked"><span>Tabela FIPE</span><strong>R$ ••.•••,••</strong></div>
     <div class="preview-item locked"><span>Gravame</span><strong>••••••••</strong></div>
     <div class="preview-item locked"><span>Sinistro</span><strong>••••••••</strong></div>
     <div class="preview-item locked"><span>Registro de Leilão</span><strong>••••••••</strong></div>
     <div class="preview-item locked"><span>Bloqueio RENAJUD</span><strong>••••••••</strong></div>
-    <div class="preview-item locked"><span>RENAVAM</span><strong>•••••••••••</strong></div>
+    <div class="preview-item locked"><span>Chassi / RENAVAM</span><strong>••••••••••••••••</strong></div>
+    <div class="preview-item locked"><span>CPF / CNPJ do Proprietário</span><strong>•••.•••.•••-••</strong></div>
   </div>
 </div>
 
@@ -419,7 +479,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><i class="fa fa-circle-check"></i> Sinistro e colisão</li>
 <li><i class="fa fa-circle-check"></i> Registro de leilão</li>
 <li><i class="fa fa-circle-check"></i> Bloqueio RENAJUD</li>
-<li><i class="fa fa-circle-check"></i> RENAVAM e Chassi</li>
+<li><i class="fa fa-circle-check"></i> Chassi</li>
 <li><i class="fa fa-circle-check"></i> Roubo e furto</li>
 </ul>
 <div class="unlock-divider"></div>
@@ -437,6 +497,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <i class="fa fa-shield-halved"></i> Pagamento 100% seguro &nbsp;·&nbsp;
 <i class="fa fa-clock"></i> Acesso em segundos
 </div>
+<div style="text-align:center;margin-top:12px;">
+<a href="https://wa.me/5514991548791?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20a%20consulta%20veicular." class="unlock-whatsapp" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i> Ficou com dúvida? Fale conosco no WhatsApp
+</a>
+</div>
 </div>
 
 <div class="preview-contratos">
@@ -451,7 +516,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <strong>Contrato de venda à vista</strong>
         <small>Compra e venda simples • PDF na hora</small>
       </div>
-      <div class="preview-contrato-btn-preco">R$ 19,99</div>
+      <div class="preview-contrato-btn-preco">R$ 9,99</div>
     </a>
     <a class='preview-contrato-btn amarelo' href='/contrato-parcelado'>
       <div class="preview-contrato-btn-icon"><i class="fa fa-calendar-days"></i></div>
@@ -459,21 +524,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <strong>Contrato de venda parcelado</strong>
         <small>Reserva de domínio • Art. 521 CC</small>
       </div>
-      <div class="preview-contrato-btn-preco">R$ 29,99</div>
+      <div class="preview-contrato-btn-preco">R$ 12,99</div>
     </a>
   </div>
 </div>
 </section>
 
 <div class="stats-bar">
-<div class="stat"><strong>Pagamento único</strong><span>Sem assinatura mensal</span></div>
-<div class="stat-divider"></div>
-<div class="stat"><strong>Consulta online</strong><span>Acesso rápido ao relatório</span></div>
-<div class="stat-divider"></div>
-<div class="stat"><strong>Placa antiga e Mercosul</strong><span>Compatível com os dois formatos</span></div>
+<div class="stat"><strong>Acesso imediato</strong><span>PIX, Cartão ou Débito</span></div>
 </div>
 </div>
 </section>
+
 
 <!-- ── SERVIÇOS ── -->
 <section class="servicos-section" id="servicos">
@@ -515,7 +577,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <section class="contratos-section" id="contratos">
 <div class="contratos-inner">
   <div class="contratos-header">
-    <div class="badge-novo"><i class="fa fa-star"></i> Novo serviço digital</div>
     <h2>Contratos de <span>Compra e Venda</span> Online</h2>
     <p>Gere um contrato jurídico profissional em PDF em minutos. Envie o CRLV e a IA preenche os dados automaticamente.</p>
   </div>
@@ -526,7 +587,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="contrato-card-icon"><i class="fa fa-file-contract"></i></div>
         <div class="contrato-card-preco">
           <small>Pagamento único</small>
-          <strong>R$ 19,99</strong>
+          <strong>R$ 9,99</strong>
         </div>
       </div>
       <h3>Contrato de Compra e Venda</h3>
@@ -547,7 +608,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="contrato-card-icon"><i class="fa fa-calendar-days"></i></div>
         <div class="contrato-card-preco">
           <small>Pagamento único</small>
-          <strong>R$ 29,99</strong>
+          <strong>R$ 12,99</strong>
         </div>
       </div>
       <h3>Contrato com Reserva de Domínio</h3>
@@ -587,12 +648,85 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </section>
 
+<!-- ── FAQ ── -->
+<section class="faq-section">
+<div class="faq-inner">
+  <div class="faq-header">
+    <h2>Dúvidas frequentes</h2>
+    <p>Respostas para as principais perguntas antes de comprar</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>Como recebo o relatório após o pagamento?</span>
+        <i class="fa fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Assim que o pagamento é confirmado (instantâneo no PIX), você é redirecionado automaticamente para o relatório completo. No cartão, pode levar até 1 minuto para aprovação.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>Os dados são atualizados e confiáveis?</span>
+        <i class="fa fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Sim. Os dados são consultados em bases oficiais como DETRAN, RENAJUD e SENATRAN. Cada consulta acessa os registros mais recentes disponíveis no momento da pesquisa.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>E se a placa não existir ou não tiver dados?</span>
+        <i class="fa fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Antes de prosseguir para o pagamento, exibimos uma prévia com os dados básicos do veículo. Se a placa não for encontrada, você não será cobrado.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>Posso pagar parcelado?</span>
+        <i class="fa fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>O pagamento é à vista (R$14,99). Você pode pagar via PIX (liberação imediata) ou cartão de crédito/débito. O valor já é acessível para não comprometer o orçamento.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>O pagamento é seguro?</span>
+        <i class="fa fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Sim. Utilizamos a EFI (Efí Bank), gateway de pagamento certificado pelo Banco Central do Brasil. Seus dados são criptografados e nunca armazenados em nosso servidor.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>O relatório cobre veículos de outros estados além de SP?</span>
+        <i class="fa fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Sim, o relatório cobre veículos de todo o Brasil — não apenas de São Paulo. Qualquer placa nacional (formato antigo ou Mercosul) pode ser consultada.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:28px;">
+    <p style="color:#64748b;font-size:0.88rem;margin:0 0 12px;">Não encontrou o que procurava?</p>
+    <a href="https://wa.me/5514991548791?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20a%20consulta%20veicular." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-weight:800;font-size:0.95rem;padding:14px 28px;border-radius:14px;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.3);">
+      <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Fale conosco no WhatsApp
+    </a>
+  </div>
+</div>
+</section>
+
 <footer class="footer" id="contato">
 <div class="footer-inner">
 <div class="footer-col">
 <img src="logo.png" alt="icarSP" class="footer-logo" />
-<p>Bruno Henrique Camacho</p>
-<p>Despachante veicular - São Paulo</p>
+<p><strong>Bruno Henrique Camacho</strong></p>
+<p>Despachante Veicular Autônomo</p>
+<p>São Paulo, SP</p>
 <p>CRDD 005636-7</p>
 </div>
 <div class="footer-col">
@@ -605,17 +739,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="footer-col">
 <h4>Legal</h4>
 <a href="#">Termos de uso</a>
-<a href="#">Privacidade</a>
+<a href="/privacidade">Privacidade</a>
 <a href="#">Cookies</a>
 </div>
 <div class="footer-col">
 <h4>Contato</h4>
-<a href="mailto:icarspconsultas@gmail.com">icarspconsultas@gmail.com</a>
+<a href="mailto:contato@icarsp.com.br">contato@icarsp.com.br</a>
 <a href="https://wa.me/5514991548791" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;color:#25d366;font-weight:600;text-decoration:none;"><i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Falar no WhatsApp</a>
 </div>
 </div>
 <div class="footer-bottom">
-<p>© 2026 icarSP. Todos os direitos reservados.</p>
+<p style="margin-bottom:6px;">Este site não é afiliado ao DETRAN, Poupatempo, SENATRAN ou qualquer órgão governamental. Somos um serviço privado e pago de consultoria veicular.</p>
+<p>© 2026 icarsp.com.br — Todos os direitos reservados.</p>
 </div>
 </footer>
 
@@ -646,17 +781,52 @@ function restaurarBotaoBusca() {
 async function consultarPreviewPlaca(placa) {
   const response = await fetch(`/.netlify/functions/get-basic-report?placa=${encodeURIComponent(placa)}`);
   const data = await response.json();
+  if (data.blocked) {
+    const err = new Error(data.message || 'Consulta gratuita já utilizada.');
+    err.blocked = true;
+    throw err;
+  }
   if (!response.ok || !data.success) throw new Error(data.message || 'Erro ao consultar placa.');
   return data;
 }
-document.querySelector('.btn-buscar').addEventListener('click', () => {
+document.querySelector('.btn-buscar').addEventListener('click', async () => {
   const placa = normalizarPlaca(document.getElementById('placa-input').value);
   if (placa.length < 7) { alert('Digite uma placa válida!'); return; }
   placaAtual = placa;
+  const btn = document.querySelector('.btn-buscar');
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Consultando...';
+  btn.disabled = true;
   document.getElementById('preview-placa').textContent = placa;
+  ['preview-marca-modelo','preview-ano','preview-combustivel','preview-cor','preview-cidade'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ el.textContent = 'Consultando...'; el.style.color = '#94a3b8'; }
+  });
   const preview = document.getElementById('preview-result');
   preview.style.display = 'block';
   preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  try {
+    const data = await consultarPreviewPlaca(placa);
+    mostrarPreview(data);
+    if (data.teaser && data.teaser.alertCount > 0) {
+      document.querySelector('.preview-badge').innerHTML = '<i class="fa fa-triangle-exclamation"></i> ' + data.teaser.alertCount + ' alerta(s) encontrado(s) — acesso bloqueado';
+    }
+    ['preview-marca-modelo','preview-ano','preview-combustivel','preview-cor','preview-cidade'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.textContent && el.textContent !== '-') el.style.color = '#fff';
+    });
+  } catch (e) {
+    ['preview-marca-modelo','preview-ano','preview-combustivel','preview-cor','preview-cidade'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){ el.textContent = 'Disponível no relatório'; el.style.color = '#64748b'; }
+    });
+    if (e.blocked) {
+      document.querySelector('.preview-badge').innerHTML = '<i class="fa fa-lock"></i> Consulta gratuita já utilizada';
+      document.querySelector('.unlock-subtitle').innerHTML = 'Você já usou sua consulta gratuita hoje. <strong>Adquira o relatório completo por R$14,99 para ver todos os dados deste veículo.</strong>';
+    }
+  } finally {
+    btn.innerHTML = '<i class="fa fa-magnifying-glass"></i> CONSULTAR AGORA';
+    btn.disabled = false;
+  }
 });
 let placaAtual = '';
 let efiAccountId = null;
@@ -1103,5 +1273,27 @@ document.getElementById('unlock-report-button').addEventListener('click', inicia
   </div>
 </div>
 
+<script>
+function toggleMenu() {
+  const nav = document.getElementById('main-nav');
+  const btn = document.querySelector('.nav-toggle');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function fecharMenu() {
+  document.getElementById('main-nav').classList.remove('open');
+  document.querySelector('.nav-toggle').classList.remove('open');
+}
+</script>
+
+<script>
+function toggleFaq(btn) {
+  var answer = btn.nextElementSibling;
+  var isOpen = btn.classList.contains('aberta');
+  document.querySelectorAll('.faq-question').forEach(function(q){ q.classList.remove('aberta'); });
+  document.querySelectorAll('.faq-answer').forEach(function(a){ a.style.display = 'none'; });
+  if (!isOpen) { btn.classList.add('aberta'); answer.style.display = 'block'; }
+}
+</script>
 </body>
 </html>
